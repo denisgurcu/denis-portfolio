@@ -1,0 +1,76 @@
+/* Hero Section */
+.hero {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  background-color: #cccc; /* Background color */
+  text-align: center;
+  position: relative;
+}
+
+/* Hero Text */
+.hero-text {
+  font-family: 'Graphyne', sans-serif;
+  font-size: 20rem;
+  color: #333;
+  margin: 0;
+  text-align: center;
+  position: absolute;
+  bottom: 10%; /* Adjust position from bottom */
+}
+
+/* Boxes */
+.boxes-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  width: 90%; /* Adjust width to allow spacing */
+  margin-bottom: 20px; /* Spacing between the boxes and "DENIS" text */
+  position: absolute;
+  top: 5%; /* Position it above the hero text */
+}
+
+/* Box Styles */
+.box {
+  width: 370px;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.branding {
+  border: 4px solid #DA4D3B; /* Red */
+}
+
+.graphic {
+  border: 4px solid #114059; /* Blue border */
+}
+
+.motion {
+  border: 4px solid #8F263E; /* dark red */
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 5rem; /* Adjust font size for smaller screens */
+  }
+  .animation-container {
+    width: 90%; /* Adjust container width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text {
+    font-size: 3rem; /* Further adjust font size for very small screens */
+  }
+  .animation-container {
+    width: 95%; /* Adjust container width for very small screens */
+  }
+}

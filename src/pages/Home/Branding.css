@@ -1,0 +1,28 @@
+.grid-container {
+  position: relative;
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  background-color: #FFD24D;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  background-color: black;
+
+}
+
+.horizontal {
+  width: 100%;
+  height: 3px; /* Adjust the thickness of the horizontal lines */
+  top: calc(100% / 10 * var(--index) + 20px);  /* Adjust the space between the lines  */
+  
+}
+
+.vertical {
+  height: 100%;
+  width: 3px; /* Adjust the thickness of the vertical lines */
+  left: calc(100% / 10 * var(--index) + 20px); /* Adjust the space between the lines */
+  
+}
+

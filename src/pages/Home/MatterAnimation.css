@@ -1,0 +1,12 @@
+/* Style the container div */
+.canvas-container {
+  width: 100%;
+  height: 100%;  /* Full viewport height */
+  position: relative;
+  overflow: hidden;  /* Optional: prevents canvas from overflowing */
+}
+
+/* Style the canvas */
+.wavy-canvas {
+  display: block; /* Remove any unwanted space below the canvas */
+}
