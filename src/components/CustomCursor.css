@@ -1,0 +1,38 @@
+/* Hide default cursor */
+* {
+    cursor: none !important;
+  }
+  
+  /* Custom cursor styles */
+  .cursor {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #E6E6E6; /* Custom color */
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+    z-index: 9999999;
+    opacity: 0; /* Initially hidden */  
+    transition: opacity 0.5s ease;
+    border: 1px solid #E6E6E6;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Handle for smaller screens */
+  @media screen and (max-width: 768px) {
+    * {
+      cursor: unset !important;
+    }
+  
+    *:hover {
+      cursor: unset;
+    }
+  
+    .cursor {
+      display: none;
+    }
+  }
+  

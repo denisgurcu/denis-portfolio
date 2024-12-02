@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <EyeLogo /> {/* Replace "Logo" text with the interactive eye */}
+        <EyeLogo /> 
       </div>
       <nav>
         <NavLink to="/">Home</NavLink>

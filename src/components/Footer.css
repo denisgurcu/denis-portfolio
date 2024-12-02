@@ -1,15 +1,76 @@
 .footer {
-    background-color: #cccccc;
-    color: #333;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .footer p {
-    margin: 0;
-  }
-  
+  display: flex; /* Flexbox layout for left and right sections */
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: center; /* Vertically align the content */
+  padding: 50px; /* Consistent padding */
+  color: var(--black);
+  max-width: 100%;
+}
+
+.footer-left {
+  flex: 1; /* Left section takes equal space */
+  text-align: left;
+}
+
+.footer-right {
+  flex: 1; /* Right section takes equal space */
+  text-align: right;
+}
+
+.footer-left h2 {
+  font-family: var(--afacad);
+  font-style: bold;
+  font-size: 5rem; /* Larger font for "Contact" */
+  margin-bottom: 20px;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column; /* Stack email and icons vertically */
+  align-items: flex-start; /* Align items to the left */
+  gap: 30px; /* Space between the email button and icons */
+}
+
+.email-button {
+  display: inline-block; /* Prevents the button from taking the full width */
+  font-family: var(--afacad);
+  font-size: 1.5rem; /* Reduced font size for shorter button */
+  color: var(--white);
+  background-color: var(--black);
+  padding: 10px 50px;
+  border-radius: 25px;
+  text-decoration: none; /* Remove underline */
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth hover effect for scale and background */
+}
+
+.email-button:hover {
+  background-color: var(--darkred);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-start; /* Align icons to the left */
+  column-gap: 50px; /* Precise control over spacing between icons */
+}
+
+.social-icon {
+  font-size: 2.5rem; /* Adjust size of icons */
+  color: var(--black);
+  border: 2px solid var(--black); /* Add a solid border */
+  border-radius: 25%; /* Adjust the roundness of the border */
+  padding: 8px;
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.social-icon:hover {
+  color: var(--darkred); /* Change icon color */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.footer-right p {
+  font-family: var(--afacad);
+  font-size: 1.5rem; /* Font size for text */
+  margin: 0; /* Remove margin for cleaner alignment */
+}

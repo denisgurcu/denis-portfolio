@@ -1,0 +1,144 @@
+.projects-intro-wrapper {
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-start;  /* Change from center to flex-start */
+  align-items: center; /* Optional: to keep horizontal centering */
+}
+
+  
+.projects-animation-container {
+  width: 100%;
+  height: 50vh; /* Adjust the height as needed */
+  position: relative;
+}
+
+.projects-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue); /* Background for animation */
+  overflow: hidden;
+}
+
+
+
+.projects-line {
+  position: absolute;
+  background-color: var(--black);
+  filter: url(#roughPencil);
+}
+
+.projects-horizontal {
+  width: 100%;
+  height: 6px;
+  top: calc((100% / 10 * var(--index)) + 15px); /* Add offset to hide top horizontal line */
+}
+
+.projects-vertical {
+  height: 100%;
+  width: 6px;
+  left: calc(100% / 20 * var(--index));
+}
+
+.projects-text {
+  font-family: 'Graphyne', sans-serif;
+  font-size: 17rem;
+  color: var(--black);
+  text-align: center;
+  position: relative;
+  margin-top: 0; /* Adjust this value to control space above text */
+  z-index: 10; /* Ensure text is above the Matter.js canvas */
+  max-width: 100%;
+
+}
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+}
+
+@keyframes moveTheWave {
+  0% {
+    stroke-dashoffset: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    stroke-dashoffset: -200; /* Adjust the offset for the desired wave movement */
+    transform: translate3d(-180px, 0, 0); /* Adjust the horizontal movement */
+  }
+}
+.waves path {
+  stroke-dasharray: 3600; /* Creates the dashed effect */
+  stroke-dashoffset: 800; /* Start fully dashed */
+  animation: none; /* No animation by default */
+  animation: moveTheWave 3s linear infinite; /* Set the duration to a shorter time, e.g., 2s */
+  transition: stroke-dashoffset 3s linear; /* Smooth movement */
+}
+
+.motion-animation-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh; /* Adjust to the desired height */
+  background: transparent;
+  
+}
+
+.projects-filter-section {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  justify-content: center; /* Optionally, center the content vertically */
+  text-align: center;
+  width: 100%; /* Ensure it takes up full width */
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+.tab {
+  font-family: 'Breamcatcher', sans-serif;
+  font-size: 2rem;
+  padding: 10px 50px;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 25px;
+}
+
+.tab.active {
+  border: var(--darkred);
+}
+
+.tab:hover {
+  background-color: var(--darkred);
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2 columns, adjust based on design */
+  gap: 40px;  /* Space between cards */
+  margin-bottom: 50px;  /* Add bottom margin for spacing */
+  justify-content: center;  /* Center the grid content */
+}
+
+/* Responsive design: On smaller screens, stack the cards */
+@media (max-width: 768px) {
+  .project-cards {
+    grid-template-columns: 1fr;  /* 1 column on small screens */
+  }
+}

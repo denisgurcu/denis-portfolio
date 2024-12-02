@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./EyeLogo.css"; // Add your eye styles here
+import "./EyeLogo.css";
 
 const EyeLogo = () => {
   const pupilRef = useRef(null);

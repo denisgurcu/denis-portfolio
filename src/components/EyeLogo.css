@@ -1,20 +1,21 @@
 .eye{
   margin-left: 50px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: inline-block;
   border-radius: 75% 0;
   transform: rotate(45deg);
   overflow: hidden;
+  background-color:  #cccc;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .eyeball{
   width: 30px;
   height: 30px;
-  background-color: #333;
+  background-color: var(--black);
   border-radius: 50%;
-  border: 15px solid #6B94b9;
+  border: 14px solid var(--blue);
   position: absolute;
   top: 50%;
   left: 50%;

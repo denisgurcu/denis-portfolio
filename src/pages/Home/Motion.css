@@ -1,0 +1,13 @@
+.motion-container {
+  position: relative;
+  width: 370px;
+  height: 270px;
+  background-color: var(--pink);
+}
+
+.matter {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
