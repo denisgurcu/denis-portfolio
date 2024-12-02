@@ -31,7 +31,7 @@ const Motion = () => {
     });
 
     // Create boundaries (walls) to keep shapes inside the container
-    const ground = Bodies.rectangle(width / 2, height + 10, width, 20, { isStatic: true });
+    const ground = Bodies.rectangle(width / 2, height + 1, width, 20, { isStatic: true });
     const roof = Bodies.rectangle(width / 2, -10, width, 20, { isStatic: true });
     const wallLeft = Bodies.rectangle(-10, height / 2, 20, height, { isStatic: true });
     const wallRight = Bodies.rectangle(width + 10, height / 2, 20, height, { isStatic: true });
