@@ -40,7 +40,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  
+  z-index: 1000; /* Ensure the close button is above the menu */
+}
+
+.hamburger.open span {
+  background-color: var(--white); /* Ensure visible lines */
 }
 
 .hamburger span {
@@ -54,32 +58,52 @@
 
 }
 
-.hamburger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg); /* Top line turns into an X */
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0; /* Middle line disappears */
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg); /* Bottom line turns into an X */
-}
-
 /* Mobile Menu */
 .nav-links.mobile-menu {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  position: absolute;
+  align-items: center;
+  gap: 20px;
+  position: fixed; /* Ensure it covers the screen */
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--white);
-  padding: 100px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.95); /* Add a semi-transparent overlay */
+  color: var(--white);
+  padding: 100px 20px;
+  z-index: 999; /* Ensure it's above other content */
+  transform: translateY(-100%); /* Initially hidden */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+
+.nav-links.mobile-menu a {
+  color: var(--white); /* Ensure links are white */
+  font-size: 2rem; /* Increase size for readability */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.nav-links.mobile-menu a:hover {
+  color: var(--accent-color); /* Change color on hover (e.g., an accent color) */
+  transform: scale(1.2); /* Slightly enlarge the text */
+}
+
+.nav-links.mobile-menu.open {
+  transform: translateY(0); /* Slide down when open */
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Responsive Styles */

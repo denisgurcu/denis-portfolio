@@ -8,14 +8,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-
-    // Prevent background scroll when the menu is open
-    if (!isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    setIsMenuOpen(!isMenuOpen);
+    document.body.style.overflow = isMenuOpen ? "auto" : "hidden"; // Prevent background scroll
   };
 
   useEffect(() => {
@@ -72,15 +66,14 @@ const Header = () => {
         <span></span>
       </button>
 
-      {/* Navigation Links */}
-      <nav className={`nav-links ${isMenuOpen ? "mobile-menu" : ""}`}>
-        <NavLink to="/" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>
+      <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : "mobile-menu"}`}>
+        <NavLink to="/" onClick={toggleMenu}>
           Home
         </NavLink>
-        <NavLink to="/projects" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>
+        <NavLink to="/projects" onClick={toggleMenu}>
           Projects
         </NavLink>
-        <NavLink to="/about" style={{ color: linkColor }} onClick={() => setIsMenuOpen(false)}>
+        <NavLink to="/about" onClick={toggleMenu}>
           About
         </NavLink>
       </nav>

@@ -96,8 +96,30 @@
     height: 300px; 
   }
 
-  .card-content h3 {
-   display: none;
-}
+  .card:hover .card-content {
+    opacity: 1; /* Ensure the content is visible */
+    transform: none; /* Remove scale effect */
+  }
 
+  .card-content {
+    opacity: 1; /* Make content always visible */
+    transform: none; /* Remove animation */
+  }
+
+  .card:hover .card-image img {
+    filter: none; /* Remove any hover effects on images */
+  }
+
+  /* Optional: Hide the card content if you want it removed instead */
+  .card-content h3 {
+    display: none; /* Hides the title */
+  }
+
+  .card-content .card-details {
+    display: none; /* Hides the project details */
+  }
+
+  .tags {
+    display: none; /* Hides the tags */
+  }
 }
