@@ -99,7 +99,7 @@ const Home = () => {
               <div className="label motion-label">MOTION DESIGN</div>
             </div>
           </div>
-          <h1 className="hero-text">DENIS</h1>
+          <h1 className="hero-text">DENIS!</h1>
         </div>
       </section>
 
