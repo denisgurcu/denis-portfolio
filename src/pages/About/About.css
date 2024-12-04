@@ -2,7 +2,7 @@
   .about-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically centers both manifesto and title */
+    justify-content: center; 
     align-items: center;
     text-align: center;
     position: relative;
@@ -10,7 +10,7 @@
   
   .about-manifesto {
     display: flex;
-    align-items: flex-start; /* Align left */
+    align-items: flex-start;
     text-align: left;
     width: 100%;
     font-family: var(--afacad);
@@ -27,15 +27,14 @@
     text-align: center;
   }
 
- /* Ensure the masonry wrapper takes full width and is centered */
 .about-masonry-wrapper {
     max-width: 100%;
-    padding: 20px 50px; /* Centers the masonry section */
-    display: flex; /* Flexbox ensures items are aligned correctly */
-    justify-content: center; /* Centers the masonry boxes */
+    padding: 20px 50px; 
+    display: flex; 
+    justify-content: center; 
   }
   
-/* Bento Box Styles - added flex to center content and ensure responsive behavior */
+/* Bento Box Styles  */
 .bento-box {
     font-family: var(--afacad);
     overflow: hidden;

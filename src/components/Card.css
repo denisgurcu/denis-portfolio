@@ -75,10 +75,10 @@
 }
 
 .tag {
-  background-color: var(--darkred); 
+  background-color: var(--black); 
   color: var(--white);
-  font-size: 0.9rem;
-  padding: 5px 10px;
+  font-size: 1rem;
+  padding: 10px 10px;
   border-radius: 15px;
   margin: 5px;
   text-transform: capitalize;

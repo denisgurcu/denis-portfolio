@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import EyeLogo from "./EyeLogo"; // Assuming you have this component
+import EyeLogo from "./EyeLogo"; // Component for the logo
 import "./Header.css";
 
 const Header = () => {
-  const [linkColor, setLinkColor] = useState("var(--black)");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Track if the screen is mobile
+  const [linkColor, setLinkColor] = useState("var(--black)"); // Dynamic link color based on the background
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Track the state of the mobile menu
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Check if the screen size is mobile
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = isMenuOpen ? "auto" : "hidden"; // Prevent background scroll
+    setIsMenuOpen(!isMenuOpen); // Toggle the mobile menu open/close
+    document.body.style.overflow = isMenuOpen ? "auto" : "hidden"; // Disable scrolling when menu is open
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false); // Ensure menu is closed
-    document.body.style.overflow = "auto"; // Restore scrolling
+    setIsMenuOpen(false); // Close the mobile menu
+    document.body.style.overflow = "auto"; // Re-enable scrolling
   };
 
   useEffect(() => {
     const updateLinkColor = () => {
+      // Dynamically change the link color based on overlapping elements
       const header = document.querySelector(".header");
       const navBoundingBox = header.getBoundingClientRect();
 
@@ -38,21 +39,24 @@ const Header = () => {
           .split(",")
           .map(Number);
 
-        const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-        setLinkColor(luminance < 50 ? "var(--white)" : "var(--black)");
+        const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b; // Calculate luminance
+        setLinkColor(luminance < 50 ? "var(--white)" : "var(--black)"); // Set white for dark backgrounds
       } else {
         setLinkColor("var(--black)");
       }
     };
 
-    const handleResize = () => setIsMobile(window.innerWidth <= 768); // Update mobile status on resize
+    const handleResize = () => setIsMobile(window.innerWidth <= 768); // Check for mobile view on resize
+
+    // Add event listeners for resizing and scrolling
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", updateLinkColor);
     window.addEventListener("resize", updateLinkColor);
 
-    updateLinkColor();
+    updateLinkColor(); // Initial check
 
     return () => {
+      // Clean up event listeners
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", updateLinkColor);
       window.removeEventListener("resize", updateLinkColor);
@@ -62,12 +66,12 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <EyeLogo />
+        <EyeLogo /> {/* Render the logo */}
       </div>
 
-      {/* Hamburger Button */}
+      {/* Mobile menu toggle button */}
       <button
-        className={`hamburger ${isMenuOpen ? "open" : ""}`}
+        className={`hamburger ${isMenuOpen ? "open" : ""}`} // Add "open" class when menu is open
         onClick={toggleMenu}
         aria-label="Toggle navigation menu"
       >
@@ -76,25 +80,26 @@ const Header = () => {
         <span></span>
       </button>
 
+      {/* Navigation links */}
       <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
         <NavLink
           to="/"
-          onClick={closeMenu} // Use closeMenu instead of toggleMenu
-          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+          onClick={closeMenu} // Close the menu on link click
+          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
         >
           Home
         </NavLink>
         <NavLink
           to="/projects"
-          onClick={closeMenu} // Use closeMenu instead of toggleMenu
-          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+          onClick={closeMenu} // Close the menu on link click
+          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
         >
           Projects
         </NavLink>
         <NavLink
           to="/about"
-          onClick={closeMenu} // Use closeMenu instead of toggleMenu
-          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+          onClick={closeMenu} // Close the menu on link click
+          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
         >
           About
         </NavLink>
@@ -103,4 +108,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header; // Export the Header component
