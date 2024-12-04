@@ -4,11 +4,11 @@
 
 /* Hero Section */
 .hero {
-  height: 100vh; 
+  height: 100vh;
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   position: relative;
 }
@@ -22,20 +22,21 @@
   margin: 0;
   text-align: center;
   position: absolute;
-  bottom: 10%; /* Adjust position from bottom */
+  bottom: 10%;
+  /* Adjust position from bottom */
 }
 
 /* Scroll Section */
 .scroll-section {
-  min-height: 100vh; 
-  height: auto;  
+  min-height: 100vh;
+  height: auto;
   background: var(--black);
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--white);
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .scroll-text {
@@ -48,11 +49,14 @@
 
 .cursor-info {
   font-family: 'Afacad Flux', sans-serif;
-  font-size: 1.8rem; /* Smaller font size for the second line */
-  color: var(--white); /* Change the color to match your theme, adjust if needed */
-  margin-top: 70px; 
-  font-style: italic; /* Make the text italic */
-  opacity: 0.8; 
+  font-size: 1.8rem;
+  /* Smaller font size for the second line */
+  color: var(--white);
+  /* Change the color to match your theme, adjust if needed */
+  margin-top: 70px;
+  font-style: italic;
+  /* Make the text italic */
+  opacity: 0.8;
 }
 
 /* Boxes Container */
@@ -61,84 +65,106 @@
   justify-content: space-evenly;
   align-items: flex-start;
   gap: 20px;
-  width: 100%; /* Adjust width to allow spacing */
+  width: 100%;
+  /* Adjust width to allow spacing */
   position: absolute;
-  top: 5%; /* Position it above the hero text */
+  top: 5%;
+  /* Position it above the hero text */
 }
 
 /* Box Wrapper */
 .box-wrapper {
   display: flex;
-  flex-direction: column; /* Stack box and label vertically */
-  align-items: center; /* Center items horizontally */
-  position: relative; 
+  flex-direction: column;
+  /* Stack box and label vertically */
+  align-items: center;
+  /* Center items horizontally */
+  position: relative;
 }
 
 /* Box Styles */
 .box {
-  width: 370px; /* Ensure consistent width for wrapper */
-  height: 220px; /* All boxes have the same height */
+  width: 370px;
+  /* Ensure consistent width for wrapper */
+  height: 220px;
+  /* All boxes have the same height */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  z-index: 2; /* Higher value to make it appear above the label */
-  border: 4px solid; /* Box border for each type */
+  z-index: 2;
+  /* Higher value to make it appear above the label */
+  border: 4px solid;
+  /* Box border for each type */
 }
 
 .branding {
-  border-color: var(--red); /* Red border */
+  border-color: var(--red);
+  /* Red border */
 }
 
 .graphic {
-  border-color: var(--darkblue); /* Blue border */
+  border-color: var(--darkblue);
+  /* Blue border */
   margin-top: 63px;
 }
 
 .motion {
-  border-color: var(--darkred); /* Dark red border */
+  border-color: var(--darkred);
+  /* Dark red border */
 }
 
 /* Label Styles */
 .label {
-  position: relative; /* Required for z-index to work */
-  z-index: 1; /* Lower value to make it appear below the box */
+  position: relative;
+  /* Required for z-index to work */
+  z-index: 1;
+  /* Lower value to make it appear below the box */
   margin-top: -5px;
   width: 100%;
   text-align: center;
   font-family: 'Breamcatcher', sans-serif;
   font-size: 2rem;
   padding: 10px;
-  border: 4px solid; /* Match border width */
+  border: 4px solid;
+  /* Match border width */
   box-sizing: border-box;
 }
 
 /* Branding Label */
 .branding-label {
-  border-color: var(--red); /* Match Branding box border */
-  color :var(--red); /* Red text */
+  border-color: var(--red);
+  /* Match Branding box border */
+  color: var(--red);
+  /* Red text */
 }
 
 /* Graphic Label - Above the Box */
 .graphic-label {
   margin-top: 0;
-  border-color: var(--darkblue); /* Match Graphic box border */
-  color: var(--darkblue); /* Blue text */
+  border-color: var(--darkblue);
+  /* Match Graphic box border */
+  color: var(--darkblue);
+  /* Blue text */
   position: absolute;
 }
 
 /* Motion Label */
 .motion-label {
-  border-color: var(--darkred); /* Match Motion box border */
-  color:var(--darkred); /* Dark red text */
+  border-color: var(--darkred);
+  /* Match Motion box border */
+  color: var(--darkred);
+  /* Dark red text */
 }
 
 .recent-works {
 
   padding: 50px 20px;
   display: flex;
-  flex-direction: column; /* Align content vertically */
-  align-items: center; /* Center the card grid horizontally */
+  flex-direction: column;
+  /* Align content vertically */
+  align-items: center;
+  /* Center the card grid horizontally */
   text-align: center;
 }
 
@@ -154,7 +180,8 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin-bottom: 50px;
-  justify-content: center; /* Center the grid content */
+  justify-content: center;
+  /* Center the grid content */
 }
 
 .view-more {
@@ -172,57 +199,85 @@
 }
 
 
+
 /* Responsiveness */
 @media (max-width: 768px) {
   .hero-text {
-    font-size: 8rem; /* Adjust font size for smaller screens */
-    bottom: 5%; /* Adjust position */
+    font-size: 8rem;
+    /* Adjust font size for smaller screens */
+    bottom: 5%;
+    /* Adjust position */
   }
 
   .boxes-container {
-    flex-direction: column; /* Stack boxes vertically */
+    flex-direction: column;
+    /* Stack boxes vertically */
     gap: 30px;
     width: 90%;
-    max-width: none; /* Allow scaling on smaller screens */
+    max-width: none;
+    /* Allow scaling on smaller screens */
   }
 
   .box-wrapper {
-    width: 100%; /* Take full width on smaller screens */
+    width: 100%;
+    /* Take full width on smaller screens */
   }
 
   .box {
-    height: 220px; /* Reduce height for smaller screens */
+    height: 220px;
+    /* Reduce height for smaller screens */
   }
 
   .label {
-    font-size: 1rem; /* Smaller font size for labels */
-    padding: 4px; /* Reduce padding */
-    width: 78%; /* Make the label narrower */
-    text-align: center; /* Center the label text */
-    margin-top: -4px; /* Adjust margin to align with smaller boxes */
+    font-size: 1rem;
+    /* Smaller font size for labels */
+    padding: 4px;
+    /* Reduce padding */
+    width: 78%;
+    /* Make the label narrower */
+    text-align: center;
+    /* Center the label text */
+    margin-top: -4px;
+    /* Adjust margin to align with smaller boxes */
   }
 
   .graphic-label {
     margin-top: 60px;
   }
 
+  .h-section {
+    min-height: 50vh;
+    /* Reduce the height to half the viewport */
+    padding: 20px;
+    /* Add some padding for smaller screens */
+  }
+
   .scroll-text {
     font-size: 1.5rem;
   }
 
-.cursor-info {
-  display: none;
-}
+  .cursor-info {
+    display: none;
+  }
 
   .card-grid {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .recent-works h2 {
+    font-size: 2.5rem;
+    /* Slightly smaller heading */
+  }
+
+
 }
 
 @media (max-width: 480px) {
   .hero-text {
-    font-size: 4rem; /* Further adjust font size for very small screens */
-    bottom: 5%; /* Adjust position */
+    font-size: 4rem;
+    /* Further adjust font size for very small screens */
+    bottom: 5%;
+    /* Adjust position */
   }
 
   .boxes-container {
@@ -231,25 +286,42 @@
   }
 
   .box {
-      width: 300px; /* Reduce box width */
-      height: 180px; /* Reduce box height */
+    width: 300px;
+    /* Reduce box width */
+    height: 180px;
+    /* Reduce box height */
   }
 
   .label {
-    font-size: 1rem; /* Smaller font size for labels */
+    font-size: 1rem;
+    /* Smaller font size for labels */
     padding: 5px;
   }
 
   .graphic-label {
-    top: -30px; /* Adjust position for smaller screens */
+    top: -30px;
+    /* Adjust position for smaller screens */
   }
 
   .view-more {
-    font-size: 1.2rem; /* Further reduce font size */
-    padding: 6px 20px; /* Adjust padding */
-    border-radius: 15px; /* Smaller border radius */
+    font-size: 1.2rem;
+    /* Further reduce font size */
+    padding: 6px 20px;
+    /* Adjust padding */
+    border-radius: 15px;
+    /* Smaller border radius */
   }
 
+  .scroll-section {
+    min-height: 40vh;
+    /* Further reduce height for very small screens */
+    padding: 15px;
+    /* Adjust padding for smaller screens */
+  }
 
+  .recent-works h2 {
+    font-size: 2.5rem;
+    /* Slightly smaller heading */
+  }
 
 }
