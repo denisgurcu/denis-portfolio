@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import './CustomCursor.css';  // CSS file for cursor styles
+import React, { useEffect, useState } from "react";
+import { gsap } from "gsap";
+import "./CustomCursor.css";
 
 const CustomCursor = ({ cursorColor }) => {
-  const [cursorOpacity, setCursorOpacity] = useState(0.8); // For opacity transitions
+  const [cursorOpacity, setCursorOpacity] = useState(0.8);
 
   useEffect(() => {
-    const cursor = document.querySelector('.cursor');
+    const cursor = document.querySelector(".cursor");
+    document.body.style.cursor = "none";
 
-    // Hide default cursor globally
-    document.body.style.cursor = 'none';
-
-    // GSAP quickTo to animate cursor movement
     let xTo = gsap.quickTo(".cursor", "x", { duration: 0.1, ease: "power3" });
     let yTo = gsap.quickTo(".cursor", "y", { duration: 0.1, ease: "power3" });
 
-    // Update cursor position smoothly based on mouse movement
     const updateCursorPosition = (e) => {
       xTo(e.clientX);
       yTo(e.clientY);
-      setCursorOpacity(1); // Make cursor visible on movement
+      setCursorOpacity(1);
     };
 
-    // Listen to mousemove event to update cursor position
-    window.addEventListener('mousemove', updateCursorPosition);
+    window.addEventListener("mousemove", updateCursorPosition);
 
-    // Clean up event listener on component unmount
     return () => {
-      window.removeEventListener('mousemove', updateCursorPosition);
+      window.removeEventListener("mousemove", updateCursorPosition);
     };
   }, []);
 
@@ -35,8 +29,8 @@ const CustomCursor = ({ cursorColor }) => {
     <div
       className="cursor"
       style={{
-        backgroundColor: cursorColor,  // Set the color dynamically
-        opacity: cursorOpacity,        // Add opacity transition
+        backgroundColor: cursorColor || "transparent",
+        opacity: cursorOpacity,
       }}
     />
   );

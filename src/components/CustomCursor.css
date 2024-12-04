@@ -1,38 +1,36 @@
-/* Hide default cursor */
 * {
-    cursor: none !important;
+  cursor: none !important; /* Default behavior: hide cursor */
+}
+
+body.default-cursor * {
+  cursor: auto !important; /* Show the system cursor when "Invisible" is selected */
+}
+
+/* Custom cursor styles */
+.cursor {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--default-cursor-color); /* Use default cursor color */
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: hard-light;
+  z-index: 9999999;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease, background-color 0.3s ease;
+  border: 1px solid var(--default-cursor-color);
+  transform: translate(-50%, -50%);
+}
+
+/* For smaller screens: Always show default cursor */
+@media screen and (max-width: 768px) {
+  body.custom-cursor * {
+    cursor: auto !important;
   }
-  
-  /* Custom cursor styles */
+
   .cursor {
-    width: 30px;
-    height: 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #E6E6E6; /* Custom color */
-    border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: exclusion;
-    z-index: 9999999;
-    opacity: 0; /* Initially hidden */  
-    transition: opacity 0.5s ease;
-    border: 1px solid #E6E6E6;
-    transform: translate(-50%, -50%);
+    display: none;
   }
-  
-  /* Handle for smaller screens */
-  @media screen and (max-width: 768px) {
-    * {
-      cursor: unset !important;
-    }
-  
-    *:hover {
-      cursor: unset;
-    }
-  
-    .cursor {
-      display: none;
-    }
-  }
-  
+}

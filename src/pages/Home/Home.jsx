@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Branding from "./Branding"; // Custom component for graph animation
@@ -22,7 +23,22 @@ import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [cursorColor, setCursorColor] = useState("transparent"); // Default cursor color
+  const [cursorColor, setCursorColorState] = useState("transparent");
+  const { setCursorColor } = useOutletContext();
+
+  useEffect(() => {
+    // Retrieve saved color on Home load
+    const savedColor = localStorage.getItem("cursorColor");
+    if (savedColor) {
+      setCursorColorState(savedColor);
+    }
+  }, []);
+
+  const handleColorSelect = (color) => {
+    setCursorColorState(color);
+    setCursorColor(color); // Update in Layout
+    localStorage.setItem("cursorColor", color); // Save color for persistence
+  };
 
   useEffect(() => {
     // Animate "DENIS" text
@@ -99,7 +115,7 @@ const Home = () => {
               <div className="label motion-label">MOTION DESIGN</div>
             </div>
           </div>
-          <h1 className="hero-text">DENIS!</h1>
+          <h1 className="hero-text">DENIS</h1>
         </div>
       </section>
 
@@ -112,7 +128,7 @@ const Home = () => {
         </div>
 
         {/* Add Color Picker Below the Scroll Text */}
-        <ColorPicker onColorSelect={setCursorColor} />
+        <ColorPicker onColorSelect={handleColorSelect} />
       </section>
 
       <section className="recent-works">
