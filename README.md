@@ -41,7 +41,7 @@ This portfolio project is an interactive and visually engaging platform designed
 
 ## Lessons Learned
 1. **Always Back Up Your Work**  
-   One mistake is all it takes to lose hours of progress.🥹
+   One mistake is all it takes to lose days of progress.🥹
 2. **React Isn’t That Bad**  
    I was considering to move the project out of React, but I might keep. I’m learning to embrace its difficulties and appreciate its power.
 3. **Practice**  
