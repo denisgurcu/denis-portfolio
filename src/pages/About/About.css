@@ -100,6 +100,42 @@
   .masonry-grid_column {
     margin-bottom: 20px;
   }
+
+  .hover-link {
+    text-decoration: none;
+    color: var(--black); /* Adjust to your text color */
+    position: relative;
+}
+
+.hover-link::before,
+.hover-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; /* Position the underline */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--black); /* Default underline color */
+    transition: transform 0.2s ease-out; /* Smooth transition for the default underline */
+    transform-origin: left;
+}
+
+.hover-link::after {
+    background-color: var(--darkred); /* Hover underline color */
+    transform: scaleX(0); /* Start hidden */
+    transition: transform 0.3s ease-out 0.1s; /* Slight delay to sync with the default underline */
+}
+
+.hover-link:hover::before {
+    transform: scaleX(0); /* Shrink the default underline quickly */
+    transform-origin: right;
+}
+
+.hover-link:hover::after {
+    transform: scaleX(1); /* Reveal the hover underline */
+    transform-origin: left;
+}
+
   
   /* Responsive design */
   @media (max-width: 768px) {

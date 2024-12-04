@@ -49,7 +49,6 @@ const projectData = [
     projectDetails: "A collection of logos crafted to represent unique brand identities.",
     tags: ["Logo Design", "Graphic Design"],
   },
-  // Add more projects here as needed...
 ];
 
 const Projects = () => {

@@ -14,7 +14,7 @@ const About = () => {
             <section className="about-wrapper">
                 <div className="about-manifesto">
                     <p>
-                        I believe design is a form of art, and this relentless passion led me to transition  to the creative field. I enjoy communicating through visuals, connecting through stories, and reflecting shared experiences with the mediums we have. The world would be empty without that. Creativity with purpose and functional beauty inspire and motivate me, so that I create works that inspire and motivate others. My goal is to keep pushing boundaries, and continuing to pursue what I love.          </p>
+                        I believe design is a form of art, and this relentless passion led me to transition  to the creative field. I enjoy communicating through visuals, connecting through stories, and reflecting shared experiences with the mediums we have. The world would be empty without that. Creativity with purpose and functional beauty inspire and motivate me, so that I create works that inspire and motivate others. My goal is to keep pushing boundaries, and continuing to pursue what I love.</p>
                 </div>
                 <h1 className="about-title">ABOUT</h1>
             </section>
@@ -40,9 +40,14 @@ const About = () => {
                     {/* Bento Box 2 (Image Box) */}
                     <div className="bento-box bento-2">
                         <div className="box-content">
-
                             <h2>EXPERIENCE</h2>
-                            <p>I’ve had the opportunity to work on AI solutions projects and manage social media for indie video games. In these roles, I enhanced user experience for Google and Facebook by evaluating data for accuracy, relevance, and compliance. I also developed and executed social media strategies across platforms like Twitter, Instagram, and TikTok, achieving over 100% organic growth, viral content with millions of views, and helping clients refine their strategies through detailed analyticss</p>
+                            <p>
+                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at <a href="https://appen.com" className="hover-link" target="_blank" rel="noopener noreferrer">Appen</a> and improve user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
+                            </p>
+                            <br />
+                            <p>
+                                At <a href="https://infernozilla.com" className="hover-link" target="_blank" rel="noopener noreferrer">Infernozilla</a>, I managed social media for indie video games, developing and executing strategies across platforms like Twitter, Instagram, and TikTok. These efforts resulted in over 100% organic growth, viral content with millions of views, and refined client strategies through in-depth analytics.
+                            </p>
                             <button className="btn">Resume</button>
                         </div>
                     </div>
@@ -51,7 +56,20 @@ const About = () => {
                     <div className="bento-box bento-3">
                         <div className="box-content">
                             <h2>EDUCATION</h2>
-                            <p>Content for box 2. Smaller text box.</p>
+                            <p>I also have a Bachelor's degree in Business Administration, which helped me gain a strong foundation in understanding how things work — strategizing, analyzing, and marketing. This education deepened my ability to see the bigger picture while keep focusing on those little impactful details.</p>
+                            <br />
+                            <p>
+                                Currently, I am pursuing a diploma in
+                                <a
+                                    href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/"
+                                    class="hover-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="underline-span">New Media Design & Web Development </span>
+                                </a>
+                                 at British Columbia Institute of Technology to enhance my self-taught creative and technical skills. Delving into front-end development, UX/UI design, and multimedia creation, combining my passion for creativity with innovative technology.
+                            </p>
                         </div>
                     </div>
 
