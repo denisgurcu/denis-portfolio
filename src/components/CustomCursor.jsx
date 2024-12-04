@@ -4,8 +4,30 @@ import "./CustomCursor.css";
 
 const CustomCursor = ({ cursorColor }) => {
   const [cursorOpacity, setCursorOpacity] = useState(0.8);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check screen size and set whether it's mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile); // Update on resize
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
+    if (isMobile) {
+      document.body.classList.add("default-cursor");
+      return; // Disable custom cursor on mobile
+    } else {
+      document.body.classList.remove("default-cursor");
+    }
+
     const cursor = document.querySelector(".cursor");
     document.body.style.cursor = "none";
 
@@ -23,7 +45,10 @@ const CustomCursor = ({ cursorColor }) => {
     return () => {
       window.removeEventListener("mousemove", updateCursorPosition);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render custom cursor on mobile
+  if (isMobile) return null;
 
   return (
     <div

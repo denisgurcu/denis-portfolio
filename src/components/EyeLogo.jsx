@@ -4,10 +4,11 @@ import "./EyeLogo.css";
 
 const EyeLogo = () => {
   const pupilRef = useRef(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // React Router's navigation hook
   const [isBlinking, setIsBlinking] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  // Handle mouse movement for the pupil
+  // Handle mouse movement for pupil tracking
   useEffect(() => {
     const handleMouseMove = (e) => {
       const eye = pupilRef.current.parentElement.getBoundingClientRect();
@@ -37,21 +38,21 @@ const EyeLogo = () => {
     };
   }, []);
 
-  // Handle eye click
+  // Handle click event
   const handleClick = () => {
-    setIsBlinking(true); // Trigger click-specific blink animation
+    setIsClicked(true); // Trigger click animation
     setTimeout(() => {
-      setIsBlinking(false); // Reset after animation completes
-      navigate("/"); // Redirect to homepage
-    }, 500); // Match blink duration
+      navigate("/"); // Redirect to homepage after animation completes
+      setIsClicked(false); // Reset clicked state
+    }, 500); // Match the duration of the CSS transition
   };
 
   return (
     <div
-      className={`eye ${isBlinking ? "blinking" : ""}`}
+      className={`eye ${isBlinking ? "blinking" : ""} ${isClicked ? "clicked" : ""}`}
       onClick={handleClick}
       role="button"
-      aria-label="Eye logo, click to go home"
+      aria-label="Eye logo, click to interact"
     >
       <div className="eyelid">
         <span></span>

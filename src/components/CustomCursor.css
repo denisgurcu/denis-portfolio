@@ -1,9 +1,11 @@
+/* Default behavior: Hide the cursor */
 * {
-  cursor: none !important; /* Default behavior: hide cursor */
+  cursor: none !important;
 }
 
+/* Enable default system cursor on mobile */
 body.default-cursor * {
-  cursor: auto !important; /* Show the system cursor when "Invisible" is selected */
+  cursor: auto !important;
 }
 
 /* Custom cursor styles */
@@ -24,12 +26,8 @@ body.default-cursor * {
   transform: translate(-50%, -50%);
 }
 
-/* For smaller screens: Always show default cursor */
+/* Disable custom cursor on smaller screens */
 @media screen and (max-width: 768px) {
-  body.custom-cursor * {
-    cursor: auto !important;
-  }
-
   .cursor {
     display: none;
   }
