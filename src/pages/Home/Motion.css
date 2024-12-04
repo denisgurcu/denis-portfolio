@@ -13,7 +13,7 @@
 
 @media (max-width: 768px)  {
   .motion-container {
-    height: 220px; /* Reduce height for smaller screens */
+    height: 220px; 
     width: 370px;
   }
 }

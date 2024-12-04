@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import GraphAnimation from './GraphAnimation';
 import WaveAnimation from './WaveAnimation';
-import MotionAnimation from './MotionAnimation'; // Import the MotionAnimation component
-import Card from "../../components/Card"; // Import Card component
+import MotionAnimation from './MotionAnimation'; // Component for Matter.js animation
+import Card from "../../components/Card"; // Card component for project display
 import './Projects.css';
 
-// Import images for the cards
+// Import images for the project cards
 import CardImage1 from "../../assets/images/dada_card.gif";
 import CardImage2 from "../../assets/images/dada_card_hover.png";
 import CardImage3 from "../../assets/images/poster_designs_card.png";
@@ -15,7 +15,7 @@ import CardImage6 from "../../assets/images/alter_ego_card_hover.png";
 import CardImage7 from "../../assets/images/logo_designs_card.gif";
 import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 
-// Example project data
+// Project data with details, tags, and images
 const projectData = [
   {
     title: "DADA COLLECTIVE BRANDING",
@@ -59,50 +59,41 @@ const Projects = () => {
     ? projectData 
     : projectData.filter(project => project.tags.includes(selectedTab));
 
-  const [showGraphAnimation, setShowGraphAnimation] = useState(true); // Initially, show the graph animation
-  const [showWaveAnimation, setShowWaveAnimation] = useState(false); // Initially, don't show the wave animation
-  const [showMotionAnimation, setShowMotionAnimation] = useState(false); // Initially, don't show the motion animation
+
+  const [animationState, setAnimationState] = useState({
+    showGraph: true,
+    showWave: false,
+    showMotion: false,
+  });
+
 
   const handleGraphAnimationComplete = () => {
-    console.log("Graph animation completed");
-    // Once the graph animation finishes, hide it and show the wave animation
-    setShowGraphAnimation(false);  // Hide Graph Animation
-    setShowWaveAnimation(true);    // Show Wave Animation
+    setAnimationState({ showGraph: false, showWave: true, showMotion: false });
   };
 
   const handleWaveAnimationComplete = () => {
-    console.log("Wave animation completed");
-    // Once the wave animation finishes, hide it and show the motion animation (Matter.js)
-    setShowWaveAnimation(false);   // Hide Wave Animation
-    setShowMotionAnimation(true);  // Show Motion Animation (Matter.js)
+    setAnimationState({ showGraph: false, showWave: false, showMotion: true });
   };
 
   useEffect(() => {
-    // Trigger the animation sequence when the page loads:
-    // 1. Show the graph animation.
-    // 2. Once the graph animation is complete, show the wave animation.
-    // 3. Once the wave animation is complete, show the motion animation.
-    setShowGraphAnimation(true); // Start the graph animation on page load
+    // Start graph animation when the component mounts
+    setAnimationState({ showGraph: true, showWave: false, showMotion: false });
   }, []);
+  
 
   return (
     <>
       {/* Animation Section */}
       <section className="projects-intro-wrapper">
         <div className="projects-animation-container">
-          {/* Graph Animation */}
-          {showGraphAnimation && <GraphAnimation onComplete={handleGraphAnimationComplete} />}
-          
-          {/* Wave Animation */}
-          {showWaveAnimation && <WaveAnimation onComplete={handleWaveAnimationComplete} />}
-          
-          {/* Motion Animation */}
-          {showMotionAnimation && <MotionAnimation />}
+          {animationState.showGraph && <GraphAnimation onComplete={handleGraphAnimationComplete} />}
+          {animationState.showWave && <WaveAnimation onComplete={handleWaveAnimationComplete} />}
+          {animationState.showMotion && <MotionAnimation />}
         </div>
         <h1 className="projects-text">PROJECTS</h1>
       </section>
 
-      {/* Projects Tabbed Section */}
+      {/* Filter and Display Projects */}
       <section className="projects-filter-section">
         <div className="tabs">
           {/* Tab group */}
@@ -113,20 +104,20 @@ const Projects = () => {
             All
           </button>
           <button
-            className={`tab ${selectedTab === "branding" ? "active" : ""}`}
-            onClick={() => setSelectedTab("branding")}
+            className={`tab ${selectedTab === "Branding" ? "active" : ""}`}
+            onClick={() => setSelectedTab("Branding")}
           >
             Branding
           </button>
           <button
-            className={`tab ${selectedTab === "motion" ? "active" : ""}`}
-            onClick={() => setSelectedTab("motion")}
+            className={`tab ${selectedTab === "Motion Graphics" ? "active" : ""}`}
+            onClick={() => setSelectedTab("Motion Graphics")}
           >
             Motion
           </button>
           <button
-            className={`tab ${selectedTab === "graphic" ? "active" : ""}`}
-            onClick={() => setSelectedTab("graphic")}
+            className={`tab ${selectedTab === "Graphic Design" ? "active" : ""}`}
+            onClick={() => setSelectedTab("Graphic Design")}
           >
             Graphic
           </button>
@@ -141,7 +132,7 @@ const Projects = () => {
               imageUrl={project.imageUrl}
               hoverImageUrl={project.hoverImageUrl}
               isGif={project.isGif}
-              projectDetails={project.projectDetails}
+              // projectDetails={project.projectDetails}
               tags={project.tags}
             />
           ))}

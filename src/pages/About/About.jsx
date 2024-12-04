@@ -1,21 +1,18 @@
 import React from "react";
-import Masonry from "react-masonry-css"; // Import Masonry component
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Masonry from "react-masonry-css"; // Import Masonry for grid layout
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // FontAwesome for icons
 import {
     faLinkedinIn,
     faGithub,
     faBehance,
-} from "@fortawesome/free-brands-svg-icons";
-import "./About.css";
+} from "@fortawesome/free-brands-svg-icons"; // Social media icons
+import "./About.css"; 
 
-
-// Import About images
+// Import images for the About page
 import AboutImage1 from "../../assets/images/about_image1.png";
-import AboutImage2 from "../../assets/images/about_image2.png";
 import AboutImage3 from "../../assets/images/about_image3.png";
-import AboutImage4 from "../../assets/images/about_image4.png";
 
-// Import Tool Logos
+// Import icons for tools used in the Tool Stack section
 import afterEffectsIcon from "../../assets/icons/after-effects.png";
 import illustratorIcon from "../../assets/icons/illustrator.png";
 import photoshopIcon from "../../assets/icons/photoshop.png";
@@ -27,9 +24,8 @@ import htmlIcon from "../../assets/icons/html.png";
 import cssIcon from "../../assets/icons/css.png";
 import jsIcon from "../../assets/icons/js.png";
 
-
 const About = () => {
-    // Define icons object here
+    // Object containing the icons for the tools
     const icons = {
         afterEffects: afterEffectsIcon,
         illustrator: illustratorIcon,
@@ -45,73 +41,74 @@ const About = () => {
 
     return (
         <>
+            {/* About Manifesto Section */}
             <section className="about-wrapper">
                 <div className="about-manifesto">
                     <p>
-                        I believe design is a form of art, and this relentless passion led me to transition  to the creative field. I enjoy communicating through visuals, connecting through stories, and reflecting shared experiences with the mediums we have. The world would be empty without that. Creativity with purpose and functional beauty inspire and motivate me, so that I create works that inspire and motivate others. My goal is to keep pushing boundaries, and continuing to pursue what I love.</p>
+                        I believe design is a form of art, and this relentless passion led me to transition to the creative field. I enjoy communicating through visuals, connecting through stories, and reflecting shared experiences with the mediums we have. The world would be empty without that. Creativity with purpose and functional beauty inspire and motivate me, so that I create works that inspire and motivate others. My goal is to keep pushing boundaries, and continuing to pursue what I love.
+                    </p>
                 </div>
                 <h1 className="about-title">ABOUT</h1>
             </section>
 
-            {/* Masonry Section */}
+            {/* Masonry Grid Section */}
             <section className="about-masonry-wrapper">
                 <Masonry
                     breakpointCols={{
-                        default: 2, 
-                        1100: 1, 
-                        700: 1, 
-                        500: 1, 
+                        default: 2, // Default 2 columns
+                        1100: 1,    // 1 column for screens <= 1100px
+                        700: 1,     // 1 column for screens <= 700px
+                        500: 1,     // 1 column for screens <= 500px
                     }}
                     className="masonry-grid"
                     columnClassName="masonry-grid_column"
                 >
-                    {/* Bento Box 1 */}
+                    {/* Bento Image */}
                     <div className="bento-box bento-1">
                         <img src={AboutImage1} alt="Image 1" className="masonry-image" />
-
                     </div>
 
-                    {/* Bento Box 2 (Image Box) */}
+                    {/* Experience Section */}
                     <div className="bento-box bento-2">
                         <div className="box-content">
                             <h2>EXPERIENCE</h2>
                             <p>
-                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at <a href="https://appen.com" className="hover-link" target="_blank" rel="noopener noreferrer">Appen</a> and improve user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
+                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at 
+                                <a href="https://appen.com" className="hover-link" target="_blank" rel="noopener noreferrer">Appen</a>, improving user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
                             </p>
                             <br />
                             <p>
-                                At <a href="https://infernozilla.com" className="hover-link" target="_blank" rel="noopener noreferrer">Infernozilla</a>, I managed social media for indie video games, developing and executing strategies across platforms like Twitter, Instagram, and TikTok. These efforts resulted in over 100% organic growth, viral content with millions of views, and refined client strategies through in-depth analytics.
+                                At <a href="https://infernozilla.com" className="hover-link" target="_blank" rel="noopener noreferrer">Infernozilla</a>, I managed social media for indie video games, achieving over 100% organic growth and viral content with millions of views.
                             </p>
-                            <button className="btn">Resume</button>
+                            <button className="btn">Resume</button> {/* Resume button */}
                         </div>
                     </div>
 
-                    {/* Bento Box 3 */}
+                    {/* Education Section */}
                     <div className="bento-box bento-3">
                         <div className="box-content">
                             <h2>EDUCATION</h2>
-                            <p>I also have a Bachelor's degree in Business Administration, which helped me gain a strong foundation in understanding how things work — strategizing, analyzing, and marketing. This education deepened my ability to see the bigger picture while keep focusing on those little impactful details.</p>
-                            <br />
                             <p>
-                                Currently, I am pursuing a diploma in
+                                I hold a Bachelor's degree in Business Administration, providing me with a strong foundation in strategy, analysis, and marketing. 
+                                Currently, I’m pursuing a diploma in 
                                 <a
                                     href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/"
                                     class="hover-link"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="underline-span">New Media Design & Web Development </span>
-                                </a>
-                                at British Columbia Institute of Technology to enhance my self-taught creative and technical skills. Delving into front-end development, UX/UI design, and multimedia creation, combining my passion for creativity with innovative technology.
+                                    <span class="underline-span">New Media Design & Web Development</span>
+                                </a> 
+                                at BCIT to expand my technical and creative skillset.
                             </p>
                         </div>
                     </div>
 
-                    {/* Bento Box 4 */}
+                    {/* Contact Section */}
                     <div className="bento-box bento-4">
                         <div className="box-content">
                             <h2>CONTACT</h2>
-                            <p>Currently, I am living in Vancouver, BC, Canada. You can reach out to me via:</p>
+                            <p>Currently in Vancouver, BC, Canada. Reach out via:</p>
                             <div className="contact-details">
                                 <div className="email-wrapper">
                                     <a href="mailto:hello@denisgurcu.com" className="hover-link">hello@denisgurcu.com</a>
@@ -130,33 +127,27 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Bento Box 6 */}
+
+                    {/* Tool Stack Section */}
                     <div className="bento-box bento-5">
                         <div className="box-content">
                             <h2>TOOL STACK</h2>
                             <div className="tool-icons">
-                                <img src={icons.afterEffects} alt="After Effects" className="tool-icon" />
-                                <img src={icons.illustrator} alt="Illustrator" className="tool-icon" />
-                                <img src={icons.photoshop} alt="Photoshop" className="tool-icon" />
-                                <img src={icons.indesign} alt="InDesign" className="tool-icon" />
-                                <img src={icons.premiere} alt="Premiere Pro" className="tool-icon" />
-                                <img src={icons.figma} alt="Figma" className="tool-icon" />
-                                <img src={icons.wordpress} alt="WordPress" className="tool-icon" />
-                                <img src={icons.html} alt="HTML" className="tool-icon" />
-                                <img src={icons.css} alt="CSS" className="tool-icon" />
-                                <img src={icons.js} alt="JavaScript" className="tool-icon" />
+                                {Object.values(icons).map((icon, index) => (
+                                    <img key={index} src={icon} alt="Tool Icon" className="tool-icon" />
+                                ))}
                             </div>
                         </div>
                     </div>
 
-                    {/* Bento Box 6 (Image Box) */}
+                    {/* Image */}
                     <div className="bento-box bento-6">
                         <img src={AboutImage3} alt="Image 3" className="masonry-image" />
                     </div>
                 </Masonry>
-            </section >
+            </section>
         </>
     );
 };
 
-export default About;
+export default About; // Export the About component

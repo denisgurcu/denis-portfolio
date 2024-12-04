@@ -1,9 +1,9 @@
 .wave-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
-  background-color: var(--blue); /* Blue background */
-  overflow: hidden; /* Hide parts of the wave that overflow */
+  height: 100vh; 
+  background-color: var(--blue); 
+  overflow: hidden; 
 }
 
 .waves {
@@ -15,8 +15,8 @@
 svg {
   overflow: hidden;
   display: block;
-  width: 100%; /* Stretch SVG to fill horizontally */
-  height: 100%; /* Stretch SVG to fill vertically */
+  width: 100%; 
+  height: 100%; 
 }
 
 path {
