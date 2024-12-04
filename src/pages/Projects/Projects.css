@@ -142,3 +142,42 @@
     grid-template-columns: 1fr;  /* 1 column on small screens */
   }
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .projects-intro-wrapper {
+    height: auto; /* Allow dynamic height based on content */
+    padding: 20px 10px; /* Adjust padding */
+  }
+
+  .projects-animation-container {
+    height: 30vh; /* Reduce height for smaller screens */
+  }
+
+  .motion-animation-container {
+    height: 40vh; /* Reduce height for smaller screens */
+  }
+    
+
+  .projects-text {
+    font-size: 4rem; /* Adjust font size for smaller screens */
+    margin: 10px 0; /* Adjust spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-intro-wrapper {
+    padding: 15px 5px;
+  }
+
+  .projects-animation-container {
+    height: 30vh; /* Further reduce height for very small screens */
+  }
+  .motion-animation-container {
+    height: 30vh; /* Reduce height for smaller screens */
+  }
+
+  .projects-text {
+    font-size: 4rem; /* Smaller text size */
+  }
+}
