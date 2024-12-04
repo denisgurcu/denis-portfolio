@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from "react";
 import "./Card.css";
 
+// This component represents a card that can switch images on hover
 const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags }) => {
-  const [currentImage, setCurrentImage] = useState(imageUrl);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+  const [currentImage, setCurrentImage] = useState(imageUrl); // Track which image is currently displayed
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768); // Check if the screen is small (mobile)
 
-  // Handle resizing to detect small screens
+  // Update screen size state when the window is resized
   useEffect(() => {
-    const handleResize = () => setIsSmallScreen(window.innerWidth <= 768);
-    window.addEventListener("resize", handleResize);
+    const handleResize = () => setIsSmallScreen(window.innerWidth <= 768); // Update isSmallScreen when resizing
+    window.addEventListener("resize", handleResize); // Listen for window resize events
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize); // Clean up the listener when the component unmounts
   }, []);
 
-  // Ensure default image is displayed on small screens
+  // Ensure the default image is always shown on small screens
   useEffect(() => {
     if (isSmallScreen) {
-      setCurrentImage(imageUrl); // Always show the default image
+      setCurrentImage(imageUrl); // Reset to the main image on small screens
     }
-  }, [isSmallScreen, imageUrl]);
+  }, [isSmallScreen, imageUrl]); // Trigger this effect when screen size or image URL changes
 
   return (
     <div
       className="card"
+      // Switch to the hover image only on larger screens
       onMouseEnter={() => !isSmallScreen && setCurrentImage(hoverImageUrl)}
       onMouseLeave={() => !isSmallScreen && setCurrentImage(imageUrl)}
     >
       <div className="card-image">
+        {/* Display the current image */}
         <img src={currentImage} alt={title} />
       </div>
       {!isSmallScreen && (
         <div className="card-content">
+          {/* Show the title and project details */}
           <h3>{title}</h3>
           <p className="card-details">{projectDetails}</p>
           <div className="tags">
+            {/* Display tags associated with the card */}
             {tags &&
               tags.map((tag, index) => (
                 <span key={index} className="tag">
@@ -47,4 +52,4 @@ const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags }) => {
   );
 };
 
-export default Card;
+export default Card; // Make this component available for other parts of the app

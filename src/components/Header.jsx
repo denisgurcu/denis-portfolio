@@ -6,6 +6,7 @@ import "./Header.css";
 const Header = () => {
   const [linkColor, setLinkColor] = useState("var(--black)");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Track if the screen is mobile
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,11 +40,15 @@ const Header = () => {
       }
     };
 
+    const handleResize = () => setIsMobile(window.innerWidth <= 768); // Update mobile status on resize
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", updateLinkColor);
     window.addEventListener("resize", updateLinkColor);
+
     updateLinkColor();
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", updateLinkColor);
       window.removeEventListener("resize", updateLinkColor);
     };
@@ -66,14 +71,26 @@ const Header = () => {
         <span></span>
       </button>
 
-      <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : "mobile-menu"}`}>
-        <NavLink to="/" onClick={toggleMenu}>
+      <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
+        <NavLink
+          to="/"
+          onClick={toggleMenu}
+          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+        >
           Home
         </NavLink>
-        <NavLink to="/projects" onClick={toggleMenu}>
+        <NavLink
+          to="/projects"
+          onClick={toggleMenu}
+          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+        >
           Projects
         </NavLink>
-        <NavLink to="/about" onClick={toggleMenu}>
+        <NavLink
+          to="/about"
+          onClick={toggleMenu}
+          style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
+        >
           About
         </NavLink>
       </nav>
