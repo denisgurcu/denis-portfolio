@@ -22,10 +22,12 @@ const Header = () => {
           .replace(/[^\d,]/g, "")
           .split(",")
           .map(Number);
+
         const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
         // Update link color based on brightness
-        setLinkColor(luminance < 128 ? "var(--white)" : "var(--black)");
+        // Switch to white only if the luminance is below 50 (very dark)
+        setLinkColor(luminance < 50 ? "var(--white)" : "var(--black)");
       }
     };
 
