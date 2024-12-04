@@ -97,6 +97,11 @@ const Motion = () => {
 
     Composite.add(engine.world, mouseConstraint);
 
+    // Remove Matter.js mousewheel listeners to allow page scrolling
+    mouseConstraint.mouse.element.removeEventListener("wheel", mouseConstraint.mouse.mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);  
+  
+
     Render.run(render);
     const runner = Runner.create();
     Runner.run(runner, engine);
