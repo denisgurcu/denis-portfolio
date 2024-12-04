@@ -1,20 +1,26 @@
 .projects-intro-wrapper {
-  max-width: 100%;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  justify-content: flex-start;  /* Change from center to flex-start */
-  align-items: center; /* Optional: to keep horizontal centering */
+  justify-content: flex-start;
+  /* Change from center to flex-start */
+  align-items: center;
+  /* Optional: to keep horizontal centering */
+  padding: 0;
+  margin: 0;
 }
 
-  
+
 .projects-animation-container {
   width: 100%;
-  height: 50vh; /* Adjust the height as needed */
+  height: 50vh;
+  /* Adjust the height as needed */
   position: relative;
-  z-index: 20; /* Higher than the text */
+  z-index: 20;
+  /* Higher than the text */
 
 }
 
@@ -38,7 +44,8 @@
 .projects-horizontal {
   width: 100%;
   height: 6px;
-  top: calc((100% / 10 * var(--index)) + 15px); /* Add offset to hide top horizontal line */
+  top: calc((100% / 10 * var(--index)) + 15px);
+  /* Add offset to hide top horizontal line */
 }
 
 .projects-vertical {
@@ -62,7 +69,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  
+
 }
 
 @keyframes moveTheWave {
@@ -70,37 +77,51 @@
     stroke-dashoffset: 0;
     transform: translate3d(0, 0, 0);
   }
+
   100% {
-    stroke-dashoffset: -200; /* Adjust the offset for the desired wave movement */
-    transform: translate3d(-180px, 0, 0); /* Adjust the horizontal movement */
+    stroke-dashoffset: -200;
+    /* Adjust the offset for the desired wave movement */
+    transform: translate3d(-180px, 0, 0);
+    /* Adjust the horizontal movement */
   }
 }
+
 .waves path {
-  stroke-dasharray: 3600; /* Creates the dashed effect */
-  stroke-dashoffset: 800; /* Start fully dashed */
-  animation: none; /* No animation by default */
-  animation: moveTheWave 3s linear infinite; /* Set the duration to a shorter time, e.g., 2s */
-  transition: stroke-dashoffset 3s linear; /* Smooth movement */
+  stroke-dasharray: 3600;
+  /* Creates the dashed effect */
+  stroke-dashoffset: 800;
+  /* Start fully dashed */
+  animation: none;
+  /* No animation by default */
+  animation: moveTheWave 3s linear infinite;
+  /* Set the duration to a shorter time, e.g., 2s */
+  transition: stroke-dashoffset 3s linear;
+  /* Smooth movement */
 }
 
 .motion-animation-container {
   top: 0;
   left: 0;
   width: 100%;
-  height: 80vh; /* Adjust to the desired height */
+  height: 80vh;
+  /* Adjust to the desired height */
   background: transparent;
-  
+
 }
 
 .projects-filter-section {
-  padding: 10px 20px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content horizontally */
-  justify-content: center; /* Optionally, center the content vertically */
+  align-items: center;
+  /* Center the content horizontally */
+  justify-content: center;
+  /* Optionally, center the content vertically */
   text-align: center;
-  width: 100%; /* Ensure it takes up full width */;
-  
+  max-width: 100%;
+  /* Ensure it takes up full width */
+  ;
+
 }
 
 .tabs {
@@ -130,54 +151,126 @@
 
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 2 columns, adjust based on design */
-  gap: 40px;  /* Space between cards */
-  margin-bottom: 50px;  /* Add bottom margin for spacing */
-  justify-content: center;  /* Center the grid content */
-}
-
-/* Responsive design: On smaller screens, stack the cards */
-@media (max-width: 768px) {
-  .project-cards {
-    grid-template-columns: 1fr;  /* 1 column on small screens */
-  }
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns, adjust based on design */
+  gap: 40px;
+  /* Space between cards */
+  margin-bottom: 50px;
+  /* Add bottom margin for spacing */
+  justify-content: center;
+  /* Center the grid content */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    /* 1 column on small screens */
+  }
+
+  .projects-horizontal {
+
+    height: 3px;
+  }
+
+  .projects-vertical {
+    width: 3px
+  }
+
   .projects-intro-wrapper {
-    height: auto; /* Allow dynamic height based on content */
-    padding: 20px 10px; /* Adjust padding */
+    height: auto;
+    /* Allow dynamic height based on content */
+    padding: 20px 10px;
+    /* Adjust padding */
   }
 
   .projects-animation-container {
-    height: 30vh; /* Reduce height for smaller screens */
+    height: 30vh;
+    /* Reduce height for smaller screens */
   }
 
   .motion-animation-container {
-    height: 40vh; /* Reduce height for smaller screens */
+    height: 40vh;
+    /* Reduce height for smaller screens */
   }
-    
+
 
   .projects-text {
-    font-size: 4rem; /* Adjust font size for smaller screens */
-    margin: 10px 0; /* Adjust spacing */
+    font-size: 4rem;
+    /* Adjust font size for smaller screens */
+    margin: 10px 0;
+    /* Adjust spacing */
   }
+
+
+  .tabs {
+    flex-direction: row;
+    /* Ensure tabs stay horizontal */
+    flex-wrap: wrap;
+    /* Allow wrapping to a new row if needed */
+    gap: 10px;
+    /* Reduce spacing between tabs */
+  }
+
+  .tab {
+    font-size: 1.5rem;
+    /* Reduce font size */
+    padding: 8px 20px;
+    /* Adjust padding for smaller screens */
+  }
+
 }
 
 @media (max-width: 480px) {
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    /* 1 column on small screens */
+  }
+
+  .projects-horizontal {
+
+    height: 3px;
+  }
+
+  .projects-vertical {
+    width: 3px
+  }
   .projects-intro-wrapper {
     padding: 15px 5px;
   }
-
+  
   .projects-animation-container {
-    height: 30vh; /* Further reduce height for very small screens */
+    height: 30vh;
+    /* Further reduce height for very small screens */
   }
+  
   .motion-animation-container {
-    height: 30vh; /* Reduce height for smaller screens */
+    height: 30vh;
+    /* Reduce height for smaller screens */
   }
-
+  
   .projects-text {
-    font-size: 4rem; /* Smaller text size */
+    font-size: 4rem;
+    /* Smaller text size */
   }
+  
+  .tabs {
+    flex-direction: row;
+    /* Ensure tabs stay horizontal */
+    flex-wrap: wrap;
+    /* Allow wrapping to a new row if needed */
+    gap: 5px;
+    /* Further reduce spacing between tabs */
+  }
+  
+  .tab {
+    font-size: 1.2rem;
+    /* Smaller font size for very small screens */
+    padding: 6px 15px;
+    /* Adjust padding */
+  }
+  
 }
+
