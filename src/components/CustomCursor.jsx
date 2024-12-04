@@ -5,11 +5,6 @@ import "./CustomCursor.css";
 const CustomCursor = ({ cursorColor }) => {
   const [cursorOpacity, setCursorOpacity] = useState(0.8);
 
-  // Fetch the default cursor color from the CSS variable
-  const defaultColor = getComputedStyle(document.documentElement).getPropertyValue("--default-cursor-color").trim();
-
-  const [currentColor, setCurrentColor] = useState(defaultColor); // Initialize with resolved default color
-
   useEffect(() => {
     const cursor = document.querySelector(".cursor");
     document.body.style.cursor = "none";
@@ -30,19 +25,11 @@ const CustomCursor = ({ cursorColor }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (cursorColor) {
-      setCurrentColor(cursorColor); // Update color when prop changes
-    } else {
-      setCurrentColor(defaultColor); // Revert to default if no color is passed
-    }
-  }, [cursorColor, defaultColor]);
-
   return (
     <div
       className="cursor"
       style={{
-        backgroundColor: currentColor,
+        backgroundColor: cursorColor || "transparent",
         opacity: cursorOpacity,
       }}
     />
