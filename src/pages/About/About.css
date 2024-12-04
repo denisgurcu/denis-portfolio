@@ -70,10 +70,16 @@
       border: 4px solid var(--darkblue);
     }
 
-    .bento-6 {
+    .bento-5 {
       background-color: var(--yellow);
       border: 4px solid var(--darkred);
     }
+
+    .bento-6 {
+      background-color: var(--blue);
+      border: 4px solid var(--darkblue);
+    }
+  
   
   
   .bento-box:hover {

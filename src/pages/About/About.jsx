@@ -130,14 +130,8 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Bento Box 5 (Image Box) */}
-                    <div className="bento-box bento-5">
-                        <img src={AboutImage3} alt="Image 3" className="masonry-image" />
-                    </div>
-
                     {/* Bento Box 6 */}
-                    <div className="bento-box bento-6">
+                    <div className="bento-box bento-5">
                         <div className="box-content">
                             <h2>TOOL STACK</h2>
                             <div className="tool-icons">
@@ -153,6 +147,11 @@ const About = () => {
                                 <img src={icons.js} alt="JavaScript" className="tool-icon" />
                             </div>
                         </div>
+                    </div>
+
+                    {/* Bento Box 6 (Image Box) */}
+                    <div className="bento-box bento-6">
+                        <img src={AboutImage3} alt="Image 3" className="masonry-image" />
                     </div>
                 </Masonry>
             </section >
