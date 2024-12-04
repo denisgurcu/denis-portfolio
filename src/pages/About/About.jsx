@@ -1,14 +1,48 @@
 import React from "react";
 import Masonry from "react-masonry-css"; // Import Masonry component
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faLinkedinIn,
+    faGithub,
+    faBehance,
+} from "@fortawesome/free-brands-svg-icons";
 import "./About.css";
 
-// Import images for the cards
+
+// Import About images
 import AboutImage1 from "../../assets/images/about_image1.png";
 import AboutImage2 from "../../assets/images/about_image2.png";
 import AboutImage3 from "../../assets/images/about_image3.png";
 import AboutImage4 from "../../assets/images/about_image4.png";
 
+// Import Tool Logos
+import afterEffectsIcon from "../../assets/icons/after-effects.png";
+import illustratorIcon from "../../assets/icons/illustrator.png";
+import photoshopIcon from "../../assets/icons/photoshop.png";
+import indesignIcon from "../../assets/icons/indesign.png";
+import premiereIcon from "../../assets/icons/premiere-pro.png";
+import figmaIcon from "../../assets/icons/figma.png";
+import wordpressIcon from "../../assets/icons/wordpress.png";
+import htmlIcon from "../../assets/icons/html.png";
+import cssIcon from "../../assets/icons/css.png";
+import jsIcon from "../../assets/icons/js.png";
+
+
 const About = () => {
+    // Define icons object here
+    const icons = {
+        afterEffects: afterEffectsIcon,
+        illustrator: illustratorIcon,
+        photoshop: photoshopIcon,
+        indesign: indesignIcon,
+        premiere: premiereIcon,
+        figma: figmaIcon,
+        wordpress: wordpressIcon,
+        html: htmlIcon,
+        css: cssIcon,
+        js: jsIcon,
+    };
+
     return (
         <>
             <section className="about-wrapper">
@@ -68,14 +102,33 @@ const About = () => {
                                 >
                                     <span class="underline-span">New Media Design & Web Development </span>
                                 </a>
-                                 at British Columbia Institute of Technology to enhance my self-taught creative and technical skills. Delving into front-end development, UX/UI design, and multimedia creation, combining my passion for creativity with innovative technology.
+                                at British Columbia Institute of Technology to enhance my self-taught creative and technical skills. Delving into front-end development, UX/UI design, and multimedia creation, combining my passion for creativity with innovative technology.
                             </p>
                         </div>
                     </div>
 
-                    {/* Bento Box 4 (Image Box) */}
+                    {/* Bento Box 4 */}
                     <div className="bento-box bento-4">
-                        <img src={AboutImage2} alt="Image 2" className="masonry-image" />
+                        <div className="box-content">
+                            <h2>CONTACT</h2>
+                            <p>Currently, I am living in Vancouver, BC, Canada. You can reach out to me via:</p>
+                            <div className="contact-details">
+                                <div className="email-wrapper">
+                                    <a href="mailto:hello@denisgurcu.com" className="hover-link">hello@denisgurcu.com</a>
+                                </div>
+                                <div className="about-social-icons">
+                                    <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faBehance} className="about-social-icon" />
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/denisgurcu/" target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faLinkedinIn} className="about-social-icon" />
+                                    </a>
+                                    <a href="https://github.com/denisgurcu" target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faGithub} className="about-social-icon" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Bento Box 5 (Image Box) */}
@@ -86,13 +139,23 @@ const About = () => {
                     {/* Bento Box 6 */}
                     <div className="bento-box bento-6">
                         <div className="box-content">
-                            <h2>Title 3</h2>
-                            <p>More text with buttons here.</p>
-                            <button className="btn">Explore</button>
+                            <h2>TOOL STACK</h2>
+                            <div className="tool-icons">
+                                <img src={icons.afterEffects} alt="After Effects" className="tool-icon" />
+                                <img src={icons.illustrator} alt="Illustrator" className="tool-icon" />
+                                <img src={icons.photoshop} alt="Photoshop" className="tool-icon" />
+                                <img src={icons.indesign} alt="InDesign" className="tool-icon" />
+                                <img src={icons.premiere} alt="Premiere Pro" className="tool-icon" />
+                                <img src={icons.figma} alt="Figma" className="tool-icon" />
+                                <img src={icons.wordpress} alt="WordPress" className="tool-icon" />
+                                <img src={icons.html} alt="HTML" className="tool-icon" />
+                                <img src={icons.css} alt="CSS" className="tool-icon" />
+                                <img src={icons.js} alt="JavaScript" className="tool-icon" />
+                            </div>
                         </div>
                     </div>
                 </Masonry>
-            </section>
+            </section >
         </>
     );
 };

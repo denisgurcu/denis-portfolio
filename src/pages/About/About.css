@@ -39,10 +39,7 @@
 /* Bento Box Styles - added flex to center content and ensure responsive behavior */
 .bento-box {
     font-family: var(--afacad);
-    border: 4px solid var(--darkblue);
-    border-radius: 25px;
     overflow: hidden;
-    background-color: var(--blue);
     box-sizing: border-box;
     display: flex;
     flex-direction: column; /* Allows content to stack vertically */
@@ -51,8 +48,33 @@
     margin-bottom: 40px; /* Additional space between rows */
     width: 100%; /* Full width of its container */
     max-width: 400px; /* You can adjust max-width to control box size */
-
   }
+
+    .bento-1 {
+      background-color: var(--blue);
+      border: 4px solid var(--darkblue);
+    }
+  
+    .bento-2 {
+      background-color: var(--blue);
+      border: 4px solid var(--darkblue);
+    }
+  
+    .bento-3 {
+      background-color: var(--pink);
+      border: 4px solid var(--darkred);
+    }
+  
+    .bento-4 {
+      background-color: var(--blue);
+      border: 4px solid var(--darkblue);
+    }
+
+    .bento-6 {
+      background-color: var(--yellow);
+      border: 4px solid var(--darkred);
+    }
+  
   
   .bento-box:hover {
     transform: scale(1.05);
@@ -135,8 +157,58 @@
     transform: scaleX(1); /* Reveal the hover underline */
     transform-origin: left;
 }
+/* Email Link */
+.hover-link.email {
+  font-size: 1.5rem;
+}
 
-  
+.email-wrapper {
+  margin-bottom: 20px; /* Adjust margin for spacing */
+  font-size: 1.5rem; /* Set the desired font size */
+
+}
+
+.about-social-icons {
+  display: flex; /* Enable Flexbox layout */
+  justify-content: flex-start; /* Align icons to the start */
+  gap: 15px; /* Space between icons */
+  margin-top: 10px; /* Optional: Add spacing above icons */
+}
+
+.about-social-icon {
+  font-size: 2.5rem; /* Adjust size of icons */
+  color: var(--black);
+  padding: 8px;
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.about-social-icon:hover {
+  color: var(--darkred); /* Change icon color */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+.tool-icons {
+  display: flex; /* Arrange icons horizontally */
+  flex-wrap: wrap; /* Wrap to the next row after 5 icons */
+  gap: 15px; /* Add spacing between icons */
+  justify-content: center; /* Center-align icons */
+  margin-top: 15px; /* Add spacing from the title */
+  max-width: 300px; /* Limit container width to ensure rows of 5 icons */
+}
+
+.tool-icon {
+  width: 40px; /* Smaller width for icons */
+  height: 40px; /* Smaller height for icons */
+  object-fit: contain; /* Maintain aspect ratio */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover effect */
+}
+
+.tool-icon:hover {
+  transform: scale(1.2); /* Slightly enlarge on hover */
+  filter: brightness(1.2); /* Brighten icon */
+}
+
   /* Responsive design */
   @media (max-width: 768px) {
     .about-wrapper {
