@@ -22,10 +22,16 @@ import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [cursorColor, setCursorColor] = useState("transparent"); // Default cursor color
+  const [cursorColor, setCursorColor] = useState("white"); // Default cursor color
 
   useEffect(() => {
-    // Animate "DENIS" text
+    // Retrieve saved color from localStorage
+    const savedColor = localStorage.getItem("cursorColor");
+    if (savedColor) {
+      setCursorColor(savedColor); // Set saved color if available
+    }
+
+    // GSAP Animations
     gsap.fromTo(
       ".hero-text",
       { y: -50, opacity: 0 },
@@ -37,7 +43,6 @@ const Home = () => {
       }
     );
 
-    // Animate the branding, graphic, and motion sections
     gsap.fromTo(
       ".box-wrapper",
       { opacity: 0, y: 50 },
@@ -48,13 +53,12 @@ const Home = () => {
         stagger: 0.3,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".hero", // Trigger when the .hero section comes into view
+          trigger: ".hero",
           start: "top 80%",
         },
       }
     );
 
-    // Animate cards appearing one by one
     gsap.fromTo(
       ".card",
       { opacity: 0, y: 50 },
@@ -66,15 +70,19 @@ const Home = () => {
         stagger: 0.3,
         scrollTrigger: {
           trigger: ".recent-works",
-          start: "top 80%", // Start when the top of the recent works section is 80% in view
+          start: "top 80%",
         },
       }
     );
   }, []);
 
+  const handleColorSelect = (color) => {
+    setCursorColor(color); // Update cursor color state
+    localStorage.setItem("cursorColor", color); // Save selected color to localStorage
+  };
+
   return (
     <>
-      {/* Pass both cursorColor and cursorOpacity as props to CustomCursor */}
       <CustomCursor cursorColor={cursorColor} />
 
       <section className="hero-wrapper">
@@ -99,7 +107,7 @@ const Home = () => {
               <div className="label motion-label">MOTION DESIGN</div>
             </div>
           </div>
-          <h1 className="hero-text">DENIS!</h1>
+          <h1 className="hero-text">DENIS</h1>
         </div>
       </section>
 
@@ -111,14 +119,13 @@ const Home = () => {
           <span className="cursor-info">You can pick a color for your cursor.</span>
         </div>
 
-        {/* Add Color Picker Below the Scroll Text */}
-        <ColorPicker onColorSelect={setCursorColor} />
+        {/* Color Picker */}
+        <ColorPicker onColorSelect={handleColorSelect} />
       </section>
 
       <section className="recent-works">
         <h2>RECENT WORKS</h2>
         <div className="card-grid">
-          {/* Render the cards, passing the imported images */}
           <Card
             title="DADA COLLECTIVE BRANDING"
             imageUrl={CardImage1}
@@ -132,7 +139,7 @@ const Home = () => {
             imageUrl={CardImage3}
             hoverImageUrl={CardImage4}
             isGif={true}
-            projectDetails=" A diverse range of visuals created for various marketing campaigns and purposes."
+            projectDetails="A diverse range of visuals created for various marketing campaigns and purposes."
             tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
           />
           <Card

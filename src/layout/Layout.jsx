@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -6,12 +6,23 @@ import CustomCursor from "../components/CustomCursor";
 
 const Layout = () => {
   const location = useLocation();
+  const [cursorColor, setCursorColor] = useState(null);
+
+  useEffect(() => {
+    // Load saved color from localStorage or default to white
+    const savedColor = localStorage.getItem("cursorColor");
+    if (savedColor) {
+      setCursorColor(savedColor);
+    } else {
+      setCursorColor("var(--default-cursor-color)"); // Fallback to default
+    }
+  }, []);
 
   useEffect(() => {
     // Clear existing classes
     document.body.className = "";
 
-    // Add specific class based on current path (because each page hasa different color)
+    // Add specific class based on current path
     if (location.pathname === "/") {
       document.body.classList.add("home-bg");
     } else if (location.pathname === "/projects") {
@@ -23,7 +34,7 @@ const Layout = () => {
 
   return (
     <div>
-      <CustomCursor />
+      <CustomCursor cursorColor={cursorColor} />
       <Header />
       <main>
         <Outlet />

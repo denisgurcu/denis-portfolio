@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./EyeLogo.css";
 
 const EyeLogo = () => {
   const pupilRef = useRef(null);
+  const navigate = useNavigate();
+  const [isBlinking, setIsBlinking] = useState(false);
 
-  // Function to handle mouse movement and pupil movement
+  // Handle mouse movement for the pupil
   useEffect(() => {
     const handleMouseMove = (e) => {
       const eye = pupilRef.current.parentElement.getBoundingClientRect();
@@ -34,13 +37,25 @@ const EyeLogo = () => {
     };
   }, []);
 
-
+  // Handle eye click
+  const handleClick = () => {
+    setIsBlinking(true); // Trigger click-specific blink animation
+    setTimeout(() => {
+      setIsBlinking(false); // Reset after animation completes
+      navigate("/"); // Redirect to homepage
+    }, 500); // Match blink duration
+  };
 
   return (
-    <div className="eye">
-        <div className="eyelid">
-                <span></span>
-        </div>
+    <div
+      className={`eye ${isBlinking ? "blinking" : ""}`}
+      onClick={handleClick}
+      role="button"
+      aria-label="Eye logo, click to go home"
+    >
+      <div className="eyelid">
+        <span></span>
+      </div>
       <div className="eyeball" ref={pupilRef}></div>
     </div>
   );
