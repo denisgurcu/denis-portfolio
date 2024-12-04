@@ -25,7 +25,7 @@ const Footer = () => {
       </div>
       <div className="footer-right">
         <p>
-          Designed and coded by Denis Gurcu
+          D!!esigned and coded by Denis Gurcu
           <br />
           &copy; 2024. All rights reserved.
         </p>
