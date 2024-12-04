@@ -90,4 +90,14 @@
   .card-grid {
     grid-template-columns: 1fr;
   }
+
+  .card {
+    width: 300px;
+    height: 300px; 
+  }
+
+  .card-content h3 {
+   display: none;
+}
+
 }

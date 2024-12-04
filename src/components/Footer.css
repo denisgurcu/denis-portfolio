@@ -74,3 +74,75 @@
   font-size: 1.5rem; /* Font size for text */
   margin: 0; /* Remove margin for cleaner alignment */
 }
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* Stack left and right sections vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 30px; /* Reduce padding */
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: left; /* Ensure left alignment for both sections */
+    width: 100%; /* Make both sections take full width */
+    margin-bottom: 20px; /* Add spacing between stacked sections */
+  }
+
+  .footer-left h2 {
+    font-size: 3.5rem; /* Reduce font size */
+    margin-bottom: 15px;
+  }
+
+  .contact-container {
+    gap: 20px; /* Reduce gap between elements */
+  }
+
+  .email-button {
+    font-size: 1.2rem; /* Smaller button text */
+    padding: 8px 30px; /* Adjust padding */
+  }
+
+  .social-icons {
+    gap: 20px; /* Smaller gap between icons */
+  }
+
+  .social-icon {
+    font-size: 2rem; /* Smaller icons */
+    padding: 6px; /* Adjust padding */
+  }
+
+  .footer-right p {
+    font-size: 1rem; /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px; /* Further reduce padding */
+  }
+
+  .footer-left h2 {
+    font-size: 3rem; /* Smaller font for very small screens */
+  }
+
+  .email-button {
+    font-size: 1rem; /* Smaller button text */
+    padding: 6px 20px; /* Adjust padding */
+  }
+
+  .social-icons {
+    gap: 15px; /* Even smaller gap between icons */
+  }
+
+  .social-icon {
+    font-size: 1.8rem; /* Even smaller icons */
+    padding: 4px;
+  }
+
+  .footer-right p {
+    font-size: 1rem; /* Adjust font size */
+  }
+}

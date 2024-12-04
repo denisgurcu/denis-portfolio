@@ -110,7 +110,6 @@
   font-size: 2rem;
   padding: 10px;
   border: 4px solid; /* Match border width */
-  color: var(--black)5; /* Black text */
   box-sizing: border-box;
 }
 
@@ -192,13 +191,28 @@
   }
 
   .box {
-    height: 200px; /* Reduce height for smaller screens */
+    height: 220px; /* Reduce height for smaller screens */
   }
 
   .label {
-    font-size: 1.2rem; /* Reduce label font size */
-    padding: 8px; /* Adjust padding */
+    font-size: 1rem; /* Smaller font size for labels */
+    padding: 4px; /* Reduce padding */
+    width: 78%; /* Make the label narrower */
+    text-align: center; /* Center the label text */
+    margin-top: -4px; /* Adjust margin to align with smaller boxes */
   }
+
+  .graphic-label {
+    margin-top: 60px;
+  }
+
+  .scroll-text {
+    font-size: 1.5rem;
+  }
+
+.cursor-info {
+  display: none;
+}
 
   .card-grid {
     grid-template-columns: repeat(1, 1fr);
@@ -217,7 +231,8 @@
   }
 
   .box {
-    height: 150px; /* Further reduce height */
+      width: 300px; /* Reduce box width */
+      height: 180px; /* Reduce box height */
   }
 
   .label {
@@ -228,4 +243,13 @@
   .graphic-label {
     top: -30px; /* Adjust position for smaller screens */
   }
+
+  .view-more {
+    font-size: 1.2rem; /* Further reduce font size */
+    padding: 6px 20px; /* Adjust padding */
+    border-radius: 15px; /* Smaller border radius */
+  }
+
+
+
 }

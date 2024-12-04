@@ -67,6 +67,11 @@ const MotionAnimation = () => {
     const createNonOverlappingCircle = (existingBodies) => {
       let attempts = 0;
       const maxAttempts = 20;
+
+        // Dynamically adjust circle size based on screen width
+  const isSmallScreen = window.innerWidth < 768; // Define breakpoint for small screens
+  const minRadius = isSmallScreen ? 10 : 20; // Smaller circles for small screens
+  const maxRadius = isSmallScreen ? 15 : 30;
   
       while (attempts < maxAttempts) {
         const radius = Math.random() * 30 + 20; // Random size 

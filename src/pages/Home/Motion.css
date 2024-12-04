@@ -11,3 +11,9 @@
   position: relative;
 }
 
+@media (max-width: 768px)  {
+  .motion-container {
+    height: 220px; /* Reduce height for smaller screens */
+    width: 370px;
+  }
+}
