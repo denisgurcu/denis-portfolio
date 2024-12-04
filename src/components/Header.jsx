@@ -13,6 +13,11 @@ const Header = () => {
     document.body.style.overflow = isMenuOpen ? "auto" : "hidden"; // Prevent background scroll
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false); // Ensure menu is closed
+    document.body.style.overflow = "auto"; // Restore scrolling
+  };
+
   useEffect(() => {
     const updateLinkColor = () => {
       const header = document.querySelector(".header");
@@ -74,21 +79,21 @@ const Header = () => {
       <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
         <NavLink
           to="/"
-          onClick={toggleMenu}
+          onClick={closeMenu} // Use closeMenu instead of toggleMenu
           style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
         >
           Home
         </NavLink>
         <NavLink
           to="/projects"
-          onClick={toggleMenu}
+          onClick={closeMenu} // Use closeMenu instead of toggleMenu
           style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
         >
           Projects
         </NavLink>
         <NavLink
           to="/about"
-          onClick={toggleMenu}
+          onClick={closeMenu} // Use closeMenu instead of toggleMenu
           style={isMobile ? {} : { color: linkColor }} // Apply linkColor only on larger screens
         >
           About
