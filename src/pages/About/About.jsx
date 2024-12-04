@@ -57,10 +57,10 @@ const About = () => {
             <section className="about-masonry-wrapper">
                 <Masonry
                     breakpointCols={{
-                        default: 2, // 4 columns by default
-                        1100: 2, // 3 columns for medium-sized screens (e.g., laptops)
-                        700: 2, // 2 columns for small screens (e.g., tablets)
-                        500: 1, // 1 column for very small screens (e.g., mobile)
+                        default: 2, 
+                        1100: 1, 
+                        700: 1, 
+                        500: 1, 
                     }}
                     className="masonry-grid"
                     columnClassName="masonry-grid_column"
