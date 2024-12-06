@@ -1,0 +1,37 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  /* Global colors and fonts */
+  :root {
+    --default-cursor-color: #E6E6E6;
+    --black: #262525; 
+    --white: #E6E6E6; 
+    --grey: #CCCCCC; 
+    --yellow: #FFD24D; 
+    --blue: #6FA2D5;  
+    --darkblue: #114059; 
+    --red: #DA4D3B; 
+    --darkred: #8F263E;
+    --pink: #E3C3D8;
+  
+    --afacad: 'Afacad Flux', sans-serif; 
+    --breamcather: 'Breamcatcher', sans-serif;
+    --graphyne: 'Graphyne', sans-serif;
+  }
+  
+  /* BG color for each page */
+  .home-bg {
+    background-color: var(--grey); 
+  }
+  
+  .projects-bg {
+    background-color: var(--blue); 
+  }
+  
+  .about-bg {
+    background-color: var(--red); 
+  }
