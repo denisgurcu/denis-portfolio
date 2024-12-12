@@ -155,6 +155,7 @@ const Home = () => {
             isGif={true}
             // projectDetails="A diverse range of visuals created for various marketing campaigns and purposes."
             tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
+            linkTo= "/posters"
           />
           <Card
             title="ALTER EGO VISUAL IDENTITY"
