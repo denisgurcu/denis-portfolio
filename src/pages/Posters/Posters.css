@@ -53,7 +53,7 @@
 /* Marquee Section */
 /* Posters Marquee Wrapper */
 .posters-marquee-wrapper {
-    bottom: -5%;
+    bottom: -10%;
     position: absolute;
     width: 100%;
     overflow: hidden;
@@ -144,4 +144,186 @@
 
 .content-description p {
     margin: 0;
+}
+
+
+.posters-page-container {
+    padding: 40px 40px;    
+}
+
+/* Compact Container */
+.compact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 800px; /* Adjust to control width of the container */
+    margin: 0 auto; /* Center the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a modern look */
+}
+
+/* Grid Layout */
+.poster-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+    gap: 40px; /* Small gap between the images */
+    width: 100%; /* Take the full width of the container */
+}
+
+.poster-grid-item img {
+    width: 100%; /* Scale the image to fit the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional rounding for the corners */
+    transition: transform 250ms ease-out, filter 250ms ease-out
+}
+
+.compact-container h2 {
+    text-align: left;
+}
+
+/* Shared Description */
+.poster-description {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: var(--black);
+    font-family: var(--afacad);
+    text-align: left;
+    line-height: 1.5;
+}
+
+.poster-title {
+    text-align: left;
+    font-family: var(--afacad);
+    font-size: 2rem;
+    margin-top: 15px;
+}
+
+/* 3D Effect */
+.card3d {
+    margin: 4px;
+    transform: scale(1);
+    perspective: 600px;
+}
+
+.card3d:hover {
+    z-index: 10;
+    transform: scale(1.1);
+}
+
+/* Additional Posters Section */
+.additional-posters-section {
+    padding: 40px 20px;
+}
+
+.additional-posters-container {
+    display: flex;
+    flex-direction: column; /* Stack containers vertically */
+    gap: 40px; /* Space between the two containers */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section */
+}
+
+/* First Container */
+.poster-grid-item-first {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poster-grid-item-first .image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between images */
+}
+
+.poster-grid-item-first img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    transition: transform 250ms ease-out, filter 250ms ease-out;
+}
+
+.poster-grid-item-first img:hover {
+    transform: scale(1.05);
+}
+
+/* Second Container */
+.poster-grid-item-second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poster-grid-item-second .image-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between images */
+}
+
+.poster-grid-item-second img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    transition: transform 250ms ease-out, filter 250ms ease-out;
+}
+
+.poster-grid-item-second img:hover {
+    transform: scale(1.05);
+}
+
+/* Shared Description Styling */
+.poster-description3,
+.poster-description2 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: var(--black);
+    font-family: var(--afacad);
+    line-height: 1.6;
+    text-align: left;
+    max-width: 80%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Increase this value to widen the space between images */
+    margin-bottom: 20px; /* Space between images and the description */
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px; /* Space between images */
+}
+
+.image-label {
+    margin-top: 10px;
+    font-size: 2rem;
+    color: var(-black);
+    text-align: center;
+    font-family: var(--afacad);
+    font-weight: 600; /* Make the label bold for emphasis */
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.2rem;
+    color: var(--black);
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Add space below the title */
+    font-weight: 700; /* Bold font for emphasis */
+    font-family: var(--afacad); /* Use your preferred font */
 }
