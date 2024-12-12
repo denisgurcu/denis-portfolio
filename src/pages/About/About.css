@@ -17,6 +17,7 @@
     color: var(--black);
     font-size: 2.5rem;
     max-width: 90%;
+    padding-top: 30px;
   }
   
   .about-title {

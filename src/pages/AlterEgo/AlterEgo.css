@@ -6,157 +6,476 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0; /* Ensure no margin is added */
-    padding: 0; /* Ensure no padding is added */
-  }
-  
-  .alter-ego-animation-container {
+    margin: 0;
+    padding: 0;
+}
+
+.alter-ego-animation-container {
     position: absolute;
-    top: -130px; /* Shift the image up behind the header */
+    top: -130px;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place this container behind other elements */
-  }
-  
-  .static-animation {                       
+    z-index: -1;
+}
+
+.static-animation {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  /* Marquee Wrapper */
-  .alter-ego-marquee-wrapper {
+}
+
+/* Marquee Wrapper */
+.alter-ego-marquee-wrapper {
     position: absolute;
-    bottom: 5%; /* Position the text at the bottom of the viewport */
-    width: 100%; /* Full width */
-    overflow: hidden; /* Hide overflowing text */
-    white-space: nowrap; /* Prevent text from wrapping */
-    opacity: 1; /* Text is visible */
-    visibility: visible; /* Ensure it's shown */
-  }
-  
-  /* Marquee Animation (starts only when the class is added) */
-  .alter-ego-marquee-wrapper.start-marquee .alter-ego-text {
-    animation: marquee 10s linear infinite; /* Start scrolling animation */
-  }
-  
-  .alter-ego-text {
+    bottom: 5%;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+}
+
+.alter-ego-marquee-wrapper.start-marquee .alter-ego-text {
+    animation: marquee 10s linear infinite;
+}
+
+.alter-ego-text {
     display: inline-block;
     text-align: center;
-    font-family: 'Graphyne', sans-serif;
+    font-family: var(--graphyne);
     font-size: 18em;
     color: var(--black);
-    margin-right: 50px; /* Space between repeated text */
-    /* No animation by default */
-  }
-  
-  /* Keyframes for marquee animation */
-  @keyframes marquee {
+    margin-right: 50px;
+}
+
+/* Keyframes for marquee animation */
+@keyframes marquee {
     from {
-      transform: translateX(0); /* Start from the resting position */
+        transform: translateX(0);
     }
     to {
-      transform: translateX(-100%); /* Move fully off-screen to the left */
+        transform: translateX(-100%);
     }
-  }
-  
-  .alter-ego-content {
+}
+
+.alter-ego-content {
     margin: 0;
     min-height: 100vh;
     background-color: var(--black);
     color: var(--white);
-    font-family: 'Afacad Flux', sans-serif;
-    display: flex; /* Use Flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-  }
-  
-  .content-wrapper {
-    padding: 130px; /* Add padding around the entire content block */
+    font-family: var(--afacad);
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    max-width: 80%; /* Constrain the width */
-  }
-  
-  .content-details {
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    padding: 130px;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.content-details {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 80px;
-  }
-  
-  .content-details > div {
+}
+
+.content-details > div {
     flex: 1;
-    margin-right: 20px; /* Add spacing between sections */
-  }
-  
-  .content-details > div:last-child {
-    margin-right: 0; /* No margin for the last column */
-  }
-  
-  .content-details h3 {
+    margin-right: 20px;
+}
+
+.content-details > div:last-child {
+    margin-right: 0;
+}
+
+.content-details h3 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--white);
     text-transform: uppercase;
     margin-bottom: 10px;
-  }
-  
-  .content-details p {
+}
+
+.content-details p {
     font-size: 1.5rem;
     font-weight: 200;
     margin: 0;
-  }
-  
-  .content-description {
+}
+
+.content-description {
     font-size: 2.5rem;
-    line-height: 1.8; /* Add line spacing for readability */
+    line-height: 1.8;
+}
+
+.content-description p {
+    margin: 0;
+}
+
+.logo-concept-section {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-concept-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.concept-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.concept-image {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.concept-item p {
+    font-family: var(--afacad);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.concept-symbol {
+    font-family: 'Arial', sans-serif;
+    font-size: 10rem;
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* Coffee + You = ? Section */
+.coffee-you-section {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 40px; /* Add this line to introduce spacing between elements */
+
+}
+
+.coffee-you-section .concept-item p,
+.coffee-you-section .concept-symbol p {
+    font-size: 10rem; /* Increase size as desired */
+    font-family: var(--afacad);
+    color: var(--black);
+}
+
+/* Blinking question mark */
+.blinking-question {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* GIF Section */
+.alter-ego-gifs-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alter-ego-gifs-section .gifs-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.alter-ego-gifs-section .gifs-wrapper img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+}
+
+
+
+
+/* Outer container to center the layout on the page */
+.split-grid-container {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+}
+
+/* Main grid section */
+.split-grid-section {
+    display: flex;
+    flex-wrap: wrap; /* Ensures layout works well on smaller screens */
+    max-width: 800px; /* Smaller max width to scale everything down */
+    gap: 10px; /* Space between left and right columns */
+    box-sizing: border-box;
+    aspect-ratio: 2/1; /* Keeps the ratio of width to height */
+    border-radius: 15px; /* Smooth edges */
+    padding: 20px; /* Padding inside the section */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Left section - single image */
+.split-grid-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.split-grid-left img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures proportional scaling */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+/* Right section - two rows */
+.split-grid-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between the top image and bottom text */
+}
+
+.split-grid-right-top {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.split-grid-right-top img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Proportional scaling */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+.split-grid-right-bottom {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; /* Optional rounded corners */
+    padding: 15px; /* Add spacing around the text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: left;
+}
+
+/* Text styling */
+.split-grid-right-bottom p {
+    margin: 0;
+    font-size: 2rem; /* Reduced font size */
+    font-family: var(--afacad);
+    color: var(--black);
+    line-height: 1.5;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .split-grid-section {
+        max-width: 90%; /* Allow more space on smaller screens */
+    }
+}
+
+.tooltip-image {
+    width: 100%; /* Adjust as needed */
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    filter: brightness(80%); /* Dims the image */
+
+}
+
+.tippy-box[data-theme~='gestalt-theme'] {
+    background-color: var(--grey);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .content-description p {
+  /* Tooltip text */
+.tooltip-text {
+    font-size: 0.9rem;
+    color: var(--black);
     margin: 0;
+    font-family: var(--afacad);
+}
+
+/* Underline for the span */
+.underline-on-hover {
+    text-decoration: underline solid; /* Dotted underline for emphasis */
+    cursor: pointer; /* Pointer cursor to indicate interactivity */
+    transition: color 0.3s ease;
+}
+
+
+.text-animation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 40px 20px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.animated-text {
+    font-size: 5rem;
+    font-family: var(--afacad);
+    font-weight: bold;
+    color: var(--black);
+    transform-origin: center top; /* Flip animation origin */
+}
+/* Group 1: Closer Texts */
+.text-group.group-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* No gap between texts */
+    align-items: center; /* Optional: Center align texts horizontally */
+}
+
+.text-group.group-1 .animated-text {
+    margin: 0; /* Remove default h1 margins */
+    padding: 0; /* Remove default h1 padding, if any */
+
+}
+
+.text-group.group-1 .animated-text:first-child {
+    margin-bottom: -30px; /* Adjust as needed */
+}
+  .group-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
   }
 
-  .logo-concept-section {
-    padding: 80px 20px; /* Increase padding around the section for better spacing */
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    text-align: center; /* Center text below images */
+  .group-2 .animated-text {
+    margin-left: 0.5em; 
+}
+
+  .group-2 h1 {
+    letter-spacing: 0.5em; 
+    font-weight: 900;
   }
   
-  .logo-concept-wrapper {
+  .group-3 {
     display: flex;
-    justify-content: space-between; /* Space out items evenly */
+    flex-direction: column;
+    align-items: center; /* Center align texts */
+  }
+
+  .group-3 .animated-text {
+    margin: 0; /* Removes top and bottom margins */
+}
+
+.animated-text.flipped-text {
+    display: inline-block; /* Ensure transform applies properly */
+    transform: rotate(180deg);
+    transform: scaleY(-1);
+
+}
+
+.text-group.group-3 .animated-text:first-child {
+    margin-bottom: -120px; /* Adjust as needed */
+}
+
+
+/* General Section Styling */
+.two-column-section {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    max-width: 1400px; /* Increase the maximum width */
-    width: 100%; /* Ensure it spans the container */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 20px;
+    border-radius: 15px; /* Optional rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .concept-item {
+  /* Columns */
+  .column {
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Stack image and text vertically */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
   
-  .concept-image {
-    max-width: 400px; /* Increase image size */
-    height: auto; /* Keep aspect ratio */
-    margin-bottom: 20px; /* Space between image and text */
-  }
-  
-  .concept-item p {
+  /* Left Column */
+  .section-title {
     font-family: var(--afacad);
-    font-size: 2rem; /* Increase text size for labels */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  
+  .boxes-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    border-radius: 8px; /* Optional rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .color-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 50px;
+    border: 3px solid var(--black); /* Adjust border color */
+    font-family: var(--afacad);
+    font-size: 2rem;
     font-weight: bold;
     color: var(--black)
   }
   
-  .concept-symbol {
-    font-family: 'Arial', sans-serif;
-    font-size: 10rem; /* Increase font size for + and = */
-    font-weight: bold;
-    color: var(--black);
+  /* Right Column */
+  .right {
+    display: flex;
+    justify-content: center;
   }
 
+  .left {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .section-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
