@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from React Router
 import "./Card.css";
 
-// This component represents a card that can switch images on hover
-const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags }) => {
+// Card component with link support
+const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags, linkTo }) => {
   const [currentImage, setCurrentImage] = useState(imageUrl); // Track which image is currently displayed
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768); // Check if the screen is small (mobile)
 
@@ -21,7 +22,8 @@ const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags }) => {
     }
   }, [isSmallScreen, imageUrl]); // Trigger this effect when screen size or image URL changes
 
-  return (
+  // Create card content
+  const CardContent = (
     <div
       className="card"
       // Switch to the hover image only on larger screens
@@ -50,6 +52,9 @@ const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags }) => {
       )}
     </div>
   );
+
+  // If linkTo is provided, wrap the card in a Link
+  return linkTo ? <Link to={linkTo}>{CardContent}</Link> : CardContent;
 };
 
 export default Card; // Make this component available for other parts of the app

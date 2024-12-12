@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
 import About from "./pages/About/About";
 import "./App.css";
+import AlterEgo from "./pages/AlterEgo/AlterEgo";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="projects" element={<Projects />} />
           <Route path="about" element={<About />} /> 
+          <Route path="/alter-ego" element={<AlterEgo />} />
         </Route>
       </Routes>
     </Router>

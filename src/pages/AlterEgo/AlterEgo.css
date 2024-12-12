@@ -1,0 +1,162 @@
+.alter-ego-intro-wrapper {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0; /* Ensure no margin is added */
+    padding: 0; /* Ensure no padding is added */
+  }
+  
+  .alter-ego-animation-container {
+    position: absolute;
+    top: -130px; /* Shift the image up behind the header */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place this container behind other elements */
+  }
+  
+  .static-animation {                       
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Marquee Wrapper */
+  .alter-ego-marquee-wrapper {
+    position: absolute;
+    bottom: 5%; /* Position the text at the bottom of the viewport */
+    width: 100%; /* Full width */
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    opacity: 1; /* Text is visible */
+    visibility: visible; /* Ensure it's shown */
+  }
+  
+  /* Marquee Animation (starts only when the class is added) */
+  .alter-ego-marquee-wrapper.start-marquee .alter-ego-text {
+    animation: marquee 10s linear infinite; /* Start scrolling animation */
+  }
+  
+  .alter-ego-text {
+    display: inline-block;
+    text-align: center;
+    font-family: 'Graphyne', sans-serif;
+    font-size: 18em;
+    color: var(--black);
+    margin-right: 50px; /* Space between repeated text */
+    /* No animation by default */
+  }
+  
+  /* Keyframes for marquee animation */
+  @keyframes marquee {
+    from {
+      transform: translateX(0); /* Start from the resting position */
+    }
+    to {
+      transform: translateX(-100%); /* Move fully off-screen to the left */
+    }
+  }
+  
+  .alter-ego-content {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Afacad Flux', sans-serif;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  .content-wrapper {
+    padding: 130px; /* Add padding around the entire content block */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    max-width: 80%; /* Constrain the width */
+  }
+  
+  .content-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+  }
+  
+  .content-details > div {
+    flex: 1;
+    margin-right: 20px; /* Add spacing between sections */
+  }
+  
+  .content-details > div:last-child {
+    margin-right: 0; /* No margin for the last column */
+  }
+  
+  .content-details h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .content-details p {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin: 0;
+  }
+  
+  .content-description {
+    font-size: 2.5rem;
+    line-height: 1.8; /* Add line spacing for readability */
+  }
+  
+  .content-description p {
+    margin: 0;
+  }
+
+  .logo-concept-section {
+    padding: 80px 20px; /* Increase padding around the section for better spacing */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    text-align: center; /* Center text below images */
+  }
+  
+  .logo-concept-wrapper {
+    display: flex;
+    justify-content: space-between; /* Space out items evenly */
+    align-items: center;
+    max-width: 1400px; /* Increase the maximum width */
+    width: 100%; /* Ensure it spans the container */
+  }
+  
+  .concept-item {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center;
+  }
+  
+  .concept-image {
+    max-width: 400px; /* Increase image size */
+    height: auto; /* Keep aspect ratio */
+    margin-bottom: 20px; /* Space between image and text */
+  }
+  
+  .concept-item p {
+    font-family: var(--afacad);
+    font-size: 2rem; /* Increase text size for labels */
+    font-weight: bold;
+    color: var(--black)
+  }
+  
+  .concept-symbol {
+    font-family: 'Arial', sans-serif;
+    font-size: 10rem; /* Increase font size for + and = */
+    font-weight: bold;
+    color: var(--black);
+  }
+
