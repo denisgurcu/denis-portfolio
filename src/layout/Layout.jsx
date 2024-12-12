@@ -29,7 +29,11 @@ const Layout = () => {
       document.body.classList.add("about-bg"); // Add "about-bg" for the about page
     } else if (location.pathname === "/alter-ego") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
+
+    } else if (location.pathname === "/posters") {
+      document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
     }
+    
   }, [location]); // Reapply background class whenever the route changes
 
   return (

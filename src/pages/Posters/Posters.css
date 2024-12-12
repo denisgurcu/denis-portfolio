@@ -1,0 +1,147 @@
+/* General Page Styles */
+.posters-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    font-family: var(--afacad);
+}
+
+/* Hero Section */
+.posters-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.posters-animation-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .poster-element {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1400px;
+    height: auto;
+  }
+
+  #city1{
+    bottom: 20%; /* Higher starting position */
+    z-index: 2; /* Buildings stay in front */
+}
+
+#city2 {
+    bottom: 20%; /* Higher starting position */
+    z-index: 1; /* Buildings stay in front */
+}
+  
+  #sun {
+      bottom: 20%; /* Higher starting position */
+      z-index: 0; /* Sun stays behind the buildings */
+      transform-origin: center; /* Ensure scaling works from the center */
+  }
+
+
+
+
+/* Marquee Section */
+/* Posters Marquee Wrapper */
+.posters-marquee-wrapper {
+    bottom: -5%;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    z-index: 3; /* Text appears above everything */
+
+}
+
+.posters-marquee-wrapper.start-marquee .posters-marquee-text {
+    animation: marquee 15s linear infinite;
+}
+
+.posters-marquee-text {
+    display: inline-block;
+    text-align: center;
+    font-family: var(--graphyne);
+    font-size: 18em;
+    color: var(--black);
+    margin-right: 100px;
+}
+
+/* Keyframes for marquee animation */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Posters Content Section */
+.poster-designs-content {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: var(--afacad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    padding: 130px;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.content-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+}
+
+.content-details > div {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.content-details > div:last-child {
+    margin-right: 0;
+}
+
+.content-details h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.content-details p {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin: 0;
+}
+
+.content-description {
+    font-size: 2.5rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.content-description p {
+    margin: 0;
+}
