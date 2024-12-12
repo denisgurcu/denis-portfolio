@@ -73,8 +73,7 @@ const About = () => {
                         <div className="box-content">
                             <h2>EXPERIENCE</h2>
                             <p>
-                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at 
-                                <a href="https://appen.com" className="hover-link" target="_blank" rel="noopener noreferrer">Appen</a>, improving user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
+                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at <a href="https://appen.com" className="hover-link" target="_blank" rel="noopener noreferrer">Appen</a>, improving user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
                             </p>
                             <br />
                             <p>
@@ -90,16 +89,8 @@ const About = () => {
                             <h2>EDUCATION</h2>
                             <p>
                                 I hold a Bachelor's degree in Business Administration, providing me with a strong foundation in strategy, analysis, and marketing. 
-                                Currently, I’m pursuing a diploma in 
-                                <a
-                                    href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/"
-                                    class="hover-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span class="underline-span">New Media Design & Web Development</span>
-                                </a> 
-                                at BCIT to expand my technical and creative skillset.
+                                Currently, I’m pursuing a diploma in <a href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/" class="hover-link" target="_blank" rel="noopener noreferrer"
+                                ><span class="underline-span">New Media Design & Web Development</span></a> at BCIT to expand my technical and creative skillset.
                             </p>
                         </div>
                     </div>
