@@ -7,6 +7,8 @@
   top: 0;           /* Stick the header to the top */
   max-width: 100%;  /* Ensure the header spans the full width */
   z-index: 100;     /* Ensure the header stays on top of other content */
+  background: transparent; /* Ensure the background is transparent */
+
 }
 
 /* Navigation Links (Desktop View) */
