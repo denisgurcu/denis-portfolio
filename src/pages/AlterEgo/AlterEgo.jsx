@@ -16,6 +16,12 @@ import AlterEgoCup from "../../assets/images/alterego_cup.jpg";
 import AlterEgoCups from "../../assets/images/alterego_cups.png";
 import GestaltImage from "../../assets/images/gestalt_example.png"; // Tooltip image
 import AlterEgoType from "../../assets/images/alterego_typography.png"; // Tooltip image
+import AlterEgoBanner from "../../assets/images/alterego_banner.jpg";
+import AlterToteBag from "../../assets/images/alterego_totebag.jpg";
+import AlterEgoBC from "../../assets/images/alterego_bc.jpg";
+import AlterPack from "../../assets/images/alterego_packaging.jpg";
+
+
 
 
 
@@ -32,12 +38,12 @@ const AlterEgo = () => {
                 {
                     y: "0",
                     opacity: 1,
-                    duration: 2,
+                    duration: 1.2,
                     ease: "power2.out",
                 }
             )
             .to(".alter-ego-text", {
-                delay: 0.5,
+                delay: 0.2,
                 onComplete: () => {
                     document
                         .querySelector(".alter-ego-marquee-wrapper")
@@ -76,7 +82,7 @@ const AlterEgo = () => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: ".coffee-you-section",
-                start: "top 80%", // Adjust as needed
+                start: "top 70%", // Adjust as needed
             }
         })
             .to(coffeeYouItems, {
@@ -125,8 +131,8 @@ const AlterEgo = () => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: texts[0],
-                start: "top 80%",
-                end: "bottom 50%",
+                start: "top 100%",
+                end: "bottom 20%",
                 scrub: false,
             },
         });
@@ -152,7 +158,7 @@ const AlterEgo = () => {
                 yoyo: true,
                 repeat: 1,
             },
-            "+=0.2"
+            "+=0.3"  //Start 0.3 seconds before the previous animation ends
         );
 
         // Text 3: Letters one-by-one
@@ -162,20 +168,22 @@ const AlterEgo = () => {
             {
                 opacity: 1,
                 y: 0,
-                duration: 0.05,
+                duration: 0.08,
                 stagger: 0.1,
                 ease: "power2.out"
             }
         );
+        "+=5" // Start 0.3 seconds before the previous animation ends
 
-        // Text 4: Pop appear (same as Text 1)
+
+        // Text 4: Pop appear 
         tl.fromTo(
             texts[3],
             { scale: 0.5, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1)" }
         );
 
-        // Text 5 (if exists): Flip and sway (same as Text 2)
+        // Text 5: Flip and sway 
         if (texts[4]) {
             tl.fromTo(
                 texts[4],
@@ -190,9 +198,10 @@ const AlterEgo = () => {
                     yoyo: true,
                     repeat: 1,
                 },
-                "+=0.2"
+
             );
-        }
+        };
+        "+=0.3" // Start 0.3 seconds before the previous animation ends
 
     }, []);
 
@@ -323,7 +332,7 @@ const AlterEgo = () => {
                 <div className="text-wrapper">
                     <div className="text-group group-1">
                         <h1 className="animated-text">DUALITY</h1>
-                        <h1 className="animated-text">YTIILAUD</h1> {/* Reversed text */}
+                        <h1 className="animated-text">YTILAUD</h1> {/* Reversed text */}
                     </div>
 
                     {/* Group 2: Text 3 */}
@@ -344,21 +353,29 @@ const AlterEgo = () => {
             </section>
 
             <section className="two-column-section">
-            <div className="column right">
-            <h2 className="section-title">TYPOGRAPHY</h2>
+                <div className="column right">
+                    <h2 className="section-title">TYPOGRAPHY</h2>
                     <img src={AlterEgoType} alt="Right Side Image" className="section-image" />
                 </div>
                 <div className="column left">
                     <h2 className="section-title">COLORS</h2>
                     <div className="boxes-wrapper">
-                        <div className="color-box"  style={{ backgroundColor: "#CF804F" }}>INVITING</div>
-                        <div className="color-box"  style={{ backgroundColor: "#CFA651" }}>RICH</div>
-                        <div className="color-box"  style={{ backgroundColor: "#8D8C88" }}>INTRIGUING</div>
-                        <div className="color-box"  style={{ backgroundColor: "#313131" }}>DARK</div>
-                        <div className="color-box"  style={{ backgroundColor: "#E1D5C5" }}>BALANCING</div>
+                        <div className="color-box" style={{ backgroundColor: "#CF804F" }}>INVITING</div>
+                        <div className="color-box" style={{ backgroundColor: "#CFA651" }}>RICH</div>
+                        <div className="color-box" style={{ backgroundColor: "#8D8C88" }}>INTRIGUING</div>
+                        <div className="color-box" style={{ backgroundColor: "#313131" }}>DARK</div>
+                        <div className="color-box" style={{ backgroundColor: "#E1D5C5" }}>BALANCING</div>
                     </div>
                 </div>
-    
+            </section>
+
+            <section className="mockup-grid-section">
+                <div className="mockup-grid-wrapper">
+                    <img src={AlterEgoBanner} alt="Alter Ego Mix" className="mockup-image" />
+                    <img src={AlterToteBag} alt="Alter Ego Tote Bag" className="mockup-image" />
+                    <img src={AlterEgoBC} alt="Alter Ego Business Card" className="mockup-image" />
+                    <img src={AlterPack} alt="Alter Ego Packaging" className="mockup-image" />
+                </div>
             </section>
         </>
     );
