@@ -6,15 +6,17 @@ import Projects from "./pages/Projects/Projects";
 import About from "./pages/About/About";
 import "./App.css";
 import AlterEgo from "./pages/AlterEgo/AlterEgo";
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="projects" element={<Projects />} />
-          <Route path="about" element={<About />} /> 
+          <Route path="about" element={<About />} />
           <Route path="/alter-ego" element={<AlterEgo />} />
         </Route>
       </Routes>

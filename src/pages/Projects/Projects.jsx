@@ -40,6 +40,7 @@ const projectData = [
     isGif: false,
     projectDetails: "A branding concept for a coffee shop, blending modernity and self-expression into a refined experience.",
     tags: ["Branding", "Packaging", "Graphic Design"],
+    linkTo: "/alter-ego",
   },
   {
     title: "LOGO DESIGNS",

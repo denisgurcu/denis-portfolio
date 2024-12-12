@@ -37,7 +37,7 @@
 }
 
 .alter-ego-marquee-wrapper.start-marquee .alter-ego-text {
-    animation: marquee 10s linear infinite;
+    animation: marquee 15s linear infinite;
 }
 
 .alter-ego-text {
@@ -46,7 +46,7 @@
     font-family: var(--graphyne);
     font-size: 18em;
     color: var(--black);
-    margin-right: 50px;
+    margin-right: 80px;
 }
 
 /* Keyframes for marquee animation */
@@ -181,12 +181,12 @@
 
 /* Blinking question mark */
 .blinking-question {
-    animation: blink 1s infinite;
+    animation: blink 2s infinite; /* Extend duration to account for initial pause */
 }
 
 @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
+    0%, 25% { opacity: 1; } /* Visible for the first 25% of the animation */
+    50% { opacity: 0; } /* Start blinking after 25% */
     100% { opacity: 1; }
 }
 
@@ -405,77 +405,107 @@
 }
 
 .text-group.group-3 .animated-text:first-child {
-    margin-bottom: -120px; /* Adjust as needed */
+    margin-bottom: -130px; /* Adjust as needed */
 }
 
 
-/* General Section Styling */
+/* Two-Column Section */
 .two-column-section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top */
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 100px; /* Add gap below the section */
     padding: 40px 20px;
-    gap: 20px;
+    gap: 60px;
     border-radius: 15px; /* Optional rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Columns */
-  .column {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Columns */
+.column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Left Column */
-  .section-title {
+    align-items: flex-start; /* Align items to the left */
+}
+
+/* Section Titles */
+.section-title {
     font-family: var(--afacad);
     font-size: 2rem;
     margin-bottom: 20px;
-  }
+    text-align: left; /* Left-align text */
+    width: 100%; /* Span full width */
+}
 
-  
-  .boxes-wrapper {
+/* Images within Columns */
+.section-image {
+    width: 80%; /* Responsive width */
+    height: auto;
+    object-fit: cover;
+    
+}
+
+/* Boxes Wrapper */
+.boxes-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
-    border-radius: 8px; /* Optional rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-  }
-  
-  .color-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 50px;
-    border: 3px solid var(--black); /* Adjust border color */
+    align-items: flex-start; /* Align boxes to the left */
+    text-align: center;
+
+}
+
+.color-box {
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 500px; /* Width of the box */
+    max-width: 500px; /* Optional: maximum width */
+    height: 50px; /* Height of the box */
+    border: 3px solid var(--black); /* Border styling */
     font-family: var(--afacad);
     font-size: 2rem;
     font-weight: bold;
-    color: var(--black)
-  }
-  
-  /* Right Column */
-  .right {
-    display: flex;
-    justify-content: center;
-  }
+    color: var(--black);
+    box-sizing: border-box; /* Include padding and border in width */
+    text-align: center; /* Center-align text when wrapping */
+    padding: 0; /* Remove any padding */
+}
 
-  .left {
+/* Image Grid Section */
+.mockup-grid-section {
     display: flex;
-    justify-content: center;
-  }
-  
-  
-  .section-image {
-    max-width: 100%;
-    height: auto;
-  }
-  
+    justify-content: center; /* Center the grid horizontally */
+    align-items: center; /* Center the grid vertically */
+    width: 100%; /* Full viewport width */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-bottom: 100px; /* Add gap below the section */
+    padding: 40px 20px;
+    
+}
+
+.mockup-grid-wrapper {
+    display: grid; /* Use CSS Grid layout */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    gap: 0; /* No gap between images */
+    width: auto; /* Adjust width based on content */
+    height: auto; /* Adjust height based on content */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+}
+
+.mockup-image {
+    width: 450px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    object-fit: cover; /* Cover the grid cell without distortion */
+    display: block; /* Ensure images don’t exceed their cells */
+}
+
