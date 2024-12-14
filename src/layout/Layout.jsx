@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "../components/Header"; 
-import Footer from "../components/Footer"; 
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import CustomCursor from "../components/CustomCursor"; // Custom cursor component should be here so it can be saved in all pages
 
 const Layout = () => {
@@ -29,21 +29,22 @@ const Layout = () => {
       document.body.classList.add("about-bg"); // Add "about-bg" for the about page
     } else if (location.pathname === "/alter-ego") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
-
     } else if (location.pathname === "/posters") {
-      document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
+      document.body.classList.add("home-bg"); // Reuse "home-bg" for Posters
+    } else if (location.pathname === "/logo") {
+      document.body.classList.add("home-bg"); // Reuse "home-bg" for Logo
     }
-    
+
   }, [location]); // Reapply background class whenever the route changes
 
   return (
     <div>
       <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
-      <Header /> 
+      <Header />
       <main>
         <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
       </main>
-      <Footer /> 
+      <Footer />
     </div>
   );
 };

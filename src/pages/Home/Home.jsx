@@ -173,6 +173,7 @@ const Home = () => {
             isGif={true}
             // projectDetails="A collection of logos crafted to represent unique brand identities"
             tags={["Logo Design", "Graphic Design"]}
+            linkTo= "/logo"
           />
         </div>
         <button className="view-more">VIEW MORE</button>
