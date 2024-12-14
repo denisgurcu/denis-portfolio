@@ -1,0 +1,62 @@
+/* Wrapper */
+.logo-card-wrapper {
+    display: inline-block;
+    perspective: 1000px; /* 3D perspective */
+  }
+  
+  /* Card */
+  .logo-card {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo-card-wrapper:hover .logo-card {
+    transform: rotateY(180deg); /* Flip animation on hover */
+  }
+  
+  /* Front and Back Faces */
+  .logo-card-front,
+  .logo-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+  }
+  
+  .logo-card-front {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px; /* Add padding to create space around the image */
+
+  }
+  
+  .logo-card-back {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: rotateY(180deg);
+  }
+  
+  .logo-card-back-content {
+    padding: 20px;
+  }
+  
+  .logo-card-back-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .logo-card-back-content p {
+    font-size: 1rem;
+  }
+  

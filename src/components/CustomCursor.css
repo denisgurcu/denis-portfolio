@@ -1,4 +1,4 @@
-/* Default behavior: Hide the cursor */
+
 * {
   cursor: none !important;
 }
@@ -6,7 +6,7 @@
 /* Enable default system cursor on mobile */
 body.default-cursor * {
   cursor: auto !important;
-}
+} *
 
 /* Custom cursor styles */
 .cursor {

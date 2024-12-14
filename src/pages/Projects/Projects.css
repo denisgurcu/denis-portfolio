@@ -126,10 +126,10 @@
 
 
 .tab.active {
-  background-color: var(--darkred); /* Optional: Change background color */
-  color: var(--white); /* Ensure text color is visible */
-  transform: scale(1.1); /* Optional: Add a slight scaling effect */
-  transition: all 0.3s ease; /* Smooth transition */
+  background-color: var(--darkred); 
+  color: var(--white); 
+  transform: scale(1.1); 
+  transition: all 0.3s ease;
 }
 
 .tab:hover {

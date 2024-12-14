@@ -48,7 +48,7 @@
   .logo-showcase-marquee-text {
     display: inline-block;
     text-align: center;
-    font-size: 18rem;
+    font-size: 20rem;
     color: var(--black);
     margin-right: 100px;
     font-family: var(--graphyne);
@@ -133,3 +133,32 @@
     transform: translateY(50%);
   }
   
+/* Logo Grid Section */
+.logo-grid-section {
+    display: flex;
+    justify-content: center; /* Center the grid horizontally */
+    align-items: center; /* Center the grid vertically */
+    padding: 40px; /* Adjust padding as needed */
+  }
+/* Grid container */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 60px; /* Reduce gap between cards */
+    max-width: 1200px; /* Limit the grid width */
+  }
+  
+/* Responsive breakpoints */
+@media (max-width: 992px) {
+    .logo-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+      gap: 15px; /* Slightly increase gap for smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .logo-grid {
+      grid-template-columns: 1fr; /* 1 card per row */
+      gap: 20px; /* Increase gap for single-column layout */
+    }
+  }
