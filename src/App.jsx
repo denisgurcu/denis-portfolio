@@ -8,6 +8,7 @@ import About from "./pages/About/About";
 import "./App.css";
 import AlterEgo from "./pages/AlterEgo/AlterEgo";
 import Posters from "./pages/Posters/Posters";
+import Logo from "./pages/Logo/Logo";
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="about" element={<About />} />
           <Route path="/alter-ego" element={<AlterEgo />} />
           <Route path="/posters" element={<Posters />} />
+          <Route path="/logo" element={<Logo />} />
         </Route>
       </Routes>
     </Router>
