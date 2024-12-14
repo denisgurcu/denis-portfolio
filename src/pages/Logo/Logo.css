@@ -38,7 +38,7 @@
     white-space: nowrap;
     opacity: 1;
     visibility: visible;
-    z-index: 3; /* Ensure text is above other elements */
+    z-index: 3; 
   }
   
   .logo-showcase-marquee-wrapper.start-marquee .logo-showcase-marquee-text {
@@ -48,7 +48,7 @@
   .logo-showcase-marquee-text {
     display: inline-block;
     text-align: center;
-    font-size: 18rem;
+    font-size: 20rem;
     color: var(--black);
     margin-right: 100px;
     font-family: var(--graphyne);
@@ -64,7 +64,7 @@
     }
   }
   
-  /* Placeholder for additional content */
+ 
   .logo-showcase-content {
     padding: 40px;
     display: flex;
@@ -133,3 +133,46 @@
     transform: translateY(50%);
   }
   
+/* Logo Grid Section */
+.logo-grid-section {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 80px 40px; 
+  }
+/* Grid container */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 60px; 
+    max-width: 1200px; 
+  }
+  
+
+@media (max-width: 992px) {
+    .logo-grid {
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 15px; 
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .logo-grid {
+      grid-template-columns: 1fr; 
+      gap: 20px; 
+    }
+  }
+
+  .logo-grid-message {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5rem;
+    color: var(--black); 
+    font-family: var(--afacad);
+    font-weight: 600;
+}
+
+.logo-grid-message p {
+    margin: 0;
+    padding: 0;
+}
