@@ -38,7 +38,7 @@
     white-space: nowrap;
     opacity: 1;
     visibility: visible;
-    z-index: 3; /* Ensure text is above other elements */
+    z-index: 3; 
   }
   
   .logo-showcase-marquee-wrapper.start-marquee .logo-showcase-marquee-text {
@@ -64,7 +64,7 @@
     }
   }
   
-  /* Placeholder for additional content */
+ 
   .logo-showcase-content {
     padding: 40px;
     display: flex;
@@ -136,29 +136,43 @@
 /* Logo Grid Section */
 .logo-grid-section {
     display: flex;
-    justify-content: center; /* Center the grid horizontally */
-    align-items: center; /* Center the grid vertically */
-    padding: 40px; /* Adjust padding as needed */
+    justify-content: center; 
+    align-items: center; 
+    padding: 80px 40px; 
   }
 /* Grid container */
 .logo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 60px; /* Reduce gap between cards */
-    max-width: 1200px; /* Limit the grid width */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 60px; 
+    max-width: 1200px; 
   }
   
-/* Responsive breakpoints */
+
 @media (max-width: 992px) {
     .logo-grid {
-      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-      gap: 15px; /* Slightly increase gap for smaller screens */
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 15px; 
     }
   }
   
   @media (max-width: 600px) {
     .logo-grid {
-      grid-template-columns: 1fr; /* 1 card per row */
-      gap: 20px; /* Increase gap for single-column layout */
+      grid-template-columns: 1fr; 
+      gap: 20px; 
     }
   }
+
+  .logo-grid-message {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5rem;
+    color: var(--black); 
+    font-family: var(--afacad);
+    font-weight: 600;
+}
+
+.logo-grid-message p {
+    margin: 0;
+    padding: 0;
+}

@@ -13,6 +13,7 @@ import FOS from "../../assets/images/fos.png";
 import STO from "../../assets/images/sto.png";
 import RageQuit from "../../assets/images/ragequit.png";
 import MOV from "../../assets/images/movlogo.png";
+import Lelem from "../../assets/images/lelem.png";
 
 
 
@@ -87,20 +88,21 @@ const Logo = () => {
             frontColor: "#5e72eb",
             title: "Rage Quit",
             title2: "Marketing Agency",
-            description: "Rage Quit lives and breathes gaming—nostalgia from the '90s fused with today’s energy. The logo draws inspiration from the iconic sad face of old Windows errors, with a modern gradient to bridge past and present.",
+            description: "Rage Quit lives and breathes gaming. Helps indie game developers promote their game. The logo draws nostalgia from the iconic sad face of old Windows errors, infused with a modern gradient to bridge past and present—an ode to everyone who’s ever rage quit.",
         },
         {
             frontImage: MOV,
             frontColor: "#eee6d7",
             title: "Mind Over Matter",
             title2: "Mental Health Platform",
-            description: "A bold logo symbolizing luxury and excellence.",
+            description: "Mind Over Matter is a digital platform tackling mental health with insightful commentary. The brand needed a logo that was versatile and scalable, designed to seamlessly translate into patterns and branding materials to use across platforms. Reflecting its focus on increasing social media reach and building a cohesive digital presence.",
         },
         {
-            frontImage: STO,
+            frontImage: Lelem,
             frontColor: "#00BFFF",
-            title: "Sky Blue",
-            description: "A refreshing logo representing clarity and innovation.",
+            title: "Lelem Natural Park",
+            title2: "Natural Park / Zoo",
+            description: "'Lelem,' meaning 'home' in Henqeminem, inspired this playful logo for a park rooted in Vancouver’s Indigenous heritage. With a bear symbolizing respect and family honor, the design connects with all ages, especially children. Heavily influenced by Indigenous tattoo art.",
         },
     ];
 
@@ -153,7 +155,12 @@ const Logo = () => {
             </section>
 
             {/* Logo Grid Section */}
+
+            <section className="logo-grid-message">
+                <p>Hover to reveal details!</p>
+            </section>
             <section className="logo-grid-section">
+
                 <div className="logo-grid">
                     {logoCardsData.map((card, index) => (
                         <LogoCard

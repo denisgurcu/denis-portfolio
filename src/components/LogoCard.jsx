@@ -8,10 +8,10 @@ const LogoCard = ({ frontImage, frontColor, title, title2, description }) => {
         {/* Front Face */}
         <div
           className="logo-card-front"
-          style={{
-            backgroundImage: `url(${frontImage})`,
-            backgroundColor: frontColor,
-          }}
+            style={{
+                backgroundImage: `url(${frontImage})`,
+                backgroundColor: frontColor,
+            }}
         ></div>
 
         {/* Back Face */}
