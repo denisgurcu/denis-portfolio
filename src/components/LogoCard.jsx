@@ -1,7 +1,7 @@
 import React from "react";
 import "./LogoCard.css";
 
-const LogoCard = ({ frontImage, frontColor, title, description }) => {
+const LogoCard = ({ frontImage, frontColor, title, title2, description }) => {
   return (
     <div className="logo-card-wrapper">
       <div className="logo-card">
@@ -18,6 +18,7 @@ const LogoCard = ({ frontImage, frontColor, title, description }) => {
         <div className="logo-card-back">
           <div className="logo-card-back-content">
             <h3>{title}</h3>
+            <h2>{title2}</h2>
             <p>{description}</p>
           </div>
         </div>

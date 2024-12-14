@@ -38,13 +38,14 @@
   }
   
   .logo-card-back {
-    background-color: #333;
-    color: white;
+    background-color:var(--black);
+    color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
     transform: rotateY(180deg);
+    font-family: var(--afacad);
   }
   
   .logo-card-back-content {
@@ -52,11 +53,19 @@
   }
   
   .logo-card-back-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    font-weight: 800
+  }
+
+  .logo-card-back-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 400;
   }
   
   .logo-card-back-content p {
     font-size: 1rem;
+    font-weight: 300
   }
   
