@@ -4,6 +4,15 @@
     padding: 0;
     
   }
+
+  @font-face {
+    font-family: 'Graphyne';
+    src: url('/fonts/graphyne.woff2') format('woff2'),
+         url('/fonts/graphyne.woff') format('woff'),
+         url('/fonts/graphyne.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
   
   /* Global colors and fonts */
   :root {
