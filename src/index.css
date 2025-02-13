@@ -7,9 +7,9 @@
 
   @font-face {
     font-family: 'Graphyne';
-    src: url('/fonts/graphyne.woff2') format('woff2'),
-         url('/fonts/graphyne.woff') format('woff'),
-         url('/fonts/graphyne.ttf') format('truetype');
+    src: url('/fonts/graphyne-regular.woff2') format('woff2'),
+         url('/fonts/graphyne-regular.woff') format('woff'),
+         url('/fonts/graphyne-regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
