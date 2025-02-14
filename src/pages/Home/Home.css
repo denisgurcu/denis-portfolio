@@ -161,7 +161,7 @@
   max-width: 380px;
   text-align: center;
   font-family: 'Breamcatcher', sans-serif;
-  font-size: clamp(1rem, 1.5vw, 2rem);
+  font-size: clamp(1.7rem, 2rem, 2rem);
   padding: 10px;
   border: 4px solid;
   box-sizing: border-box;
@@ -231,12 +231,12 @@
 /* Responsiveness  */
 @media (max-width: 768px) {
   .hero {
-    padding-bottom: 150px; /* Extra space for text */
+    padding-bottom: 300px; /* Extra space for text */
   }
 
   .hero-text {
     font-size: 8rem;
-    bottom: -3%;
+    bottom: -2%;
   }
 
   .boxes-container {
@@ -260,7 +260,7 @@
   }
 
   .scroll-text {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .cursor-info {
@@ -273,6 +273,12 @@
 
   .recent-works h2 {
     font-size: 2.5rem;
+  }
+  
+  .view-more {
+    font-size: 1.5rem;
+    padding: 6px 20px;
+    border-radius: 15px
   }
 
 
@@ -317,6 +323,63 @@
 
   .recent-works h2 {
     font-size: 2.5rem;
+  }
+
+  .cursor-info {
+    display: none;
+  }
+
+}
+
+@media (max-width: 375px) {
+  .hero {
+    padding-bottom: 350px; /* Extra space for text */
+  }
+
+  .hero-text {
+    font-size: 7rem;
+    bottom: -2%;
+  }
+
+  .boxes-container {
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+
+  }
+  .box {
+    height: 220px;
+    width: 90%;
+  }
+
+  .label {
+    font-size: 1rem;
+    padding: 5px;
+    width: 92.5%;
+  }
+
+
+  .view-more {
+    font-size: 1.5rem;
+    padding: 6px 20px;
+    border-radius: 15px
+  }
+
+  .scroll-section {
+    min-height: 70vh;
+    padding: 15px;
+  }
+
+  .recent-works h2 {
+    font-size: 2.5rem;
+  }
+
+  .cursor-info {
+    display: none;
+  }
+  
+  .scroll-text {
+    font-size: 1.5rem;
   }
 
 }

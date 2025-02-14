@@ -42,10 +42,10 @@ const MotionAnimation = () => {
     const textY = height / 1; // Y position for the text
     const letterSpacing = 150; // Spacing between letters
     const letterWidth = 100; // Approximate width of each letter
-    const letterHeight = 400; // Approximate height of each letter
+    const letterHeight = 340; // Approximate height of each letter
   
     const letterBodies = [];
-    for (let i = 0; i < 8; i++) { // 8 letters in "PROJECTS"
+    for (let i = 0; i < 9; i++) { // 8 letters in "PROJECTS"
       const letterBody = Bodies.rectangle(
         textX + i * letterSpacing, // Position each letter with spacing
         textY,
@@ -54,7 +54,7 @@ const MotionAnimation = () => {
         {
           isStatic: true,
           render: {
-            fillStyle: "transparent", // Semi-transparent for debugging
+            fillStyle: "transparent", // change to Semi-transparent for debugging
           },
         }
       );
@@ -146,4 +146,5 @@ const MotionAnimation = () => {
 };
 
 export default MotionAnimation;
+
 

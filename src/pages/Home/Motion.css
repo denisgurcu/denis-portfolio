@@ -17,3 +17,10 @@
     width: 370px;
   }
 }
+
+@media (max-width: 375px) {
+  .motion-container {
+    height: 220px;
+    width: 270px;
+  }
+}
