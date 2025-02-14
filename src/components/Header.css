@@ -1,3 +1,20 @@
+:root {
+  --default-cursor-color: #E6E6E6;
+  --black: #262525; 
+  --white: #E6E6E6; 
+  --grey: #CCCCCC; 
+  --yellow: #FFD24D; 
+  --blue: #6FA2D5;  
+  --darkblue: #114059; 
+  --red: #DA4D3B; 
+  --darkred: #8F263E;
+  --pink: #E3C3D8;
+
+  --afacad: 'Afacad Flux', serif; 
+  --breamcather: 'Breamcatcher', sans-serif;
+  --graphyne: 'Graphyne', sans-serif;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,7 +38,7 @@
   margin: 0 20px;
   text-decoration: none;
   color: var(--black);
-  font-family: 'Afacad Flux', sans-serif;
+  font-family: var(--afacad);
   font-weight: medium;
   font-size: 2rem;
   transition: color 0.3s ease; /* Smooth color transition */
