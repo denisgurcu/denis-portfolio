@@ -17,7 +17,7 @@
 
 /* Hero Text */
 .hero-text {
-  font-family: 'Graphyne', sans-serif;
+  font-family: var(--graphyne);
   font-size: 18em;
   color: var(--black);
   margin: 0;
@@ -172,7 +172,7 @@
 }
 
 .view-more {
-  font-family: 'Breamcatcher', sans-serif;
+  font-family: var(--breamcather);
   font-size: 2rem;
   padding: 10px 50px;
   background-color: var(--black);
