@@ -127,7 +127,7 @@ const Home = () => {
       {/* Scroll Section with Cursor Color Picker */}
       <section className="scroll-section">
         <div className="scroll-text">
-          I'm! a multimedia designer specializing in branding, graphic, and motion
+          I'm a multimedia designer specializing in branding, graphic, and motion
           design. I seek imaginative, functional solutions that tell a story.
           <br />
           <span className="cursor-info">You can pick a color for your cursor.</span>

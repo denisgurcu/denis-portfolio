@@ -9,9 +9,14 @@
     font-family: 'Graphyne';
     src: url('/fonts/graphyne-regular.woff2') format('woff2'),
          url('/fonts/graphyne-regular.woff') format('woff'),
-         url('/fonts/graphyne-regular.ttf') format('truetype');
+         url('/fonts/graphyne-regular.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('/fonts/afacad-flux.ttf') format('ttf');
 }
   
   /* Global colors and fonts */
