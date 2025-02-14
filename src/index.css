@@ -1,51 +1,131 @@
 /* Reset styles */
 * {
-    margin: 0;
-    padding: 0;
-    
-  }
+  margin: 0;
+  padding: 0;
 
-  @font-face {
-    font-family: 'Graphyne';
-    src: url('./assets/fonts/graphyne-regular-webfont.woff2') format('woff2'),
-         url('./assets/fonts/graphyne-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 }
 
+@font-face {
+  font-family: 'Graphyne';
+  src: url('./fonts/graphyne-regular-webfont.woff2') format('woff2'),
+    url('./fonts/graphyne-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Breamcatcher';
+  src: url('./fonts/breamcatcher.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 
 @font-face {
   font-family: 'Afacad';
   src: local('Afacad'), url("./fonts/afacad-flux.woff") format('woff');
 }
-  
-  /* Global colors and fonts */
-  :root {
-    --default-cursor-color: #E6E6E6;
-    --black: #262525; 
-    --white: #E6E6E6; 
-    --grey: #CCCCCC; 
-    --yellow: #FFD24D; 
-    --blue: #6FA2D5;  
-    --darkblue: #114059; 
-    --red: #DA4D3B; 
-    --darkred: #8F263E;
-    --pink: #E3C3D8;
-  
-    --afacad: 'Afacad Flux Denis', serif; 
-    --breamcather: 'Breamcatcher', sans-serif;
-    --graphyne: 'Graphyne', sans-serif;
-  }
 
-  
-  /* BG color for each page */
-  .home-bg {
-    background-color: var(--grey); 
-  }
-  
-  .projects-bg {
-    background-color: var(--blue); 
-  }
-  
-  .about-bg {
-    background-color: var(--red); 
-  }
+
+@font-face {
+  font-family: 'AfacadMed';
+  src: local('Afacad'), url("./fonts/AfacadFlux-Medium.woff") format('woff');
+} */
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./fonts/AfacadFlux-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Global colors and fonts */
+:root {
+  --default-cursor-color: #E6E6E6;
+  --black: #262525;
+  --white: #E6E6E6;
+  --grey: #CCCCCC;
+  --yellow: #FFD24D;
+  --blue: #6FA2D5;
+  --darkblue: #114059;
+  --red: #DA4D3B;
+  --darkred: #8F263E;
+  --pink: #E3C3D8;
+
+  --afacad: 'Afacad Flux', sans-serif;
+  --breamcather: 'Breamcatcher', sans-serif;
+  --graphyne: 'Graphyne', sans-serif;
+
+  /* Define font weights */
+  --afacad-thin: 100;
+  --afacad-extralight: 200;
+  --afacad-light: 300;
+  --afacad-regular: 400;
+  --afacad-medium: 500;
+  --afacad-semibold: 600;
+  --afacad-bold: 700;
+  --afacad-extrabold: 800;
+}
+
+
+/* BG color for each page */
+.home-bg {
+  background-color: var(--grey);
+}
+
+.projects-bg {
+  background-color: var(--blue);
+}
+
+.about-bg {
+  background-color: var(--red);
+}

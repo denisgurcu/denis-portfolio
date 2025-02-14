@@ -176,7 +176,7 @@ const Home = () => {
             linkTo= "/logo"
           />
         </div>
-        <button className="view-more">VIEW MOREE</button>
+        <button className="view-more">VIEW MORE</button>
       </section>
     </>
   );
