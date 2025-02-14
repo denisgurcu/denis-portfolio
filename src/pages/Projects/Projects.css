@@ -13,8 +13,9 @@
 
 
 .projects-animation-container {
+  flex-grow: 1; /* Takes up remaining space above the text */
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   position: relative;
   z-index: 20;
 }
@@ -54,8 +55,10 @@
   color: var(--black);
   text-align: center;
   position: relative;
+  bottom: 10%; /* Sticks to the bottom but with a slight gap */
+  width: 100%;
   max-width: 100%;
-  margin-bottom: 90px;
+  margin: 0;
 }
 
 .waves {
@@ -145,7 +148,7 @@
 }
 
 /* Responsive Styles */
-/* @media (max-width: 768px) {
+ @media (max-width: 768px) {
 
   .project-cards {
     grid-template-columns: 1fr;
@@ -234,55 +237,4 @@
   }
   
 }
- */
 
- /* Responsive Media Queries */
-@media (max-width: 1024px) {
-  .projects-animation-container {
-    height: 40vh;
-  }
-  .motion-animation-container {
-    height: 60vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-text {
-    font-size: 8rem;
-    margin-bottom: 15px;
-  }
-  .projects-animation-container {
-    height: 35vh;
-  }
-  .motion-animation-container {
-    height: 50vh;
-  }
-  .tabs {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .tab {
-    font-size: 1.5rem;
-    padding: 8px 25px;
-  }
-}
-
-@media (max-width: 480px) {
-  .projects-text {
-    font-size: 4rem;
-  }
-  .projects-animation-container {
-    height: 30vh;
-  }
-  .motion-animation-container {
-    height: 40vh;
-  }
-  .tabs {
-    flex-direction: row;
-    gap: 5px;
-  }
-  .tab {
-    font-size: 1.2rem;
-    padding: 6px 15px;
-  }
-}
