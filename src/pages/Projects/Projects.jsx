@@ -24,6 +24,7 @@ const projectData = [
     isGif: false,
     projectDetails: "A bold identity for a design agency that thrives on breaking conventions.",
     tags: ["Branding", "Graphic Design", "Motion Graphics"],
+    linkTo: "/dada-collective",
   },
   {
     title: "POSTER DESIGNS",
@@ -32,6 +33,8 @@ const projectData = [
     isGif: true,
     projectDetails: "A diverse range of visuals created for various marketing campaigns and purposes.",
     tags: ["Social Media Marketing", "Illustration", "Graphic Design"],
+    linkTo: "/posters",
+
   },
   {
     title: "ALTER EGO VISUAL IDENTITY",
@@ -41,6 +44,7 @@ const projectData = [
     projectDetails: "A branding concept for a coffee shop, blending modernity and self-expression into a refined experience.",
     tags: ["Branding", "Packaging", "Graphic Design"],
     linkTo: "/alter-ego",
+    
   },
   {
     title: "LOGO DESIGNS",
@@ -49,6 +53,7 @@ const projectData = [
     isGif: true,
     projectDetails: "A collection of logos crafted to represent unique brand identities.",
     tags: ["Logo Design", "Graphic Design"],
+    linkTo: "/logo",
   },
 ];
 
@@ -135,6 +140,8 @@ const Projects = () => {
               isGif={project.isGif}
               // projectDetails={project.projectDetails}
               tags={project.tags}
+              linkTo={project.linkTo} // Pass the linkTo prop for navigation
+
             />
           ))}
         </div>

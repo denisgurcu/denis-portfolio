@@ -18,7 +18,7 @@
 /* Hero Text */
 .hero-text {
   font-family: var(--graphyne);
-  font-size: clamp(4rem, 18rem, 18rem); /* Scales with screen */
+  font-size: clamp(4rem, 15rem, 18rem); /* Scales with screen */
   color: var(--black);
   margin: 0;
   text-align: center;
