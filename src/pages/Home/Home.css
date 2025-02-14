@@ -5,10 +5,10 @@
 
 /* Hero Section */
 .hero {
-  height: 100vh;
+  height: 100vh; /* Ensures enough height */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* Pushes content to the bottom */
   align-items: center;
   text-align: center;
   position: relative;
@@ -18,7 +18,7 @@
 /* Hero Text */
 .hero-text {
   font-family: var(--graphyne);
-  font-size: 18em;
+  font-size: clamp(4rem, 18rem, 18rem); /* Scales with screen */
   color: var(--black);
   margin: 0;
   text-align: center;
@@ -42,7 +42,7 @@
 
 .scroll-text {
   font-family: 'Afacad Flux', sans-serif;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 3rem, 3rem); /* Stays 3rem except on small screens */
   text-align: center;
   max-width: 80%;
   line-height: 1.6;
@@ -58,7 +58,7 @@
 }
 
 /* Boxes Container */
-.boxes-container {
+/* .boxes-container {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -66,50 +66,80 @@
   width: 100%;
   position: absolute;
   top: 5%;
-  /* Position it above the hero text */
+} */
+
+.boxes-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  /* flex-wrap: wrap; */
 }
+
+/* Box Wrapper */
+/* .box-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+} */
 
 /* Box Wrapper */
 .box-wrapper {
   display: flex;
   flex-direction: column;
-  /* Stack box and label vertically */
   align-items: center;
-  /* Center items horizontally */
   position: relative;
 }
 
+/* For boxes where the text is on top */
+/* .box-wrapper.top {
+  flex-direction: column-reverse;
+} */
+
 /* Box Styles */
-.box {
+/* .box {
   width: 370px;
-  /* Ensure consistent width for wrapper */
   height: 220px;
-  /* All boxes have the same height */
   display: flex;
-  justify-content: center;
   align-items: center;
   overflow: hidden;
   z-index: 2;
-  /* Higher value to make it appear above the label */
   border: 4px solid;
-  /* Box border for each type */
+} */
+
+/* Box */
+.box {
+  width: 370px;
+  height: 220px;
+  border: 4px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
 }
 
 .branding {
+  border-bottom: none; /* Removes the bottom border */
   border-color: var(--red);
 }
 
 .graphic {
   border-color: var(--darkblue);
-  margin-top: 63px;
+  border-top: none; /* Removes the bottom border */
+
 }
 
 .motion {
+  border-bottom: none; /* Removes the bottom border */
   border-color: var(--darkred);
 }
 
 /* Label Styles */
-.label {
+/* .label {
   position: relative;
   z-index: 1;
   margin-top: -5px;
@@ -117,6 +147,21 @@
   text-align: center;
   font-family: 'Breamcatcher', sans-serif;
   font-size: 2rem;
+  padding: 10px;
+  border: 4px solid;
+  box-sizing: border-box;
+} */
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  font-family: 'Breamcatcher', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 2rem);
   padding: 10px;
   border: 4px solid;
   box-sizing: border-box;
@@ -130,18 +175,14 @@
 
 /* Graphic Label - Above the Box */
 .graphic-label {
-  margin-top: 0;
   border-color: var(--darkblue);
   color: var(--darkblue);
-  position: absolute;
 }
 
 /* Motion Label */
 .motion-label {
   border-color: var(--darkred);
-  /* Match Motion box border */
   color: var(--darkred);
-  /* Dark red text */
 }
 
 .recent-works {
@@ -187,17 +228,21 @@
 
 
 
-/* Responsiveness */
+/* Responsiveness  */
 @media (max-width: 768px) {
+  .hero {
+    padding-bottom: 150px; /* Extra space for text */
+  }
+
   .hero-text {
     font-size: 8rem;
-    bottom: 5%;
+    bottom: -3%;
   }
 
   .boxes-container {
     flex-direction: column;
-    gap: 30px;
-    width: 90%;
+    gap: 15px;
+    width: 80%;
     max-width: none;
   }
 
@@ -207,18 +252,6 @@
 
   .box {
     height: 220px;
-  }
-
-  .label {
-    font-size: 1rem;
-    padding: 4px;
-    width: 78%;
-    text-align: center;
-    margin-top: -4px;
-  }
-
-  .graphic-label {
-    margin-top: 60px;
   }
 
   .h-section {
@@ -246,19 +279,23 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding-bottom: 100px; /* Extra space for text */
+  }
+
   .hero-text {
-    font-size: 4rem;
-    bottom: 5%;
+    font-size: 7rem;
+    bottom: -2%;
   }
 
   .boxes-container {
-    width: 95%;
+    flex-direction: column;
     gap: 20px;
-  }
+    width: 100%;
 
+  }
   .box {
-    width: 300px;
-    height: 180px;
+    height: 220px;
   }
 
   .label {
@@ -266,12 +303,9 @@
     padding: 5px;
   }
 
-  .graphic-label {
-    top: -30px;
-  }
 
   .view-more {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 6px 20px;
     border-radius: 15px
   }
@@ -286,3 +320,80 @@
   }
 
 }
+
+/* 📲 Tablet (768px - 1024px) → Keeps 3 per row */
+/* @media (max-width: 1024px) {
+  .boxes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    width: 90%;
+    justify-content: center;
+  }
+
+  .box {
+    width: 280px;
+    height: 180px;
+  }
+
+  .label {
+    font-size: 1.4rem;
+    padding: 6px;
+  }
+
+  .scroll-text {
+    font-size: 3rem; 
+  }
+}
+
+/* 📱 Mobile (≤768px) → Switches to 1 per row */
+/* @media (max-width: 768px) {
+  .boxes-container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    width: 90%;
+    justify-content: center;
+  }
+
+  .box {
+    width: 100%;
+    height: 200px;
+  }
+
+  .label {
+    font-size: 1.2rem;
+    padding: 6px;
+    text-align: center;
+  }
+
+  .scroll-text {
+    font-size: 1.8rem; 
+  }
+
+  .cursor-info {
+    display: none;
+  }
+} */
+
+/* 📱 Smaller Mobile (≤480px) */
+/* @media (max-width: 480px) {
+  .box {
+    width: 300px;
+    height: 180px;
+  }
+
+  .label {
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  .scroll-text {
+    font-size: 1.6rem;
+  }
+
+  .cursor-info {
+    display: none;
+  }
+} 
+ */

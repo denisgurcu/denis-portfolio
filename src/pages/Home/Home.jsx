@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Branding from "./Branding"; 
-import Graphic from "./Graphic"; 
-import Motion from "./Motion"; 
-import ColorPicker from "../../components/ColorPicker"; 
-import CustomCursor from "../../components/CustomCursor"; 
-import Card from "../../components/Card"; 
+import Branding from "./Branding";
+import Graphic from "./Graphic";
+import Motion from "./Motion";
+import ColorPicker from "../../components/ColorPicker";
+import CustomCursor from "../../components/CustomCursor";
+import Card from "../../components/Card";
 import "./Home.css";
 
 // Import project images
@@ -98,22 +98,24 @@ const Home = () => {
       <section className="hero-wrapper">
         <div className="hero">
           <div className="boxes-container">
-            {/* Branding Animation */}
-            <div className="box-wrapper">
+            {/* Branding (Label at Bottom) */}
+            <div className="box-wrapper bottom">
               <div className="box branding">
                 <Branding />
               </div>
               <div className="label branding-label">BRANDING</div>
             </div>
-            {/* Graphic Design Animation */}
-            <div className="box-wrapper">
+
+            {/* Graphic Design (Label at Top) */}
+            <div className="box-wrapper top">
+              <div className="label graphic-label">GRAPHIC DESIGN</div>
               <div className="box graphic">
                 <Graphic />
               </div>
-              <div className="label graphic-label">GRAPHIC DESIGN</div>
             </div>
-            {/* Motion Design Animation */}
-            <div className="box-wrapper">
+
+            {/* Motion (Label at Bottom) */}
+            <div className="box-wrapper bottom">
               <div className="box motion">
                 <Motion />
               </div>
@@ -155,7 +157,7 @@ const Home = () => {
             isGif={true}
             // projectDetails="A diverse range of visuals created for various marketing campaigns and purposes."
             tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
-            linkTo= "/posters"
+            linkTo="/posters"
           />
           <Card
             title="ALTER EGO VISUAL IDENTITY"
@@ -164,7 +166,7 @@ const Home = () => {
             isGif={false}
             // projectDetails="A branding concept for a coffee shop, blending modernity and self-expression into a refined experience."
             tags={["Branding", "Packaging", "Graphic Design"]}
-            linkTo= "/alter-ego"
+            linkTo="/alter-ego"
           />
           <Card
             title="LOGO DESIGNS"
@@ -173,7 +175,7 @@ const Home = () => {
             isGif={true}
             // projectDetails="A collection of logos crafted to represent unique brand identities"
             tags={["Logo Design", "Graphic Design"]}
-            linkTo= "/logo"
+            linkTo="/logo"
           />
         </div>
         <button className="view-more">VIEW MORE</button>
