@@ -158,7 +158,7 @@ const Home = () => {
             linkTo= "/posters"
           />
           <Card
-            title="ALTER EGO VISUAL IDENTITYiii"
+            title="ALTER EGO VISUAL IDENTITY"
             imageUrl={CardImage5}
             hoverImageUrl={CardImage6}
             isGif={false}
