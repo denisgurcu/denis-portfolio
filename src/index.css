@@ -7,16 +7,16 @@
 
   @font-face {
     font-family: 'Graphyne';
-    src: url('/fonts/graphyne-regular.woff2') format('woff2'),
-         url('/fonts/graphyne-regular.woff') format('woff'),
-         url('/fonts/graphyne-regular.ttf') format('ttf');
+    src: url('./assets/fonts/graphyne-regular-webfont.woff2') format('woff2'),
+         url('./assets/fonts/graphyne-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-  font-family: 'Afacad Flux';
-  src: url('/fonts/AfacadFlux-Medium.ttf') format('ttf');
+  font-family: 'Afacad';
+  src: local('Afacad'), url("./fonts/afacad-flux.woff") format('woff');
+
 }
   
   /* Global colors and fonts */
@@ -32,10 +32,11 @@
     --darkred: #8F263E;
     --pink: #E3C3D8;
   
-    --afacad: 'Afacad Flux', serif; 
+    --afacad: 'Afacad Flux Denis', serif; 
     --breamcather: 'Breamcatcher', sans-serif;
     --graphyne: 'Graphyne', sans-serif;
   }
+
   
   /* BG color for each page */
   .home-bg {
