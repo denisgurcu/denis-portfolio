@@ -6,7 +6,7 @@ import CustomCursor from "../components/CustomCursor"; // Custom cursor componen
 
 const Layout = () => {
   const location = useLocation(); // Get current route location
-  const [cursorColor, setCursorColor] = useState("transparent"); // State to manage cursor color
+  const [cursorColor, setCursorColor] = useState("var(--white)"); // State to manage cursor color
 
   useEffect(() => {
     // Load saved cursor color from localStorage when location changes

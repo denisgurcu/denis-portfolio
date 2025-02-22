@@ -57,7 +57,7 @@ const CustomCursor = ({ cursorColor }) => {
     <div
       className="cursor"
       style={{
-        backgroundColor: cursorColor || "transparent", // Use the provided cursor color or make it transparent
+        backgroundColor: cursorColor || "var(--white)", // Use the provided cursor color or make it transparent
         opacity: cursorOpacity, // Apply the current opacity
       }}
     />
