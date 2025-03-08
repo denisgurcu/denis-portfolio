@@ -1,5 +1,5 @@
 .alter-ego-intro-wrapper {
-    position: absolute; /* Allows it to start at the top */
+    position: relative; 
     top: 0;
     left: 0;
     width: 100%;
@@ -12,7 +12,7 @@
     margin: 0;
     padding: 0;
     z-index: -1; /* Ensures content is behind the header */
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .alter-ego-animation-container {
