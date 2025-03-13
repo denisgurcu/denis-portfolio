@@ -7,10 +7,14 @@ const EyeLogo = () => {
   const navigate = useNavigate(); // React Router's hook for page navigation
   const [isBlinking, setIsBlinking] = useState(false); // State to control blinking animation
   const [isClicked, setIsClicked] = useState(false); // State to handle click animation
+  const [isHovering, setIsHovering] = useState(false); // State to detect hover
+  const isHoverBlinking = useRef(false); // Prevents interference with regular blinking
 
   // Make the pupil follow the mouse pointer
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (!pupilRef.current) return;
+
       const eye = pupilRef.current.parentElement.getBoundingClientRect(); // Get the eye's position
       const eyeCenterX = eye.left + eye.width / 2; // Horizontal center of the eye
       const eyeCenterY = eye.top + eye.height / 2; // Vertical center of the eye
@@ -29,9 +33,7 @@ const EyeLogo = () => {
       const y = Math.sin(angleRad) * distance;
 
       // Move the pupil to follow the mouse
-      if (pupilRef.current) {
-        pupilRef.current.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-      }
+      pupilRef.current.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
     };
 
     window.addEventListener("mousemove", handleMouseMove); // Listen for mouse movement
@@ -40,6 +42,41 @@ const EyeLogo = () => {
       window.removeEventListener("mousemove", handleMouseMove); // Clean up the listener
     };
   }, []); // Runs once when the component mounts
+
+  // Regular blinking every 7 seconds
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      if (!isHovering) {
+        setIsBlinking(true);
+        setTimeout(() => setIsBlinking(false), 150);
+      }
+    }, 7000); // Regular blink every 7 seconds
+
+    return () => clearInterval(blinkInterval);
+  }, [isHovering]);
+
+  // Double Blink on Hover
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    if (!isHoverBlinking.current) {
+      isHoverBlinking.current = true;
+      setIsBlinking(true);
+      setTimeout(() => {
+        setIsBlinking(false);
+        setTimeout(() => {
+          setIsBlinking(true);
+          setTimeout(() => {
+            setIsBlinking(false);
+            isHoverBlinking.current = false; // Reset hover blinking
+          }, 150);
+        }, 100);
+      }, 100);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   // Handle click interactions
   const handleClick = () => {
@@ -52,8 +89,10 @@ const EyeLogo = () => {
 
   return (
     <div
-      className={`eye ${isBlinking ? "blinking" : ""} ${isClicked ? "clicked" : ""}`} // Add blinking or clicked classes
+      className={`eye clickable ${isBlinking ? "blinking" : ""} ${isClicked ? "clicked" : ""} ${isHovering ? "shrink" : ""}`}
       onClick={handleClick} // Handle click events
+      onMouseEnter={handleMouseEnter} // Detect hover for double blink
+      onMouseLeave={handleMouseLeave} // Detect when hover stops
       role="button" // Make it accessible as a button
       aria-label="Eye logo, click to interact" // Provide a screen-reader description
     >

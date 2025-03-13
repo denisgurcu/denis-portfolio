@@ -1,148 +1,124 @@
+/* Fullscreen Footer */
 .footer {
-  display: flex; /* Flexbox layout for left and right sections */
-  justify-content: space-between; /* Space between left and right sections */
-  align-items: center; /* Vertically align the content */
-  padding: 50px; /* Consistent padding */
-  color: var(--black);
-  max-width: 100%;
-}
-
-.footer-left {
-  flex: 1; /* Left section takes equal space */
-  text-align: left;
-}
-
-.footer-right {
-  flex: 1; /* Right section takes equal space */
-  text-align: right;
-}
-
-.footer-left h2 {
-  font-family: var(--afacad);
-  font-style: bold;
-  font-size: 5rem; /* Larger font for "Contact" */
-  margin-bottom: 20px;
-}
-
-.contact-container {
-  display: flex;
-  flex-direction: column; /* Stack email and icons vertically */
-  align-items: flex-start; /* Align items to the left */
-  gap: 30px; /* Space between the email button and icons */
-}
-
-.email-button {
-  display: inline-block; /* Prevents the button from taking the full width */
-  font-family: var(--afacad);
-  font-size: 1.5rem; /* Reduced font size for shorter button */
-  color: var(--white);
+  height: 100vh;
   background-color: var(--black);
-  padding: 10px 50px;
-  border-radius: 25px;
-  text-decoration: none; /* Remove underline */
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keeps "CONTACT" at the bottom */
+  align-items: center;
   text-align: center;
-  transition: all 0.3s ease; /* Smooth hover effect for scale and background */
+  position: relative;
 }
 
-.email-button:hover {
-  background-color: var(--darkred);
-  transform: scale(1.05); /* Slightly enlarge on hover */
+/* Canvas Background */
+.footer-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
+/* Dedicated Section for Footer Content */
+.footer-content-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 7%;
+  text-align: left;
+  left: 15%; /* Aligns with "C" */
+  margin-bottom: auto; /* Ensures it stays above CONTACT */
+}
+
+/* Work Title */
+.footer-title {
+  font-family: var(--afacad);
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Subtitle */
+.footer-subtitle {
+  font-family: var(--afacad);
+  font-size: 2rem;
+  font-weight: var(--afacad-regular);
+  color: var(--white);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Underlined Email Link */
+.footer-link {
+  display: inline-block;
+  font-family: var(--afacad);
+  font-weight: var(--afacad-light);
+  font-size: 1.5rem;
+  color: var(--white);
+  /* background: var(--grey); */
+  border: 1px solid var(--grey);
+  padding: 10px 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+
+}
+
+.footer-link:hover {
+  transform: scale(0.95);
+  background: var(--red);
+  color: var(--black);
+}
+
+/* Social Icons (Rounded Buttons) */
 .social-icons {
   display: flex;
-  justify-content: flex-start; /* Align icons to the left */
-  column-gap: 50px; /* Precise control over spacing between icons */
+  gap: 20px;
+  margin-top: 10px;
 }
 
-.social-icon {
-  font-size: 2.5rem; /* Adjust size of icons */
+.social-button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: var(--white);
+  text-decoration: none;
+  /* background: var(--grey); */
+  border: 1px solid var(--grey);
+  transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.social-button:hover {
+  background: var(--red);
   color: var(--black);
-  border: 2px solid var(--black); /* Add a solid border */
-  border-radius: 25%; /* Adjust the roundness of the border */
-  padding: 8px;
-  transition: all 0.3s ease; /* Smooth hover effect */
+  transform: scale(0.9);
 }
 
-.social-icon:hover {
-  color: var(--darkred); /* Change icon color */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+/* "CONTACT" - Positioned at Bottom Like Hero Text */
+.footer-contact {
+  font-family: var(--graphyne);
+  font-size: 20rem;
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  width: 100%;
+  color: var(--white);
+  margin: 0;
+  z-index: 1; /* Ensures it stays behind other content */
 }
 
-.footer-right p {
+/* Footer Bottom Info */
+.footer-bottom {
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
   font-family: var(--afacad);
-  font-size: 1.5rem; /* Font size for text */
-  margin: 0; /* Remove margin for cleaner alignment */
-}
-
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .footer {
-    flex-direction: column; /* Stack left and right sections vertically */
-    align-items: flex-start; /* Align items to the left */
-    padding: 30px; /* Reduce padding */
-  }
-
-  .footer-left,
-  .footer-right {
-    text-align: left; /* Ensure left alignment for both sections */
-    width: 100%; /* Make both sections take full width */
-    margin-bottom: 20px; /* Add spacing between stacked sections */
-  }
-
-  .footer-left h2 {
-    font-size: 3.5rem; /* Reduce font size */
-    margin-bottom: 15px;
-  }
-
-  .contact-container {
-    gap: 20px; /* Reduce gap between elements */
-  }
-
-  .email-button {
-    font-size: 1.2rem; /* Smaller button text */
-    padding: 8px 30px; /* Adjust padding */
-  }
-
-  .social-icons {
-    gap: 20px; /* Smaller gap between icons */
-  }
-
-  .social-icon {
-    font-size: 2rem; /* Smaller icons */
-    padding: 6px; /* Adjust padding */
-  }
-
-  .footer-right p {
-    font-size: 1rem; /* Adjust font size */
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 20px; /* Further reduce padding */
-  }
-
-  .footer-left h2 {
-    font-size: 3rem; /* Smaller font for very small screens */
-  }
-
-  .email-button {
-    font-size: 1rem; /* Smaller button text */
-    padding: 6px 20px; /* Adjust padding */
-  }
-
-  .social-icons {
-    gap: 15px; /* Even smaller gap between icons */
-  }
-
-  .social-icon {
-    font-size: 1.8rem; /* Even smaller icons */
-    padding: 4px;
-  }
-
-  .footer-right p {
-    font-size: 1rem; /* Adjust font size */
-  }
+  font-size: 1rem;
+  width: 100%;
+  z-index: 2;
 }

@@ -1,7 +1,7 @@
 .motion-container {
   position: relative;
-  width: 370px;
-  height: 220px;
+  width: 450px;
+  height: 320px;
   background-color: var(--pink);
 }
 
@@ -9,6 +9,13 @@
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+@media (max-width: 1440px) {
+  .motion-container {
+    width: 390px;
+    height: 256px;
+  }
 }
 
 @media (max-width: 768px)  {

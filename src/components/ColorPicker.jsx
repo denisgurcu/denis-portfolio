@@ -35,7 +35,7 @@ const ColorPicker = ({ onColorSelect }) => {
       {colors.map(({ color, label }) => (
         <div
           key={color} // Use the color as a unique key
-          className="color-circle"
+          className="color-circle clickable"
           style={{ backgroundColor: color }} // Set the circle's background to the color
           data-tippy-content={label} // Tooltip shows the color's name
           onClick={() => onColorSelect(color)} // Call the handler to set the selected color

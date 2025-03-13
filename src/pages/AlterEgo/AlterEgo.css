@@ -181,14 +181,14 @@
 
 .coffee-you-section .concept-item p,
 .coffee-you-section .concept-symbol p {
-    font-size: 10rem; /* Increase size as desired */
+    font-size: 10rem; 
     font-family: var(--afacad);
     color: var(--black);
 }
 
 /* Blinking question mark */
 .blinking-question {
-    animation: blink 2s infinite; /* Extend duration to account for initial pause */
+    animation: blink 2s infinite; 
 }
 
 @keyframes blink {

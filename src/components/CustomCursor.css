@@ -10,8 +10,8 @@ body.default-cursor * {
 
 /* Custom cursor styles */
 .cursor {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,9 +22,20 @@ body.default-cursor * {
   z-index: 9999999;
   opacity: 0; /* Initially hidden */
   transition: opacity 0.5s ease, background-color 0.3s ease;
-  border: 1px solid var(--default-cursor-color);
+  border: 1px solid #949393;
   transform: translate(-50%, -50%);
 }
+
+.clickable {
+  cursor: none !important; /* Ensures no default cursor */
+}
+
+.cursor.shrink {
+  width: 15px; /* Adjust size for hover effect */
+  height: 15px;
+  transition: width 0.2s ease, height 0.2s ease; /* Smooth shrinking */
+}
+
 
 /* Disable custom cursor on smaller screens */
 @media screen and (max-width: 768px) {
