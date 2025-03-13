@@ -5,6 +5,9 @@
 
 }
 
+html {
+  overflow-x: hidden;
+}
 
 
 @font-face {
@@ -90,6 +93,29 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Arcane-Nine';
+  src: url('./fonts/Arcane-Nine.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cavalier';
+  src: url('./fonts/Cavalier.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Westmeath';
+  src: url('./fonts/Westmeath.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 /* Global colors and fonts */
 :root {
   --default-cursor-color: #E6E6E6;
@@ -106,6 +132,9 @@
   --afacad: 'Afacad Flux', sans-serif;
   --breamcather: 'Breamcatcher', sans-serif;
   --graphyne: 'Graphyne', sans-serif;
+  --arcane: 'Arcane-Nine', sans-serif;
+  --cavalier: 'Cavalier', sans-serif;
+  --westmeath: 'Westmeath', sans-serif;
 
   /* Define font weights */
   --afacad-thin: 100;

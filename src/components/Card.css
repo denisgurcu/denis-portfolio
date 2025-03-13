@@ -1,125 +1,126 @@
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 25px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 600px;
-  height: 600px; 
+/* Wrapper to keep the card and info together */
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Shrink Everything (Card, Title, Tags) on Hover */
+.card-wrapper:hover {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-in-out;
 }
 
 
+/* Card container */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.19rem;
+  width: 600px;
+  height: 600px;
+  transition: transform 0.3s ease;
+}
+
+/* Image styling */
 .card-image {
-  width: 100%; /* Make it take full width of the card */
-  height: 100%; /* Make it take full height of the card */
-  display: flex; /* Use flexbox to center the image */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Make sure the image covers the container without distortion */
-  object-position: center; /* Center the image */
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease;
 }
 
-
-.card-content {
-  font-family: 'Afacad Flux', sans-serif;
+/* Overlay for hover effect */
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: var(--white);
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Initially transparent */
+  transition: background 0.3s ease;
 }
 
-.card-content h3 {
-  font-size: 5rem; /* Change the font size */
-  font-weight: bold; /* Make it bold */
-  width: 80%;
-  letter-spacing: 2px; /* Space between letters */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add some shadow for effect */
-  transition: transform 0.3s ease; /* Smooth animation on hover */
+
+.card:hover .overlay {
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay */
 }
 
-.card:hover .card-content {
-  opacity: 1;
-  transform: scale(1.05);
+.card-wrapper:hover .overlay {
+  background: rgba(0, 0, 0, 0.7);
 }
 
-.card-details {
-  font-family: 'Afacad Flux', sans-serif;
-  font-style: bold;
-  color: var(--blue);
-  width: 60%;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  font-style: italic;
+.card-title,
+.tags {
+  transition: transform 0.3s ease-in-out;
 }
 
+/* Card info section (Title & Tags) */
+.card-info {
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Title */
+.card-title {
+  font-family: var(--afacad);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+/* Tags Container */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 30px;
+  justify-content: left;
+  gap: 10px;
 }
 
+/* Tag Styling */
 .tag {
-  background-color: var(--black); 
-  color: var(--white);
-  font-size: 1rem;
-  padding: 10px 10px;
-  border-radius: 15px;
-  margin: 5px;
-  text-transform: capitalize;
-  font-weight: bold;
+  font-family: var(--afacad);
+  color: var(--black);
+  font-size: 0.875rem;
+  padding: 5px px;
+  border-radius: 20px;
   transition: background-color 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
+/* Ensure the spacing around "/" is even */
+.tag-separator {
+  margin: 0 5px;
+  color: var(--black);
+}
 
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
   .card {
     width: 300px;
-    height: 300px; 
+    height: 300px;
   }
 
-  .card:hover .card-content {
-    opacity: 1; /* Ensure the content is visible */
-    transform: none; /* Remove scale effect */
+  .card-title {
+    font-size: 1.5rem;
   }
 
-  .card-content {
-    opacity: 1; /* Make content always visible */
-    transform: none; /* Remove animation */
-  }
-
-  .card:hover .card-image img {
-    filter: none; /* Remove any hover effects on images */
-  }
-
-  /* Optional: Hide the card content if you want it removed instead */
-  .card-content h3 {
-    display: none; /* Hides the title */
-  }
-
-  .card-content .card-details {
-    display: none; /* Hides the project details */
-  }
-
-  .tags {
-    display: none; /* Hides the tags */
+  .tag {
+    font-size: 0.9rem;
+    padding: 5px 10px;
   }
 }

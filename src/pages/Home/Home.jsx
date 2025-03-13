@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import React, { useState, useEffect, useRef} from "react";
+import { useOutletContext, Link } from "react-router-dom";
+import Scrollbar from "smooth-scrollbar";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Branding from "./Branding";
@@ -11,21 +12,25 @@ import Card from "../../components/Card";
 import "./Home.css";
 
 // Import project images
-import CardImage1 from "../../assets/images/dada_card.gif";
+import CardImage1 from "../../assets/images/dadacard.gif";
 import CardImage2 from "../../assets/images/dada_card_hover.png";
 import CardImage3 from "../../assets/images/poster_designs_card.png";
 import CardImage4 from "../../assets/images/poster_designs_card_hover.png";
-import CardImage5 from "../../assets/images/alter_ego_card.png";
+import CardImage5 from "../../assets/images/alterego_cup.jpg";
 import CardImage6 from "../../assets/images/alter_ego_card_hover.png";
-import CardImage7 from "../../assets/images/logo_designs_card.gif";
+import CardImage7 from "../../assets/images/logo_designs_card.png";
 import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 
 // Register GSAP 
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 const Home = () => {
   const [cursorColor, setCursorColorState] = useState("transparent"); // State to manage custom cursor color
   const { setCursorColor } = useOutletContext(); // Get context to update cursor color globally
+  const horizontalRef = useRef(null); // Ref for horizontal scrolling
+
 
   useEffect(() => {
     // Load saved cursor color from localStorage
@@ -40,6 +45,29 @@ const Home = () => {
     setCursorColor(color); // Update cursor color in the global context
     localStorage.setItem("cursorColor", color); // Save selected color
   };
+
+  useEffect(() => {
+    // GSAP Animation for horizontal scrolling
+    const horizontalSection = horizontalRef.current;
+
+    gsap.to(horizontalSection, {
+      x: () => -(horizontalSection.scrollWidth - window.innerWidth), // Ensures it stops at the right place
+      scrollTrigger: {
+        trigger: horizontalSection,
+        start: "center 55%",
+        end: "+=3000px",
+        pin: ".recent-works-container",
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+        markers: false,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
 
   useEffect(() => {
     // Animation for the hero text
@@ -138,47 +166,44 @@ const Home = () => {
       </section>
 
       {/* Recent Works Section */}
-      <section className="recent-works">
-        <h2>RECENT PROJECTS</h2>
-        <div className="card-grid">
-          {/* Render project cards, passing each info */}
-          <Card
-            title="DADA COLLECTIVE BRANDING"
-            imageUrl={CardImage1}
-            hoverImageUrl={CardImage2}
-            isGif={false}
-            // projectDetails="A bold identity for a design agency that thrives on breaking conventions."
-            tags={["Branding", "Graphic Design", "Motion Graphics"]}
-          />
-          <Card
-            title="POSTER DESIGNS"
-            imageUrl={CardImage3}
-            hoverImageUrl={CardImage4}
-            isGif={true}
-            // projectDetails="A diverse range of visuals created for various marketing campaigns and purposes."
-            tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
-            linkTo="/posters"
-          />
-          <Card
-            title="ALTER EGO VISUAL IDENTITY"
-            imageUrl={CardImage5}
-            hoverImageUrl={CardImage6}
-            isGif={false}
-            // projectDetails="A branding concept for a coffee shop, blending modernity and self-expression into a refined experience."
-            tags={["Branding", "Packaging", "Graphic Design"]}
-            linkTo="/alter-ego"
-          />
-          <Card
-            title="LOGO DESIGNS"
-            imageUrl={CardImage7}
-            hoverImageUrl={CardImage8}
-            isGif={true}
-            // projectDetails="A collection of logos crafted to represent unique brand identities"
-            tags={["Logo Design", "Graphic Design"]}
-            linkTo="/logo"
-          />
+      <section className="recent-works-container">
+        <h2 className="recent-works-title">RECENT PROJECTS</h2>
+        <div className="horizontal-scroll-wrapper" ref={horizontalRef}>
+          <div className="horizontal-scroll">
+            <Card
+              title="DADA COLLECTIVE"
+              imageUrl={CardImage1}
+              hoverImageUrl={CardImage2}
+              tags={["Branding", "Graphic Design", "Motion Graphics"]}
+            />
+            <Card
+              title="POSTER DESIGNS"
+              imageUrl={CardImage3}
+              hoverImageUrl={CardImage4}
+              tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
+              linkTo="/posters"
+            />
+            <Card
+              title="ALTER EGO"
+              imageUrl={CardImage5}
+              hoverImageUrl={CardImage6}
+              tags={["Branding", "Packaging", "Graphic Design"]}
+              linkTo="/alter-ego"
+            />
+            <Card
+              title="LOGO DESIGNS"
+              imageUrl={CardImage7}
+              hoverImageUrl={CardImage8}
+              tags={["Logo Design", "Graphic Design"]}
+              linkTo="/logo"
+            />
+
+            {/* VIEW ALL Card */}
+            <div className="view-all-card clickable">
+              <Link to="/projects">VIEW <br /> ALL</Link>
+            </div>
+          </div>
         </div>
-        <button className="view-more">VIEW MORE</button>
       </section>
     </>
   );

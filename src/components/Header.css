@@ -30,6 +30,16 @@
   transition: color 0.3s ease; /* Smooth color transition */
 }
 
+.nav-links .clickable {
+  display: inline-block;
+  transition: transform 0.2s ease; /* Smooth shrinking animation */
+}
+
+.nav-links .clickable:hover {
+  transform: scale(0.9); /* Shrinks the link */
+}
+
+
 .nav-links a.active {
   font-weight: var(--afacad-bold);
   border-bottom: 2px solid currentColor; /* Match the text color */

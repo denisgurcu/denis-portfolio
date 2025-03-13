@@ -84,25 +84,29 @@ const Header = () => {
       <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
         <NavLink
           to="/"
-          onClick={closeMenu} // Close the menu on link click
-          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
+          className="clickable" // Add the class to make cursor shrink on hover
+          onClick={closeMenu}
+          style={isMobile ? {} : { color: linkColor }}
         >
           Home
         </NavLink>
         <NavLink
           to="/projects"
-          onClick={closeMenu} // Close the menu on link click
-          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
+          className="clickable" // Add the class here too
+          onClick={closeMenu}
+          style={isMobile ? {} : { color: linkColor }}
         >
           Projects
         </NavLink>
         <NavLink
           to="/about"
-          onClick={closeMenu} // Close the menu on link click
-          style={isMobile ? {} : { color: linkColor }} // Apply dynamic link color only on larger screens
+          className="clickable" // Add the class here as well
+          onClick={closeMenu}
+          style={isMobile ? {} : { color: linkColor }}
         >
           About
         </NavLink>
+
       </nav>
     </header>
   );

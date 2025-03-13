@@ -20,7 +20,7 @@
 }
 
 .color-circle:hover {
-  scale: 1.2;
+  scale: 0.9;
 }
 
 .tippy-box[data-theme~='my-theme'] {

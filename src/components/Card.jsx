@@ -2,59 +2,53 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "./Card.css";
 
-// Card component with link support
-const Card = ({ title, imageUrl, hoverImageUrl, projectDetails, tags, linkTo }) => {
-  const [currentImage, setCurrentImage] = useState(imageUrl); // Track which image is currently displayed
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768); // Check if the screen is small (mobile)
+const Card = ({ title, imageUrl, hoverImageUrl, tags, linkTo }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
-  // Update screen size state when the window is resized
   useEffect(() => {
-    const handleResize = () => setIsSmallScreen(window.innerWidth <= 768); // Update isSmallScreen when resizing
-    window.addEventListener("resize", handleResize); // Listen for window resize events
-
-    return () => window.removeEventListener("resize", handleResize); // Clean up the listener when the component unmounts
+    const handleResize = () => setIsSmallScreen(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Ensure the default image is always shown on small screens
-  useEffect(() => {
-    if (isSmallScreen) {
-      setCurrentImage(imageUrl); // Reset to the main image on small screens
-    }
-  }, [isSmallScreen, imageUrl]); // Trigger this effect when screen size or image URL changes
-
-  // Create card content
-  const CardContent = (
+  return (
     <div
-      className="card"
-      // Switch to the hover image only on larger screens
-      onMouseEnter={() => !isSmallScreen && setCurrentImage(hoverImageUrl)}
-      onMouseLeave={() => !isSmallScreen && setCurrentImage(imageUrl)}
+      className="card-wrapper"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="card-image">
-        {/* Display the current image */}
-        <img src={currentImage} alt={title} />
-      </div>
-      {!isSmallScreen && (
-        <div className="card-content">
-          {/* Show the title and project details */}
-          <h3>{title}</h3>
-          <p className="card-details">{projectDetails}</p>
-          <div className="tags">
-            {/* Display tags associated with the card */}
-            {tags &&
-              tags.map((tag, index) => (
-                <span key={index} className="tag">
-                  {tag}
-                </span>
-              ))}
+      {/* Card Container */}
+      <div className="card clickable">
+        {linkTo ? (
+          <Link to={linkTo} className="card-link">
+            <div className="card-image">
+              <img src={isHovered ? hoverImageUrl : imageUrl} alt={title} />
+              <div className="overlay"></div>
+            </div>
+          </Link>
+        ) : (
+          <div className="card-image">
+            <img src={isHovered ? hoverImageUrl : imageUrl} alt={title} />
+            <div className="overlay"></div>
           </div>
+        )}
+      </div>
+
+      {/* Title and Tags Outside the Card */}
+      <div className="card-info clickable">
+        <h3 className="card-title">{title}</h3>
+        <div className="tags">
+          {tags.map((tag, index) => (
+            <span key={index} className="tag">
+              {tag}
+              {index < tags.length - 1 && <span className="tag-separator"> /</span>}
+            </span>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
-
-  // If linkTo is provided, wrap the card in a Link
-  return linkTo ? <Link to={linkTo}>{CardContent}</Link> : CardContent;
 };
 
-export default Card; // Make this component available for other parts of the app
+export default Card;
