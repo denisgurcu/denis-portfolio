@@ -51,11 +51,11 @@
 
 .projects-text {
   font-family: var(--graphyne);
-  font-size: clamp(4rem, 16vw, 18rem);
+  font-size: 22rem;
   color: var(--black);
   text-align: center;
   position: relative;
-  bottom: 10%; /* Sticks to the bottom but with a slight gap */
+  bottom: 0%; /* Sticks to the bottom but with a slight gap */
   width: 100%;
   max-width: 100%;
   margin: 0;

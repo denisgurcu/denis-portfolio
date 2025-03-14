@@ -5,8 +5,12 @@
 
 }
 
-html {
+html{
   overflow-x: hidden;
+}
+
+main {
+  padding-top: 80px; /* Ensures content doesn't overlap */
 }
 
 

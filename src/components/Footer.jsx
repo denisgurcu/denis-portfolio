@@ -1,135 +1,105 @@
 import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
-  const canvasRef = useRef(null);
   const footerRef = useRef(null);
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const footer = footerRef.current;
-    
-    let width = footer.offsetWidth;
-    let height = footer.offsetHeight;
-    canvas.width = width;
-    canvas.height = height;
-    
-    // 🎨 Updated Colors (Using CSS Variables)
-    const colors = [
-      getComputedStyle(document.documentElement).getPropertyValue("--yellow").trim(),
-      getComputedStyle(document.documentElement).getPropertyValue("--blue").trim(),
-      getComputedStyle(document.documentElement).getPropertyValue("--darkblue").trim(),
-      getComputedStyle(document.documentElement).getPropertyValue("--red").trim(),
-      getComputedStyle(document.documentElement).getPropertyValue("--darkred").trim(),
-      getComputedStyle(document.documentElement).getPropertyValue("--pink").trim(),
-    ];
+  const containerRef = useRef(null);
 
-    let particles = [];
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    function Particle(x, y) {
-      this.x = x;
-      this.y = y;
-      this.size = Math.random() * 10 + 5;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.life = 1;
-      this.velocityX = (Math.random() - 0.5) * 2;
-      this.velocityY = (Math.random() - 0.5) * 2;
-    }
+  //   console.log("🛠 Footer Animation Initialized");
 
-    Particle.prototype.update = function () {
-      this.size *= 0.95;
-      this.life -= 0.02;
-    };
+  //   // ✅ Ensure all previous ScrollTriggers are killed
+  //   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    Particle.prototype.draw = function () {
-      ctx.globalAlpha = this.life;
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    };
+  //   // ✅ Ensure GSAP fully resets previous animations
+  //   gsap.set(containerRef.current, { scale: 0.75 }); // Start smaller
+  //   gsap.set(footerRef.current, { height: "60vh" });
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach((particle, index) => {
-        particle.update();
-        particle.draw();
-        if (particle.life <= 0.01) particles.splice(index, 1);
-      });
-      requestAnimationFrame(animate);
-    }
+  //   // ✅ GSAP Scroll Animation: Expands the footer on scroll
+  //   const footerScaleAnim = gsap.to(containerRef.current, {
+  //     scrollTrigger: {
+  //       id: "footerTrigger",
+  //       trigger: containerRef.current,
+  //       start: "top bottom", // Animation starts later
+  //       end: "top center",
+  //       scrub: 1.5,
+  //       invalidateOnRefresh: true,
+  //       onEnter: () => console.log("🎬 Footer Scale Animation Started"),
+  //       onLeaveBack: () => console.log("🔄 Footer Scale Animation Reversed"),
+  //     },
+  //     scale: 1, // Grows the entire container to full size
+  //   });
 
-    function handleMouseMove(event) {
-      if (!footer.contains(event.target)) return;
-      
-      const rect = footer.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      for (let i = 0; i < 5; i++) {
-        particles.push(new Particle(x, y));
-      }
-    }
+  //   const footerHeightAnim = gsap.to(footerRef.current, {
+  //     scrollTrigger: {
+  //       id: "footerHeightTrigger",
+  //       trigger: containerRef.current,
+  //       start: "top bottom",
+  //       end: "bottom center",
+  //       scrub: 1.5,
+  //       invalidateOnRefresh: true,
+  //       onEnter: () => console.log("🎬 Footer Height Animation Started"),
+  //       onLeaveBack: () => console.log("🔄 Footer Height Animation Reversed"),
+  //     },
+  //     height: "100vh", // Expands to fill the entire viewport
+  //   });
 
-    footer.addEventListener("mousemove", handleMouseMove);
-    animate();
+  //   // ✅ Refresh ScrollTrigger every time user returns
+  //   setTimeout(() => {
+  //     console.log("🔄 Refreshing ScrollTrigger...");
+  //     ScrollTrigger.refresh();
+  //   }, 500);
 
-    window.addEventListener("resize", () => {
-      width = footer.offsetWidth;
-      height = footer.offsetHeight;
-      canvas.width = width;
-      canvas.height = height;
-    });
-
-    return () => footer.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  //   return () => {
+  //     console.log("🛑 Cleaning up animations before unmounting...");
+  //     footerScaleAnim.kill();
+  //     footerHeightAnim.kill();
+  //     ScrollTrigger.getById("footerTrigger")?.kill();
+  //     ScrollTrigger.getById("footerHeightTrigger")?.kill();
+  //   };
+  // }, []);
 
   return (
     <footer className="footer" ref={footerRef}>
-      {/* Canvas for Color Trail */}
-      <canvas ref={canvasRef} className="footer-canvas"></canvas>
+      {/* Main Footer Container */}
+      <div className="footer-container" ref={containerRef}>
+        {/* Open to Work Section */}
+        <div className="footer-content">
+          <h2 className="footer-title">Open to work and collaborate.</h2>
 
-      {/* Footer Content Wrapper */}
-      <div className="footer-content-wrapper">
-        <h2 className="footer-title">Open to work and collaborate.</h2>
-        <p className="footer-subtitle">Feel free to reach out!</p>
+          {/* Email & Social Icons */}
+          <div className="email-social-container">
+            <a href="mailto:hello@denisgurcu.com" className="footer-link clickable">
+              hello@denisgurcu.com
+            </a>
 
-        {/* Email Link */}
-        <a href="mailto:hello@denisgurcu.com" className="footer-link clickable">
-          hello@denisgurcu.com
-        </a>
-
-        {/* Social Buttons */}
-        <div className="social-icons clickable">
-          <a
-            href="https://www.linkedin.com/in/denisgurcu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-button"
-          >
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </a>
-          <a
-            href="https://github.com/denisgurcu"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-button"
-          >
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
+            {/* Social Icons Now Below Email */}
+            <div className="social-icons clickable">
+              <a href="https://www.linkedin.com/in/denisgurcu/" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </a>
+              <a href="https://github.com/denisgurcu" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* "CONTACT" at the bottom like hero text */}
-      <h1 className="footer-contact">CONTACT</h1>
+        {/* "CONTACT" Large Text */}
+        <h1 className="footer-contact">CONTACT</h1>
 
-      {/* Footer Bottom Info */}
-      <div className="footer-bottom">
-        <p>Designed and coded by Denis Gurcu</p>
-        <p>&copy; 2024. All rights reserved.</p>
+        {/* Footer Bottom Info */}
+        <p className="footer-bottom">
+          <span>Designed & coded by Denis Gurcu</span>
+          <span>Built with React</span>
+          <span>© 2024 All Rights Reserved.</span>
+        </p>
       </div>
     </footer>
   );

@@ -58,6 +58,16 @@ const projectData = [
 ];
 
 const Projects = () => {
+
+  useEffect(() => {
+    console.log("🚀 Projects Page Mounted");
+
+    return () => {
+      console.log("❌ Projects Page Unmounted");
+    };
+  }, []);
+
+  
   const [selectedTab, setSelectedTab] = useState("all"); // Default tab is 'All'
 
   // Filter projects based on the selected tab
