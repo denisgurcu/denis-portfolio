@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useOutletContext, Link } from "react-router-dom";
-import Scrollbar from "smooth-scrollbar";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Branding from "./Branding";
@@ -24,109 +23,101 @@ import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 // Register GSAP 
 gsap.registerPlugin(ScrollTrigger);
 
-
-
 const Home = () => {
-  const [cursorColor, setCursorColorState] = useState("transparent"); // State to manage custom cursor color
-  const { setCursorColor } = useOutletContext(); // Get context to update cursor color globally
-  const horizontalRef = useRef(null); // Ref for horizontal scrolling
-
+  const [cursorColor, setCursorColorState] = useState("transparent");
+  const { setCursorColor } = useOutletContext();
+  const horizontalRef = useRef(null);
 
   useEffect(() => {
-    // Load saved cursor color from localStorage
+    // ✅ Load saved cursor color from localStorage
     const savedColor = localStorage.getItem("cursorColor");
-    if (savedColor) {
-      setCursorColorState(savedColor);
-    }
+    if (savedColor) setCursorColorState(savedColor);
   }, []);
 
   const handleColorSelect = (color) => {
-    setCursorColorState(color); // Update local cursor color state
-    setCursorColor(color); // Update cursor color in the global context
-    localStorage.setItem("cursorColor", color); // Save selected color
+    setCursorColorState(color);
+    setCursorColor(color);
+    localStorage.setItem("cursorColor", color);
   };
 
+  // ✅ Fix: Ensure ScrollTrigger Refreshes on Every Page Load
   useEffect(() => {
-    // GSAP Animation for horizontal scrolling
-    const horizontalSection = horizontalRef.current;
-
-    gsap.to(horizontalSection, {
-      x: () => -(horizontalSection.scrollWidth - window.innerWidth), // Ensures it stops at the right place
-      scrollTrigger: {
-        trigger: horizontalSection,
-        start: "center 55%",
-        end: "+=3000px",
-        pin: ".recent-works-container",
-        scrub: 1.5,
-        invalidateOnRefresh: true,
-        markers: false,
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    console.log("🔄 Refreshing ScrollTrigger on component mount...");
+    ScrollTrigger.refresh();
   }, []);
 
-
+  // ✅ Horizontal Scroll Animation
   useEffect(() => {
-    // Animation for the hero text
-    gsap.fromTo(
-      ".hero-text",
-      { y: -50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out",
-      }
-    );
-
-    // Animation for the branding, graphic, and motion design sections
-    gsap.fromTo(
-      ".box-wrapper",
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 2,
-        stagger: 0.3, // Delay each box animation
-        ease: "power2.out",
+    const horizontalSection = horizontalRef.current;
+    
+    if (horizontalSection) {
+      gsap.to(horizontalSection, {
+        x: () => -(horizontalSection.scrollWidth - window.innerWidth),
         scrollTrigger: {
-          trigger: ".hero", // Start animation when .hero section is in view
-          start: "top 80%",
+          id: "horizontalScroll",
+          trigger: horizontalSection,
+          start: "center 60%",
+          end: "+=4500px",
+          pin: ".recent-works-container-pinner",
+          scrub: 1.5,
+          invalidateOnRefresh: true,
         },
-      }
-    );
+      });
+    }
 
-    // Animation for project cards
-    gsap.fromTo(
-      ".card",
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3, // Delay each card animation
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".recent-works",
-          start: "top 80%", // Start animation when recent works section is in view
-        },
-      }
-    );
+    return () => {
+      ScrollTrigger.getById("horizontalScroll")?.kill();
+    };
+  }, []); 
+
+  // ✅ Fix: Ensure Scroll Animations Restart on Refresh
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // ✅ Hero text animation
+      gsap.fromTo(
+        ".hero-text",
+        { y: -50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 2, ease: "power2.out" }
+      );
+
+      // ✅ Branding, graphic, and motion sections
+      gsap.fromTo(
+        ".box-wrapper",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            id: "brandingSections",
+            trigger: ".hero",
+            start: "top 80%",
+          },
+        }
+      );
+
+    });
+
+    // ✅ Ensure ScrollTrigger Refreshes After Animations Load
+    setTimeout(() => {
+      console.log("🔄 Ensuring ScrollTrigger refreshes after animations...");
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <>
-      {/* Custom cursor with dynamic color */}
+      {/* Custom cursor */}
       <CustomCursor cursorColor={cursorColor} />
 
       {/* Hero Section */}
       <section className="hero-wrapper">
         <div className="hero">
           <div className="boxes-container">
-            {/* Branding (Label at Bottom) */}
             <div className="box-wrapper bottom">
               <div className="box branding">
                 <Branding />
@@ -134,7 +125,6 @@ const Home = () => {
               <div className="label branding-label">BRANDING</div>
             </div>
 
-            {/* Graphic Design (Label at Top) */}
             <div className="box-wrapper top">
               <div className="label graphic-label">GRAPHIC DESIGN</div>
               <div className="box graphic">
@@ -142,7 +132,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Motion (Label at Bottom) */}
             <div className="box-wrapper bottom">
               <div className="box motion">
                 <Motion />
@@ -154,7 +143,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Scroll Section with Cursor Color Picker */}
+      {/* Scroll Section */}
       <section className="scroll-section">
         <div className="scroll-text">
           I'm a multimedia designer specializing in branding, graphic, and motion
@@ -167,43 +156,45 @@ const Home = () => {
 
       {/* Recent Works Section */}
       <section className="recent-works-container">
-        <h2 className="recent-works-title">RECENT PROJECTS</h2>
-        <div className="horizontal-scroll-wrapper" ref={horizontalRef}>
-          <div className="horizontal-scroll">
-            <Card
-              title="DADA COLLECTIVE"
-              imageUrl={CardImage1}
-              hoverImageUrl={CardImage2}
-              tags={["Branding", "Graphic Design", "Motion Graphics"]}
-            />
-            <Card
-              title="POSTER DESIGNS"
-              imageUrl={CardImage3}
-              hoverImageUrl={CardImage4}
-              tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
-              linkTo="/posters"
-            />
-            <Card
-              title="ALTER EGO"
-              imageUrl={CardImage5}
-              hoverImageUrl={CardImage6}
-              tags={["Branding", "Packaging", "Graphic Design"]}
-              linkTo="/alter-ego"
-            />
-            <Card
-              title="LOGO DESIGNS"
-              imageUrl={CardImage7}
-              hoverImageUrl={CardImage8}
-              tags={["Logo Design", "Graphic Design"]}
-              linkTo="/logo"
-            />
+        <section className="recent-works-container-pinner">
+          <h2 className="recent-works-title">RECENT PROJECTS</h2>
+          <div className="horizontal-scroll-wrapper" ref={horizontalRef}>
+            <div className="horizontal-scroll">
+              <Card
+                title="DADA COLLECTIVE"
+                imageUrl={CardImage1}
+                hoverImageUrl={CardImage2}
+                tags={["Branding", "Graphic Design", "Motion Graphics"]}
+              />
+              <Card
+                title="POSTER DESIGNS"
+                imageUrl={CardImage3}
+                hoverImageUrl={CardImage4}
+                tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
+                linkTo="/posters"
+              />
+              <Card
+                title="ALTER EGO"
+                imageUrl={CardImage5}
+                hoverImageUrl={CardImage6}
+                tags={["Branding", "Packaging", "Graphic Design"]}
+                linkTo="/alter-ego"
+              />
+              <Card
+                title="LOGO DESIGNS"
+                imageUrl={CardImage7}
+                hoverImageUrl={CardImage8}
+                tags={["Logo Design", "Graphic Design"]}
+                linkTo="/logo"
+              />
 
-            {/* VIEW ALL Card */}
-            <div className="view-all-card clickable">
-              <Link to="/projects">VIEW <br /> ALL</Link>
+              {/* VIEW ALL Card */}
+              <div className="view-all-card clickable">
+                <Link to="/projects">VIEW <br /> ALL</Link>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </section>
     </>
   );

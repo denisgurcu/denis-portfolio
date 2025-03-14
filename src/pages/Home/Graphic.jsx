@@ -5,6 +5,7 @@ const Graphic = () => {
   const waveRefs = useRef([]); // Store references to wave paths
 
   useEffect(() => {
+    console.log("Graphic component mounted!");
     const m = 0.512286623256592433; // Control point multiplier for wave curves
 
     // Function to generate wave path data
@@ -67,6 +68,7 @@ const Graphic = () => {
 
     // Clean up event listeners
     return () => {
+      console.log("Cleaning up event listeners...");
       waveContainer.removeEventListener("mouseenter", addAnimation);
       waveContainer.removeEventListener("mouseleave", removeAnimation);
     };

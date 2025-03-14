@@ -1,5 +1,5 @@
 .eye {
-  margin-left: 50px;
+  /* margin-left: 50px; */
   width: 70px;
   height: 70px;
   display: inline-block;
@@ -64,14 +64,14 @@
 }
 
 .eye:not(.blinking):not(.clicked) .eyelid span {
-  animation: eyelid 7s infinite; /* Regular blinking */
+  animation: eyelid 10s infinite; /* Regular blinking */
 }
 
 /* Double Blink Effect on Hover */
-.eye.blinking .eyelid span {
+/* .eye.blinking .eyelid span {
   height: 100%;
   animation: double-blink 0.4s linear;
-}
+} */
 
 @keyframes double-blink {
   0%, 50% { height: 100%; }
