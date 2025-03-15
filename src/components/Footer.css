@@ -1,120 +1,118 @@
-/* Fullscreen Footer (Starts Smaller) */
+/* Footer Container */
 .footer {
-  margin: 200px 0px 0px 0px;
-  /* height: 100vh; 
-  max-height: 100%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: var(--white);
-}
-
-/* Main Footer Container - Initially Smaller */
-.footer-container {
   width: 100%;
-  max-width: 100%;
   height: 100vh;
-  max-height: 100%;
   background: var(--black);
+  color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  /* padding: 5rem 3rem; */
-  transition: transform 0.3s ease-out;
+  position: relative; /* Ensures child elements (canvas) are positioned properly */
+  overflow: hidden; /* Prevents unwanted scroll from animations */
 }
 
-/* Footer Content (Email & Socials) */
-.footer-content {
-  text-align: center;
+/* Canvas */
+.footer-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevents interference with links */
+  z-index: 0; /* Ensures it remains in the background */
 }
 
-/* Work Title */
+/* Main Grid */
+.footer-container {
+  margin: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative; /* Ensures text is above canvas */
+  z-index: 2;
+}
+
+/* Left Column: Title */
+.footer-left {
+  grid-column: 1 / 2;
+  align-self: flex-start;
+}
+
+/* Right Column: Email & Socials */
+.footer-right {
+  grid-column: 2 / 3;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-left: 10rem;
+}
 .footer-title {
+  font-family: var(--graphyne);
+  font-size: 8rem;
   margin-top: 5rem;
-  font-family: var(--afacad);
-  font-size: 4rem;
-  opacity: 0.8;
-  margin-bottom: 3rem;
+  opacity: 0.9;
 }
-
 
 /* Email Link */
 .footer-link {
-  font-size: 2rem;
   font-family: var(--afacad);
-  font-weight: var(--afacad-regular);
   color: var(--white);
+  font-size: 3rem;
   text-decoration: underline;
-  text-underline-offset: 5px;
-  transition: color 0.3s ease, transform 0.3s ease;
+  text-underline-offset: 12px;
+  display: inline-block;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
 }
 
 .footer-link:hover {
-  transform: scale(0.9);
-}
-/* Email & Socials */
-.email-social-container {
-  display: flex;
-  flex-direction: column; /* Stack email and social icons */
-  align-items: center;
-  gap: 25px; /* Adjust spacing */
-  justify-content: center;
+  transform: scale(0.95);
 }
 
-/* Social Icons */
-.social-icons {
-  margin-top: 3rem;
+/* Social Links */
+.footer-social {
   display: flex;
-  align-items: center;
-  gap: 30px;
-  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
 }
 
-/* Social Buttons */
-.social-icons a {
-  font-size: 2.5rem;
+.footer-social a {
+  font-family: var(--afacad);
   color: var(--white);
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
-.social-icons a:hover {
+.footer-social a:hover {
   transform: scale(0.9);
 }
-/* Large "CONTACT" Text */
-.footer-contact {
-  font-family: var(--graphyne);
-  font-size: 20rem;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  color: var(--white);
-}
 
+/* Bottom Center: Credits */
 .footer-bottom {
   font-family: var(--afacad);
   font-weight: var(--afacad-extralight);
   text-align: center;
   font-size: 1rem;
   width: 100%;
-  position: absolute;
-  bottom: 2%;
   display: flex;
   justify-content: center;
-  gap: 10px; /* Increase spacing between items */
-}
-
-.footer-bottom span {
+  gap: 15px;
+  color: var(--white);
+  margin-bottom: 2rem;
   position: relative;
+  z-index: 2;
 }
 
+/* Separator between footer info */
 .footer-bottom span:not(:last-child)::after {
-  content: "|"; /* Vertical separator */
-  margin-left: 10px; /* Space before separator */
-  margin-right: 10px; /* Space after separator */
-  color: var(--yellow); /* Match text color */
-  opacity: 0.7; /* Slight transparency */
+  content: "|";
+  margin-left: 12px;
+  margin-right: 12px;
+  color: var(--yellow);
+  opacity: 0.6;
 }

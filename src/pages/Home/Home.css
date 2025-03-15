@@ -26,7 +26,6 @@
   margin: 0;
   text-align: center;
   position: absolute;
-  bottom: 5%;
   /* Adjust position from bottom */
 }
 
@@ -258,8 +257,8 @@
 
 /* View All Card */
 .view-all-card {
-  width: 600px; /* Match the card width */
-  height: 600px; /* Match the card height */
+  width: 550px; /* Match the card width */
+  height: 550px; /* Match the card height */
   display: flex;
   justify-content: center;
   align-items: center;

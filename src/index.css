@@ -10,7 +10,11 @@ html{
 }
 
 main {
-  padding-top: 80px; /* Ensures content doesn't overlap */
+  padding-top: 80px; 
+}
+
+main.no-padding {
+  padding-top: 0 !important; /* Remove padding only for the projects page */
 }
 
 
