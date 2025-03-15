@@ -39,13 +39,13 @@ const Layout = () => {
 
   return (
     <div>
-      <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
-      <Header />
-      <main>
-        <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
-      </main>
-      <Footer />
-    </div>
+    <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
+    <Header />
+    <main className={location.pathname === "/projects" ? "no-padding" : ""}>
+      <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
+    </main>
+    <Footer />
+  </div>
   );
 };
 

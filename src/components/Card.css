@@ -20,8 +20,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.19rem;
-  width: 600px;
-  height: 600px;
+  width: 550px;
+  height: 550px;
   transition: transform 0.3s ease;
 }
 
