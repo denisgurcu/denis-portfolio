@@ -40,24 +40,29 @@ const CustomCursor = ({ cursorColor }) => {
       setCursorOpacity(1);
     };
 
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
+    // ✅ Apply event delegation to ALL `.clickable` elements (cards + toolbar buttons)
+    const handleMouseEnter = (e) => {
+      if (e.target.closest(".clickable")) {
+        console.log("Hovered on:", e.target.innerText || e.target.className); // Debugging log
+        setIsHovering(true);
+      }
+    };
 
-    // Select all elements with class 'clickable' and add event listeners
-    const clickableElements = document.querySelectorAll(".clickable");
-    clickableElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter);
-      el.addEventListener("mouseleave", handleMouseLeave);
-    });
+    const handleMouseLeave = (e) => {
+      if (e.target.closest(".clickable")) {
+        console.log("Left:", e.target.innerText || e.target.className); // Debugging log
+        setIsHovering(false);
+      }
+    };
 
     window.addEventListener("mousemove", updateCursorPosition);
+    document.addEventListener("mouseover", handleMouseEnter);
+    document.addEventListener("mouseout", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", updateCursorPosition);
-      clickableElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleMouseEnter);
-        el.removeEventListener("mouseleave", handleMouseLeave);
-      });
+      document.removeEventListener("mouseover", handleMouseEnter);
+      document.removeEventListener("mouseout", handleMouseLeave);
     };
   }, [isMobile]);
 
