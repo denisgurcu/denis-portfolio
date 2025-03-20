@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Isotope from "isotope-layout";
+import { IoGridOutline, IoListOutline } from "react-icons/io5";
 import GraphAnimation from './GraphAnimation';
 import WaveAnimation from './WaveAnimation';
 import MotionAnimation from './MotionAnimation'; // Component for Matter.js animation
 import Card from "../../components/Card"; // Card component for project display
 import './Projects.css';
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/perspective.css";
 
 // Import images for the project cards
-import CardImage1 from "../../assets/images/dada_card.gif";
+import CardImage1 from "../../assets/images/dadacard.gif";
 import CardImage2 from "../../assets/images/dada_card_hover.png";
 import CardImage3 from "../../assets/images/poster_designs_card.png";
 import CardImage4 from "../../assets/images/poster_designs_card_hover.png";
-import CardImage5 from "../../assets/images/alter_ego_card.png";
+import CardImage5 from "../../assets/images/alterego_cup.jpg";
 import CardImage6 from "../../assets/images/alter_ego_card_hover.png";
-import CardImage7 from "../../assets/images/logo_designs_card.gif";
+import CardImage7 from "../../assets/images/logo_card_2.gif";
 import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 
 // Project data with details, tags, and images
@@ -22,7 +27,7 @@ const projectData = [
     imageUrl: CardImage1,
     hoverImageUrl: CardImage2,
     isGif: false,
-    projectDetails: "A bold identity for a design agency that thrives on breaking conventions.",
+    projectDetails: "A bold, rebellious identity for a design agency that thrives on breaking conventions. Playful typography, surrealist imagery, and dynamic layouts bring the brand’s avant-garde spirit to life across digital and print.",
     tags: ["Branding", "Graphic Design", "Motion Graphics"],
     linkTo: "/dada-collective",
   },
@@ -31,7 +36,7 @@ const projectData = [
     imageUrl: CardImage3,
     hoverImageUrl: CardImage4,
     isGif: true,
-    projectDetails: "A diverse range of visuals created for various marketing campaigns and purposes.",
+    projectDetails: "A series of visually striking posters crafted for marketing campaigns and cultural events. Each design leverages bold compositions, vibrant colors, and compelling storytelling to create instant impact and brand recognition..",
     tags: ["Social Media Marketing", "Illustration", "Graphic Design"],
     linkTo: "/posters",
 
@@ -41,31 +46,64 @@ const projectData = [
     imageUrl: CardImage5,
     hoverImageUrl: CardImage6,
     isGif: false,
-    projectDetails: "A branding concept for a coffee shop, blending modernity and self-expression into a refined experience.",
+    projectDetails: "A modern, expressive brand identity for a coffee shop that blends sleek minimalism with self-expression. The visual identity extends to packaging, interior design, and digital touchpoints, ensuring a cohesive customer experience.",
     tags: ["Branding", "Packaging", "Graphic Design"],
     linkTo: "/alter-ego",
-    
+
   },
   {
     title: "LOGO DESIGNS",
     imageUrl: CardImage7,
     hoverImageUrl: CardImage8,
     isGif: true,
-    projectDetails: "A collection of logos crafted to represent unique brand identities.",
+    projectDetails: "A collection of custom-crafted logos designed for versatility and impact. Each logo is tailored to reflect the brand’s personality, ensuring recognition and scalability across various applications.",
     tags: ["Logo Design", "Graphic Design"],
     linkTo: "/logo",
   },
 ];
 
 const Projects = () => {
-  
-  const [selectedTab, setSelectedTab] = useState("all"); // Default tab is 'All'
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [view, setView] = useState("grid"); // View state (grid/list)
+  const isotopeRef = useRef(null);
 
-  // Filter projects based on the selected tab
-  const filteredProjects = selectedTab === "all" 
-    ? projectData 
-    : projectData.filter(project => project.tags.includes(selectedTab));
+// Initialize Isotope and Apply the Filter After Changing the View
+useEffect(() => {
+  if (isotopeRef.current) {
+    isotopeRef.current.destroy();
+  }
 
+  isotopeRef.current = new Isotope(view === "grid" ? ".projects-gallery" : ".work-list-wrapper", {
+    itemSelector: view === "grid" ? ".projects-item" : ".work-list-item",
+    layoutMode: view === "grid" ? "masonry" : "fitRows",
+    transitionDuration: "0.6s",
+    masonry: {
+      gutter: view === "grid" ? 25 : 0,
+    },
+    fitRows: {
+      gutter: 10, 
+    },
+  });
+
+  // ✅ Apply the selected filter again after view change
+  const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
+  isotopeRef.current.arrange({ filter: filterValue });
+
+  return () => {
+    if (isotopeRef.current) {
+      isotopeRef.current.destroy();
+    }
+  };
+}, [view, selectedFilter]); // ✅ Added `selectedFilter` as a dependency
+
+
+  // Apply Filtering for Both Views
+  useEffect(() => {
+    if (isotopeRef.current) {
+      const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
+      isotopeRef.current.arrange({ filter: filterValue });
+    }
+  }, [selectedFilter]);
 
   const [animationState, setAnimationState] = useState({
     showGraph: true,
@@ -86,7 +124,27 @@ const Projects = () => {
     // Start graph animation when the component mounts
     setAnimationState({ showGraph: true, showWave: false, showMotion: false });
   }, []);
-  
+
+  useEffect(() => {
+    // Initialize Tippy.js tooltips
+    tippy(".grid-view-button", {
+      content: "Grid View",
+      theme: "my-theme",
+      placement: "top",
+      animation: "perspective",
+      arrow: false,
+      delay: [100, 200],
+    });
+
+    tippy(".list-view-button", {
+      content: "List View",
+      theme: "my-theme",
+      placement: "top",
+      animation: "perspective",
+      arrow: false,
+      delay: [100, 200],
+    });
+  }, []);
 
   return (
     <>
@@ -100,53 +158,83 @@ const Projects = () => {
         <h1 className="projects-text">PROJECTS</h1>
       </section>
 
-      {/* Filter and Display Projects */}
-      <section className="projects-filter-section">
-        <div className="tabs">
-          {/* Tab group */}
-          <button
-            className={`tab ${selectedTab === "all" ? "active" : ""}`}
-            onClick={() => setSelectedTab("all")}
-          >
-            All
-          </button>
-          <button
-            className={`tab ${selectedTab === "Branding" ? "active" : ""}`}
-            onClick={() => setSelectedTab("Branding")}
-          >
-            Branding
-          </button>
-          <button
-            className={`tab ${selectedTab === "Motion Graphics" ? "active" : ""}`}
-            onClick={() => setSelectedTab("Motion Graphics")}
-          >
-            Motion
-          </button>
-          <button
-            className={`tab ${selectedTab === "Graphic Design" ? "active" : ""}`}
-            onClick={() => setSelectedTab("Graphic Design")}
-          >
-            Graphic
-          </button>
-        </div>
+      {/* Wrapper starts here */}
+      <div className="projects-wrapper">
+        <section className="projects-filter-section">
+          <div className="filters-container">
+            <div className="tabs clickable">
+              {["all", "Branding", "Motion-Graphics", "Graphic-Design"].map((filter) => (
+                <button
+                  key={filter}
+                  className={`tab ${selectedFilter === filter ? "active" : ""}`}
+                  onClick={() => setSelectedFilter(filter)}
+                >
+                  {filter.replace("-", " ")} {/* ✅ Show readable text */}
+                </button>
+              ))}
+            </div>
+            <div className="view-switch clickable">
+              <button
+                className={`grid-view-button ${view === "grid" ? "active" : ""}`}
+                onClick={() => setView("grid")}
+              >
+                <IoGridOutline size={24} />
+              </button>
 
-        {/* Render filtered projects */}
-        <div className="project-cards">
-          {filteredProjects.map((project, index) => (
-            <Card
-              key={index}
-              title={project.title}
-              imageUrl={project.imageUrl}
-              hoverImageUrl={project.hoverImageUrl}
-              isGif={project.isGif}
-              // projectDetails={project.projectDetails}
-              tags={project.tags}
-              linkTo={project.linkTo} // Pass the linkTo prop for navigation
+              <button
+                className={`list-view-button ${view === "list" ? "active" : ""}`}
+                onClick={() => setView("list")}
+              >
+                <IoListOutline size={24} />
+              </button>
+            </div>
+          </div>
 
-            />
-          ))}
-        </div>
-      </section>
+          {/* Grid View */}
+          {view === "grid" && (
+            <div className="projects-gallery">
+              {projectData.map((project, index) => (
+                <div
+                  key={index}
+                  className={`projects-item ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")}`}
+                >
+                  <Card
+                    title={project.title}
+                    imageUrl={project.imageUrl}
+                    hoverImageUrl={project.hoverImageUrl}
+                    linkTo={project.linkTo}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* List View */}
+          {view === "list" && (
+            <div className="work-list-wrapper">
+              {projectData.map((project, index) => (
+                <div key={index} className={`work-list-item clickable ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")}`}>
+                  <div className="work-list-image">
+                    <img src={project.imageUrl} alt={project.title} />
+                  </div>
+                  <div className="work-list-content">
+                    <h3 className="work-list-title">{project.title}</h3>
+                    <p className="work-list-description">{project.projectDetails}</p>
+                    <div className="work-list-tags">
+                      {project.tags.map((tag, index) => (
+                        <span key={index} className="tag">
+                          {tag} {index !== project.tags.length - 1 && <span className="divider"> / </span>}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
+      {/* Wrapper ends here */}
     </>
   );
 };

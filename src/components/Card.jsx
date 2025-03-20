@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "./Card.css";
 
-const Card = ({ title, imageUrl, hoverImageUrl, tags, linkTo }) => {
+const Card = ({ title, imageUrl, hoverImageUrl, tags, linkTo, isPlaceholder }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
@@ -14,39 +14,49 @@ const Card = ({ title, imageUrl, hoverImageUrl, tags, linkTo }) => {
 
   return (
     <div
-      className="card-wrapper"
+      className={`card-wrapper ${isPlaceholder ? "coming-soon" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Card Container */}
-      <div className="card clickable">
-        {linkTo ? (
+      <div className={`card clickable ${isPlaceholder ? "placeholder-card" : ""}`}>
+        {isPlaceholder ? (
+          <div className="coming-soon-card">
+            <span>Coming <br></br>Soon</span>
+          </div>
+        ) : linkTo ? (
           <Link to={linkTo} className="card-link">
             <div className="card-image">
-              <img src={isHovered ? hoverImageUrl : imageUrl} alt={title} />
+              <img src={imageUrl} alt={title} />
               <div className="overlay"></div>
+              <h3 className="card-title">{title}</h3> {/*  Moved title inside */}
             </div>
           </Link>
         ) : (
           <div className="card-image">
-            <img src={isHovered ? hoverImageUrl : imageUrl} alt={title} />
+            <img src={imageUrl} alt={title} />
             <div className="overlay"></div>
+            <h3 className="card-title">{title}</h3>
           </div>
         )}
       </div>
 
       {/* Title and Tags Outside the Card */}
-      <div className="card-info clickable">
-        <h3 className="card-title">{title}</h3>
-        <div className="tags">
-          {tags.map((tag, index) => (
-            <span key={index} className="tag">
-              {tag}
-              {index < tags.length - 1 && <span className="tag-separator"> /</span>}
-            </span>
-          ))}
+      {!isPlaceholder && (title || (tags && Array.isArray(tags) && tags.length > 0)) && (
+        <div className="card-info clickable">
+          {/* {title && <h3 className="card-title">{title}</h3>} */}
+          {tags && Array.isArray(tags) && tags.length > 0 && (
+            <div className="tags">
+              {tags.map((tag, index) => (
+                <span key={index} className="tag">
+                  {tag}
+                  {index < tags.length - 1 && <span className="tag-separator"> /</span>}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 };

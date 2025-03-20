@@ -195,7 +195,7 @@ const Footer = () => {
 
       {/* Left: Contact Info */}
       <div className="footer-left">
-        <h2 className="footer-title">Drop me a line, literally.</h2>
+        <h2 className="footer-title">Drop me a line</h2>
         <a href="mailto:hello@denisgurcu.com" className="footer-link clickable">
           hello@denisgurcu.com
         </a>
@@ -234,7 +234,7 @@ const Footer = () => {
           </div>
           <div
             className="toolbar-button clickable"
-            data-tippy-content="Erase everything from the canvas"
+            data-tippy-content="Clear the canvas"
             onClick={handleClear}
           >
             CLEAR
@@ -251,7 +251,7 @@ const Footer = () => {
 
       {/* Footer Bottom Info */}
       <div className="footer-bottom">
-        <span>Designed & coded by Denis Gurcu</span>
+        <span>Designed & Developed by Denis Gurcu</span>
         <span>Built with React</span>
         <span>© 2024 All Rights Reserved</span>
       </div>

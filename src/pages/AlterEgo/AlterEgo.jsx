@@ -110,7 +110,7 @@ const AlterEgo = () => {
             allowHTML: true,
             theme: 'gestalt-theme',
             animation: 'scale',
-            arrow: true,
+            arrow: false,
             placement: 'top',
             maxWidth: 200,
         });

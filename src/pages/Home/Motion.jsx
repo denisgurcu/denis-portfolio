@@ -32,13 +32,28 @@ const Motion = () => {
       },
     });
 
-    // Create boundaries to keep objects within the canvas
-    const ground = Bodies.rectangle(width / 2, height + 10, width, 20, { isStatic: true });
-    const roof = Bodies.rectangle(width / 2, -10, width, 20, { isStatic: true });
-    const wallLeft = Bodies.rectangle(-10, height / 2, 20, height, { isStatic: true });
-    const wallRight = Bodies.rectangle(width + 10, height / 2, 20, height, { isStatic: true });
+    
 
-    Composite.add(engine.world, [ground, roof, wallLeft, wallRight]);
+// ✅ ADD THE WALLS HERE (BEFORE ADDING THE CIRCLES)
+const wallThickness = 50; // Thick enough to prevent escape
+
+const ground = Bodies.rectangle(width / 2, height + wallThickness / 2, width * 2, wallThickness, { 
+  isStatic: true 
+});
+
+const roof = Bodies.rectangle(width / 2, -wallThickness / 2, width * 2, wallThickness, { 
+  isStatic: true 
+});
+
+const wallLeft = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { 
+  isStatic: true 
+});
+
+const wallRight = Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { 
+  isStatic: true 
+});
+
+Composite.add(engine.world, [ground, roof, wallLeft, wallRight]); // ✅ Add walls to the engine
 
     // Helper function to create circles without overlap
     const createNonOverlappingCircle = (existingBodies) => {
@@ -54,11 +69,12 @@ const Motion = () => {
           restitution: 0.9, // High bounce effect
           friction: 0.3, // Add friction
           render: {
-            sprite: {
-              texture: pencilTexture, // Use custom texture for circle
-              xScale: (radius * 2) / 412, // Scale texture to match circle 
-              yScale: (radius * 2) / 412, // Scale texture to match circle 
-            },
+            fillStyle: "rgba(38, 38, 38, 0.9)" // Closer to #262525 but slightly lighter
+            // sprite: {
+            //   texture: pencilTexture, // Use custom texture for circle
+            //   xScale: (radius * 2) / 412, // Scale texture to match circle 
+            //   yScale: (radius * 2) / 412, // Scale texture to match circle 
+            // },
           },
         });
 

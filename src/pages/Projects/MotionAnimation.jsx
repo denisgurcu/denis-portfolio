@@ -39,10 +39,10 @@ const MotionAnimation = () => {
       engine: engine,
       options: {
         width: width,
-        height: height,
+        height: window.innerHeight * 3.5, // Extend beyond viewport,
         background: "transparent",
         wireframes: false,
-        showInternalEdges: true, // ✅ This helps debug hidden overlapping issues
+        showInternalEdges: true, //  This helps debug hidden overlapping issues
 
       },
     });
