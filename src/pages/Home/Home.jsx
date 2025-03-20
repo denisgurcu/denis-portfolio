@@ -17,7 +17,7 @@ import CardImage3 from "../../assets/images/poster_designs_card.png";
 import CardImage4 from "../../assets/images/poster_designs_card_hover.png";
 import CardImage5 from "../../assets/images/alterego_cup.jpg";
 import CardImage6 from "../../assets/images/alter_ego_card_hover.png";
-import CardImage7 from "../../assets/images/logo_designs_card.png";
+import CardImage7 from "../../assets/images/logo_card_2.gif";
 import CardImage8 from "../../assets/images/logo_designs_card_hover.png";
 
 // Register GSAP 
@@ -46,7 +46,7 @@ const Home = () => {
     ScrollTrigger.refresh();
   }, []);
 
-  // ✅ Horizontal Scroll Animation
+  //  Horizontal Scroll Animation
   useEffect(() => {
     const horizontalSection = horizontalRef.current;
     
@@ -56,7 +56,7 @@ const Home = () => {
         scrollTrigger: {
           id: "horizontalScroll",
           trigger: horizontalSection,
-          start: "center 60%",
+          start: "center 55%",
           end: "+=4500px",
           pin: ".recent-works-container-pinner",
           scrub: 1.5,
@@ -73,14 +73,14 @@ const Home = () => {
   // ✅ Fix: Ensure Scroll Animations Restart on Refresh
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ✅ Hero text animation
+      // Hero text animation
       gsap.fromTo(
         ".hero-text",
         { y: -50, opacity: 0 },
         { y: 0, opacity: 1, duration: 2, ease: "power2.out" }
       );
 
-      // ✅ Branding, graphic, and motion sections
+      // Branding, graphic, and motion sections
       gsap.fromTo(
         ".box-wrapper",
         { opacity: 0, y: 50 },
@@ -102,7 +102,7 @@ const Home = () => {
 
     // ✅ Ensure ScrollTrigger Refreshes After Animations Load
     setTimeout(() => {
-      console.log("🔄 Ensuring ScrollTrigger refreshes after animations...");
+      console.log("Ensuring ScrollTrigger refreshes after animations...");
       ScrollTrigger.refresh();
     }, 100);
 
@@ -157,34 +157,34 @@ const Home = () => {
       {/* Recent Works Section */}
       <section className="recent-works-container">
         <section className="recent-works-container-pinner">
-          <h2 className="recent-works-title">RECENT PROJECTS</h2>
+          <h2 className="recent-works-title">FEATURED PROJECTS</h2>
           <div className="horizontal-scroll-wrapper" ref={horizontalRef}>
             <div className="horizontal-scroll">
               <Card
-                title="DADA COLLECTIVE"
+                title="Dada Collective Branding"
                 imageUrl={CardImage1}
                 hoverImageUrl={CardImage2}
-                tags={["Branding", "Graphic Design", "Motion Graphics"]}
+                tags={null}
               />
               <Card
-                title="POSTER DESIGNS"
+                title="Poster Designs"
                 imageUrl={CardImage3}
                 hoverImageUrl={CardImage4}
-                tags={["Social Media Marketing", "Illustration", "Graphic Design"]}
+                tags={null}
                 linkTo="/posters"
               />
               <Card
-                title="ALTER EGO"
+                title="Alter Ego Visual Identity"
                 imageUrl={CardImage5}
                 hoverImageUrl={CardImage6}
-                tags={["Branding", "Packaging", "Graphic Design"]}
+                tags={null}
                 linkTo="/alter-ego"
               />
               <Card
-                title="LOGO DESIGNS"
+                title="Logo Designs"
                 imageUrl={CardImage7}
                 hoverImageUrl={CardImage8}
-                tags={["Logo Design", "Graphic Design"]}
+                tags={null}
                 linkTo="/logo"
               />
 

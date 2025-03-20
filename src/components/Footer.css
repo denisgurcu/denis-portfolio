@@ -140,19 +140,30 @@
   gap: 20px;
 }
 
-.toolbar-button {
+/* .toolbar-button {
   padding: 8px 12px;
-  background-color: #333; /* Adjust color */
+  background-color: #333; 
   font-family: var(--afacad);
   color: var(--white);
   border-radius: 0.19rem;
   text-transform: uppercase;
   display: inline-block;
   text-align: center;
-  user-select: none; /* Prevent text selection */
+  user-select: none; 
   transition: transform 0.3s ease;
-}
+} */
 
+.toolbar-button {
+font-family: var(--afacad);
+font-size: 1rem;
+letter-spacing: 0.5px;
+color: var(--white); 
+background: #333; 
+padding: 5px 18px;
+border-radius: 50px; 
+text-transform: uppercase; 
+transition: all 0.3s ease-in-out;
+}
 
 .toolbar-button:hover {
   transform: scale(0.9);

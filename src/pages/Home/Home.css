@@ -214,7 +214,7 @@
 
 /* Recent Works Section */
 .recent-works-container {
-  padding: 100px 0;
+  padding: 2rem 0 5rem 0;
   position: relative;
   text-align: center;
 }
@@ -222,7 +222,7 @@
 .recent-works-title {
   font-family: var(--afacad);
   font-size: 4rem;
-  margin-bottom: 50px;
+  margin-bottom: 2rem;
   color: var(--black);
 }
 
@@ -231,9 +231,10 @@
 .horizontal-scroll {
   display: flex;
   gap: 100px; /* Space between cards */
-  padding-left: 20vw; /* Ensures first card is fully visible */
-  padding-right: 20vw; /* Creates a gap on the right */
+  padding-left: 40vw; /* Ensures first card is fully visible */
+  padding-right: 40vw; /* Creates a gap on the right */
   width: max-content; /* Prevents wrapping */
+  
 }
 
 .card-title,
@@ -258,7 +259,7 @@
 /* View All Card */
 .view-all-card {
   width: 550px; /* Match the card width */
-  height: 550px; /* Match the card height */
+  height: 600px; /* Match the card height */
   display: flex;
   justify-content: center;
   align-items: center;
