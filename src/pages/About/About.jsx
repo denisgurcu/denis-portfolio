@@ -396,9 +396,9 @@ const About = () => {
                             <h2>TL;DR</h2>
                             <ul className="tldr-list">
                                 <li>I have a business and marketing background with a creative edge.</li>
-                                <li>I can design, wireframe, code, and edit — bringing a holistic perspective.</li>
+                                <li>I can design, wireframe, code, and animate — bringing a holistic perspective.</li>
                                 <li>I bring experience in social media, storytelling, and digital strategy.</li>
-                                <li>I am a team player, fast learner, and endlessly curious.</li>
+                                <li>I am a team player, fast learner, endlessly imaginative and passionate.</li>
                             </ul>
                         </div>
                     </div>
