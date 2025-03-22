@@ -1,258 +1,352 @@
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
 
-  .about-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    text-align: center;
-    position: relative;
-  }
-  
-  .about-manifesto {
-    display: flex;
-    align-items: flex-start;
-    text-align: left;
-    width: 100%;
-    font-family: var(--afacad);
-    color: var(--black);
-    font-size: 2.5rem;
-    max-width: 90%;
-    padding-top: 30px;
-  }
-  
-  .about-title {
-    font-family: var(--graphyne);
-    font-size: 20rem;
-    color: var(--black);
-    margin: 0;
-    text-align: center;
-  }
+.about-title {
+  font-family: var(--graphyne);
+  font-size: 20rem;
+  color: var(--black);
+  margin: 0;
+  text-align: center;
+  align-self: center;
+  /* Center horizontally */
+}
+
+.about-manifesto {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  font-family: var(--afacad);
+  color: var(--black);
+  font-size: 3rem;
+  max-width: 80%;
+  padding-top: 20px;
+}
+
+
 
 .about-masonry-wrapper {
-    max-width: 100%;
-    padding: 20px 50px; 
-    display: flex; 
-    justify-content: center; 
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 5rem;
+}
+
+
 /* Bento Box Styles  */
 .bento-box {
-    font-family: var(--afacad);
-    overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column; /* Allows content to stack vertically */
-    justify-content: space-between; /* Adjusts spacing in the box */
-    transition: all 0.3s ease;
-    margin-bottom: 40px; /* Additional space between rows */
-    width: 100%; /* Full width of its container */
-    max-width: 400px; /* You can adjust max-width to control box size */
-  }
+  font-family: var(--afacad);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  width: 100%;
+  /* Keep this */
+  height: 100%;
+  /* NEW: make sure the box stretches inside its grid cell */
+  border-radius: 0.19rem;
+}
 
-    .bento-1 {
-      background-color: var(--blue);
-      border: 4px solid var(--darkblue);
-    }
-  
-    .bento-2 {
-      background-color: var(--blue);
-      border: 4px solid var(--darkblue);
-    }
-  
-    .bento-3 {
-      background-color: var(--pink);
-      border: 4px solid var(--darkred);
-    }
-  
-    .bento-4 {
-      background-color: var(--blue);
-      border: 4px solid var(--darkblue);
-    }
+.bento-1 {
+  background-color: var(--blue);
+  border: 4px solid var(--darkblue);
 
-    .bento-5 {
-      background-color: var(--yellow);
-      border: 4px solid var(--darkred);
-    }
+}
 
-    .bento-6 {
-      background-color: var(--blue);
-      border: 4px solid var(--darkblue);
-    }
-  
-  
-  
-  .bento-box:hover {
+.bento-2 {
+  background-color: var(--blue);
+  border: 4px solid var(--darkblue);
+
+}
+
+.bento-3 {
+  background-color: var(--pink);
+  border: 4px solid var(--darkred);
+
+}
+
+.bento-4 {
+  background-color: var(--blue);
+  border: 4px solid var(--darkblue);
+
+}
+
+.bento-5 {
+  background-color: var(--yellow);
+  border: 4px solid var(--darkred);
+
+}
+
+.bento-6 {
+  background-color: var(--blue);
+  border: 4px solid var(--darkblue);
+
+}
+
+.bento-image {
+  background-color: var(--blue);
+  border: 4px solid var(--darkblue);
+}
+
+.bento-video {
+  background-color: var(--pink);
+  border: 4px solid var(--darkred);
+}
+
+.bento-text {
+  background-color: var(--yellow);
+  border: 4px solid var(--darkred);
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  /* transition: opacity 0.3s ease-in-out; */
+}
+
+.tldr-list {
+  padding-left: 1.2rem;
+  /* indent bullets */
+  list-style-type: disc;
+  /* default bullet style */
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.tldr-list li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* .slideshow-image.fade-in {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slideshow-image.fade-out {
+  opacity: 0;
+  z-index: 0;
+}  */
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+
+/* .bento-box:hover {
     transform: scale(1.05);
-  }
-  
-  .box-content {
-    padding: 20px;
-    text-align: left;
-  }
+  } */
 
-  .box-content h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .box-content p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  .box-content .btn {
-    font-family: 'Breamcatcher', sans-serif;
-    font-size: 2rem;
-    padding: 10px 50px;
-    background-color: var(--black);
-    color: var(--white);
-    border: none;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .box-content .btn:hover {
-    background-color: var(--darkred);
-  }
-  
+.box-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.box-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.box-content p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.box-content .btn {
+  font-family: var(--afacad);
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  background: #333;
+  padding: 5px 18px;
+  border: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.box-content .btn:hover {
+  transform: scale(0.9);
+}
+
 .bento-box.image-box img {
   width: 100%;
   max-width: 400px;
 }
-  /* Masonry Grid */
-  .masonry-grid {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .masonry-grid_column {
-    margin-bottom: 20px;
-  }
 
-  .hover-link {
-    text-decoration: none;
-    color: var(--black); /* Adjust to your text color */
-    position: relative;
-}
-
-.hover-link::before,
-.hover-link::after {
-    content: "";
-    position: absolute;
-    bottom: -2px; /* Position the underline */
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--black); /* Default underline color */
-    transition: transform 0.2s ease-out; /* Smooth transition for the default underline */
-    transform-origin: left;
-}
-
-.hover-link::after {
-    background-color: var(--darkred); /* Hover underline color */
-    transform: scaleX(0); /* Start hidden */
-    transition: transform 0.3s ease-out 0.1s; /* Slight delay to sync with the default underline */
-}
-
-.hover-link:hover::before {
-    transform: scaleX(0); /* Shrink the default underline quickly */
-    transform-origin: right;
-}
-
-.hover-link:hover::after {
-    transform: scaleX(1); /* Reveal the hover underline */
-    transform-origin: left;
-}
-/* Email Link */
-.hover-link.email {
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
-.email-wrapper {
-  margin-bottom: 20px; /* Adjust margin for spacing */
-  font-size: 1.5rem; /* Set the desired font size */
 
+.contact-icon {
+  font-size: 1.2rem;
+  max-width: 20px;
 }
 
-.about-social-icons {
-  display: flex; /* Enable Flexbox layout */
-  justify-content: flex-start; /* Align icons to the start */
-  gap: 15px; /* Space between icons */
-  margin-top: 10px; /* Optional: Add spacing above icons */
-}
 
-.about-social-icon {
-  font-size: 2.5rem; /* Adjust size of icons */
+.hover-link {
+  display: inline-block; 
+  text-decoration: underline;
+  text-underline-offset: 5px;
   color: var(--black);
-  padding: 8px;
-  transition: all 0.3s ease; /* Smooth hover effect */
+  transition: transform 0.3s ease;
+
 }
 
-.about-social-icon:hover {
-  color: var(--darkred); /* Change icon color */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+.hover-link:hover {
+  transform: scale(0.95);
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-link {
+  font-family: var(--afacad);
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  text-underline-offset: 5px;
+  display: inline-block;
+}
+
+.social-link:hover {
+  transform: scale(0.95);
 }
 
 
 .tool-icons {
-  display: flex; /* Arrange icons horizontally */
-  flex-wrap: wrap; /* Wrap to the next row after 5 icons */
-  gap: 15px; /* Add spacing between icons */
-  justify-content: center; /* Center-align icons */
-  margin-top: 15px; /* Add spacing from the title */
-  max-width: 300px; /* Limit container width to ensure rows of 5 icons */
+  display: flex;
+  /* Arrange icons horizontally */
+  flex-wrap: wrap;
+  /* Wrap to the next row after 5 icons */
+  gap: 15px;
+  /* Add spacing between icons */
+  justify-content: center;
+  /* Center-align icons */
+  margin-top: 15px;
+  /* Add spacing from the title */
+  max-width: 300px;
+  /* Limit container width to ensure rows of 5 icons */
 }
 
 .tool-icon {
-  width: 40px; /* Smaller width for icons */
-  height: 40px; /* Smaller height for icons */
-  object-fit: contain; /* Maintain aspect ratio */
-  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover effect */
+  width: 40px;
+  /* Smaller width for icons */
+  height: 40px;
+  /* Smaller height for icons */
+  object-fit: contain;
+  /* Maintain aspect ratio */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* Smooth hover effect */
 }
 
 .tool-icon:hover {
-  transform: scale(1.2); /* Slightly enlarge on hover */
-  filter: brightness(1.2); /* Brighten icon */
+  transform: scale(1.2);
+  /* Slightly enlarge on hover */
+  filter: brightness(1.2);
+  /* Brighten icon */
 }
 
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .about-wrapper {
-      padding-left: 1rem; /* Reduce padding on smaller screens */
-      align-items: center; /* Center the content on small screens */
-      text-align: left; /* Center the text */
-    }
-  
-    .about-manifesto {
-      font-size: 2rem;
-      max-width: 100%;
-      text-align: left;
-      margin-bottom: 1.5rem;
-    }
-  
-    .about-title {
-      font-size: 10rem;
-      margin-bottom: 2rem;
-    }
+/* Custom Tooltip Styling */
+.tippy-box[data-theme~="my-theme"] {
+  font-family: var(--afacad);
+  background-color:var(--black);
+  color: var(--white);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
 
-  
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-wrapper {
+    padding-left: 1rem;
+    /* Reduce padding on smaller screens */
+    align-items: center;
+    /* Center the content on small screens */
+    text-align: left;
+    /* Center the text */
   }
-  
-  @media (max-width: 480px) {
-    .about-wrapper {
-      padding-left: 0.5rem;
-      align-items: center;
-      text-align: left;
-    }
-  
-    .about-manifesto {
-      font-size: 1.4rem;
-      max-width: 100%;
-      margin-bottom: 1rem;
-    }
-  
-    .about-title {
-      font-size: 7rem;
-      margin-bottom: 1.5rem;
-    }
-  
+
+  .about-manifesto {
+    font-size: 2rem;
+    max-width: 100%;
+    text-align: left;
+    margin-bottom: 1.5rem;
   }
+
+  .about-title {
+    font-size: 10rem;
+    margin-bottom: 2rem;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .about-wrapper {
+    padding-left: 0.5rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .about-manifesto {
+    font-size: 1.4rem;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .about-title {
+    font-size: 7rem;
+    margin-bottom: 1.5rem;
+  }
+
+}
