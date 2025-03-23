@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/perspective.css";
+import { followCursor } from 'tippy.js';
+
 
 
 import RGL, { WidthProvider } from "react-grid-layout";
@@ -16,7 +18,7 @@ import "./About.css";
 // Image groups
 import me1 from '../../assets/images/about_image_me1.png';
 import me2 from '../../assets/images/about_image_me2.png';
-import me3 from '../../assets/images/about_image_me3.jpg';
+import me3 from '../../assets/images/about_image_me3.png';
 
 import illus1 from '../../assets/images/about_illus1.png';
 import illus2 from '../../assets/images/about_illus2.png';
@@ -27,19 +29,21 @@ import illus6 from '../../assets/images/about_illus6.png';
 import illus7 from '../../assets/images/about_illus7.png';
 
 import martin1 from '../../assets/images/about_martin1.jpg';
-import martin2 from '../../assets/images/about_martin2.jpg';
+import martin2 from '../../assets/images/about_martin2.gif';
 import martin3 from '../../assets/images/about_martin3.jpg';
 
-import photo1 from '../../assets/images/about_image_photo1.jpg';
-import photo2 from '../../assets/images/about_image_photo2.jpg';
-import photo3 from '../../assets/images/about_image_photo3.jpg';
-import photo4 from '../../assets/images/about_image_photo4.jpg';
-import photo5 from '../../assets/images/about_image_photo5.jpg';
-import photo6 from '../../assets/images/about_image_photo6.jpg';
-import photo7 from '../../assets/images/about_image_photo7.jpg';
-import photo8 from '../../assets/images/about_image_photo8.jpg';
-import photo9 from '../../assets/images/about_image_photo9.jpg';
-import photo10 from '../../assets/images/about_image_photo10.jpeg';
+import photo1 from '../../assets/images/about_image_photo1.png';
+import photo2 from '../../assets/images/about_image_photo2.png';
+import photo3 from '../../assets/images/about_image_photo3.png';
+import photo4 from '../../assets/images/about_image_photo4.png';
+import photo5 from '../../assets/images/about_image_photo5.png';
+import photo6 from '../../assets/images/about_image_photo6.png';
+import photo7 from '../../assets/images/about_image_photo7.png';
+import photo8 from '../../assets/images/about_image_photo8.png';
+import photo9 from '../../assets/images/about_image_photo9.png';
+import photo10 from '../../assets/images/about_image_photo10.png';
+import photo11 from '../../assets/images/about_image_photo11.png';
+import photo12 from '../../assets/images/about_image_photo12.gif';
 
 import gifImage from '../../assets/images/about_gif.gif';
 
@@ -57,20 +61,29 @@ import jsIcon from "../../assets/icons/js.png";
 
 const imageGroupMe = [
     me1, me2, me3,
-    photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9, photo10
-];
+    photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9, photo10, photo11, photo12];
 const imageGroupMartin = [martin1, martin2, martin3];
 const imageGroupIllus = [illus1, illus2, illus3, illus4, illus5, illus6, illus7];
 
+const imageGroupMeTooltips = {
+    [photo2]: '"This is not a pipe" — one of my favorite art movements.',
+    [photo3]: "Visiting the Picasso Museum was a design-defining moment.",
+    [photo4]: "This Dali sculpture was nearly eaten by Picasso’s dog at the exhibit.",
+    [photo5]: "Shakespeare & Company is one of my favorite places on Earth.",
+    [photo8]: "I’m from Turkey.",
+    [photo10]: "❤️",
+    [photo11]: "100% '90s kid."
+};
 
-function ImageSlideshow({ images, delay = 5000, transitionDuration = 2 }) {
+function ImageSlideshow({ images = { imageGroupMe }, delay = 5000, transitionDuration = 2, tooltips = { imageGroupMeTooltips } }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(null);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [shuffledImages, setShuffledImages] = useState([]);
+    const tooltipRef = useRef(null);
+    const instanceRef = useRef(null);
 
     useEffect(() => {
-        // Only run once: shuffle everything except the first image
         const [first, ...rest] = images;
         const shuffledRest = [...rest].sort(() => Math.random() - 0.5);
         setShuffledImages([first, ...shuffledRest]);
@@ -93,58 +106,111 @@ function ImageSlideshow({ images, delay = 5000, transitionDuration = 2 }) {
     }, [currentIndex, delay, transitionDuration, shuffledImages]);
 
     useEffect(() => {
-        tippy('.tooltip-box', {
-          content(reference) {
-            return reference.getAttribute('data-tippy-content');
-          },
-          theme: 'my-theme',
-          placement: 'top',
-          followCursor: "initial",
-          animation: 'perspective',
-          arrow: false,
-          delay: [100, 200],
-          allowHTML: true,
+        if (tooltipRef.current && shuffledImages[currentIndex]) {
+            if (!instanceRef.current) {
+                instanceRef.current = tippy(tooltipRef.current, {
+                    content: tooltips[shuffledImages[currentIndex]] || '',
+                    theme: 'my-theme',
+                    animation: 'fade',
+                    arrow: false,
+                    trigger: 'manual',
+                    duration: [200, 200],
+                    hideOnClick: false,
+                });
+            } else {
+                instanceRef.current.setContent(tooltips[shuffledImages[currentIndex]] || '');
+            }
+
+            instanceRef.current.show();
+
+            const hideTimer = setTimeout(() => {
+                instanceRef.current.hide();
+            }, 2000);
+
+            return () => clearTimeout(hideTimer);
+        }
+    }, [shuffledImages, currentIndex, tooltips]);
+
+    useEffect(() => {
+        const elements = document.querySelectorAll('.tooltip-box');
+
+        elements.forEach((el) => {
+            // Create manual tippy instance
+            const instance = tippy(el, {
+                content: el.getAttribute('data-tippy-content'),
+                theme: 'my-theme',
+                animation: 'perspective',
+                arrow: false,
+                trigger: 'manual', // so we control when it shows
+                duration: [200, 200],
+                hideOnClick: false,
+                plugins: [followCursor],
+                allowHTML: true,
+                followCursor: 'false',
+            });
+
+            let timeoutId = null;
+
+            // Mousemove to check center zone
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const inCenterX = x > rect.width * 0.3 && x < rect.width * 0.7;
+                const inCenterY = y > rect.height * 0.3 && y < rect.height * 0.7;
+
+                if (inCenterX && inCenterY) {
+                    if (!instance.state.isShown) {
+                        instance.show();
+                        clearTimeout(timeoutId);
+                        timeoutId = setTimeout(() => instance.hide(), 2000); // Auto-hide after 2s
+                    }
+                } else {
+                    instance.hide();
+                    clearTimeout(timeoutId);
+                }
+            });
+
+            // Hide tooltip when mouse leaves the image
+            el.addEventListener('mouseleave', () => {
+                instance.hide();
+                clearTimeout(timeoutId);
+            });
         });
-      }, []);
-      
+    }, []);
 
-    // useEffect(() => {
-    //     let startX = 0;
-    //     const handleTouchStart = (e) => {
-    //         startX = e.touches[0].clientX;
-    //     };
-    //     const handleTouchEnd = (e) => {
-    //         const endX = e.changedTouches[0].clientX;
-    //         if (startX - endX > 50) {
-    //             setIndex((prev) => (prev + 1) % images.length);
-    //         } else if (endX - startX > 50) {
-    //             setIndex((prev) => (prev - 1 + images.length) % images.length);
-    //         }
-    //     };
+    const currentImage = shuffledImages[currentIndex];
+    const tooltipText = tooltips[currentImage];
 
-    //     const el = slideshowRef.current;
-    //     el?.addEventListener("touchstart", handleTouchStart);
-    //     el?.addEventListener("touchend", handleTouchEnd);
-
-    //     return () => {
-    //         el?.removeEventListener("touchstart", handleTouchStart);
-    //         el?.removeEventListener("touchend", handleTouchEnd);
-    //     };
-    // }, [images.length]);
+    const ImageWithOptionalTooltip = (
+        <motion.img
+            key={currentImage}
+            src={currentImage}
+            className="slideshow-image"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: transitionDuration, ease: "easeInOut" }}
+            style={{ zIndex: 1 }}
+        />
+    );
 
     return (
         <div className="slideshow-container">
             {shuffledImages.length > 0 && (
                 <>
-                    <motion.img
-                        key={shuffledImages[currentIndex]}
-                        src={shuffledImages[currentIndex]}
-                        className="slideshow-image"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: transitionDuration, ease: "easeInOut" }}
-                        style={{ zIndex: 1 }}
-                    />
+                    {tooltipText ? (
+                        <div
+                            className="tooltip-box"
+                            data-tippy-content={tooltipText}
+                            data-tippy-followcursor="true"
+                        >
+                            {ImageWithOptionalTooltip}
+                        </div>
+                    ) : (
+                        ImageWithOptionalTooltip
+                    )}
+
                     {isTransitioning && prevIndex !== null && (
                         <motion.img
                             key={`prev-${shuffledImages[prevIndex]}`}
@@ -160,18 +226,7 @@ function ImageSlideshow({ images, delay = 5000, transitionDuration = 2 }) {
             )}
         </div>
     );
-
-    {/* <div className="slideshow-dots">
-                {images.map((_, i) => (
-                    <span
-                        key={i}
-                        className={`dot ${i === index ? "active" : ""}`}
-                        onClick={() => setIndex(i)}
-                    />
-                ))}
-            </div> */}
 }
-
 
 
 const ReactGridLayout = WidthProvider(RGL);
@@ -290,28 +345,33 @@ const About = () => {
                     width={1200}
                     isDraggable={true}
                     isResizable={true}
+                    draggableCancel=".no-drag"
+
                 >
                     {/* Image 1 */}
                     <div
                         key="1"
                         className="bento-box bento-1 tooltip-box"
-                        data-tippy-content="I love analog photography"
-                        data-tippy-followcursor="true" 
+                        data-tippy-content="Collecting inspiration through museums and analog lenses."
                     >
                         <ImageSlideshow images={imageGroupMe} delay={5000} />
                     </div>
 
                     {/* Experience Section */}
-                    <div key="2" className="bento-box bento-2">
+                    <div key="2" className="bento-box bento-2 tooltip-box"
+                        data-tippy-content="Click and move!">
+
                         <div className="box-content">
                             <h2>EXPERIENCE</h2>
                             <p>
-                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at <a href="https://appen.com" className="hover-link clickable" target="_blank" rel="noopener noreferrer">Appen</a>, improving user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
+                                After transitioning from finance, I’ve had the opportunity to contribute to AI solution projects at <a href="https://appen.com" className="hover-link clickable no-drag" target="_blank" rel="noopener noreferrer">Appen</a>, improving user experiences for Google and Facebook by evaluating data for accuracy, relevance, and compliance.
                             </p>
                             <p>
-                                At <a href="https://infernozilla.com" className="hover-link clickable" target="_blank" rel="noopener noreferrer">Infernozilla</a>, I managed social media for indie video games, achieving over 100% organic growth and viral content with millions of views. I also took on creative roles in visual content creation and campaign ideation.
+                                At <a href="https://infernozilla.com" className="hover-link clickable no-drag" target="_blank" rel="noopener noreferrer">Infernozilla</a>, I managed social media for indie video games, achieving over 100% organic growth and viral content with millions of views. I also took on creative roles in visual content creation and campaign ideation.
                             </p>
-                            <button className="btn clickable">Resume</button>
+                            <a href="/denisgurcu_resume.pdf" target="_blank" rel="noopener noreferrer">
+                                <button className="btn clickable no-drag">Resume</button>
+                            </a>
                         </div>
                     </div>
 
@@ -320,7 +380,7 @@ const About = () => {
                         <div className="box-content">
                             <h2>EDUCATION</h2>
                             <p>
-                                I hold a Bachelor's in Business., providing me with a strong foundation in strategy, analysis, and marketing. <br></br> <br></br> Currently, I’m pursuing a diploma in <a href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/" className="hover-link clickable" target="_blank" rel="noopener noreferrer">New Media Design & Web Development</a> at British Columbia Institute of Technology  to expand my technical and creative skillset.
+                                I hold a Bachelor's in Business., providing me with a strong foundation in strategy, analysis, and marketing. <br></br> <br></br> Currently, I’m pursuing a diploma in <a href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/" className="hover-link clickable no-drag" target="_blank" rel="noopener noreferrer">New Media Design & Web Development</a> at British Columbia Institute of Technology  to expand my technical and creative skillset.
                             </p>
                         </div>
                     </div>
@@ -337,14 +397,14 @@ const About = () => {
 
                             <div className="contact-item">
                                 <FontAwesomeIcon icon={faEnvelope} className="contact-icon" />
-                                <a href="mailto:hello@denisgurcu.com" className="hover-link clickable">
+                                <a href="mailto:hello@denisgurcu.com" className="hover-link clickable no-drag">
                                     hello@denisgurcu.com
                                 </a>
                             </div>
 
                             <div className="contact-item">
                                 <FontAwesomeIcon icon={faShareAlt} className="contact-icon" />
-                                <div className="social-links clickable">
+                                <div className="social-links clickable no-drag">
                                     <a href="https://www.linkedin.com/in/denisgurcu/" className="social-link" target="_blank" rel="noopener noreferrer">
                                         LINKEDIN <span className="arrow">↗︎</span>
                                     </a>
@@ -376,7 +436,7 @@ const About = () => {
                     </div>
 
                     {/* Illustrations */}
-                    <div key="8" className="bento-box bento-image tooltip-box" data-tippy-content="I usually start sketching out ideas with a pen and paper.">
+                    <div key="8" className="bento-box bento-image tooltip-box" data-tippy-content="Early sketches, drawn while learning by referencing images.">
                         <ImageSlideshow images={imageGroupIllus} delay={7000} />
                     </div>
 
@@ -391,14 +451,15 @@ const About = () => {
 
 
                     {/* Text Box Placeholder */}
-                    <div key="10" className="bento-box bento-text">
+                    <div key="10" className="bento-box bento-text tooltip-box"
+                        data-tippy-content="Click and move!">
                         <div className="box-content">
                             <h2>TL;DR</h2>
                             <ul className="tldr-list">
                                 <li>I have a business and marketing background with a creative edge.</li>
                                 <li>I can design, wireframe, code, and animate — bringing a holistic perspective.</li>
                                 <li>I bring experience in social media, storytelling, and digital strategy.</li>
-                                <li>I am a team player, fast learner, endlessly imaginative and passionate.</li>
+                                <li>I am a team player, fast learner, and an unapologetic dreamer.</li>
                             </ul>
                         </div>
                     </div>
