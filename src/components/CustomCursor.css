@@ -24,6 +24,7 @@ body.default-cursor * {
   transition: opacity 0.5s ease, background-color 0.3s ease;
   border: 1px solid #949393;
   transform: translate(-50%, -50%);
+  
 }
 
 .clickable {
