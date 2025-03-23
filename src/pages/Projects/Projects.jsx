@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Isotope from "isotope-layout";
+import imagesLoaded from 'imagesloaded';
 import { IoGridOutline, IoListOutline } from "react-icons/io5";
 import GraphAnimation from './GraphAnimation';
 import WaveAnimation from './WaveAnimation';
@@ -9,6 +10,7 @@ import './Projects.css';
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/perspective.css";
+
 
 // Import images for the project cards
 import CardImage1 from "../../assets/images/dadacard.gif";
@@ -100,10 +102,28 @@ useEffect(() => {
   // Apply Filtering for Both Views
   useEffect(() => {
     if (isotopeRef.current) {
+      const containerSelector = view === "grid" ? ".projects-gallery" : ".work-list-wrapper";
+      const containerEl = document.querySelector(containerSelector);
+  
+      if (!containerEl) return;
+  
       const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
-      isotopeRef.current.arrange({ filter: filterValue });
+  
+      // Proper usage of imagesLoaded
+      imagesLoaded(containerEl, () => {
+        requestAnimationFrame(() => {
+          isotopeRef.current.arrange({ filter: filterValue });
+  
+          // Force layout again in case there's a visual jump
+          setTimeout(() => {
+            isotopeRef.current.layout();
+          }, 50);
+        });
+      });
     }
-  }, [selectedFilter]);
+  }, [selectedFilter, view]);
+  
+  
 
   const [animationState, setAnimationState] = useState({
     showGraph: true,
@@ -213,7 +233,8 @@ useEffect(() => {
           {view === "list" && (
             <div className="work-list-wrapper">
               {projectData.map((project, index) => (
-                <div key={index} className={`work-list-item clickable ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")}`}>
+                <div key={index} className={`work-list-item ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")}`}>
+                  <div className="clickable-inner clickable">
                   <div className="work-list-image">
                     <img src={project.imageUrl} alt={project.title} />
                   </div>
@@ -227,6 +248,7 @@ useEffect(() => {
                         </span>
                       ))}
                     </div>
+                  </div>
                   </div>
                 </div>
               ))}
