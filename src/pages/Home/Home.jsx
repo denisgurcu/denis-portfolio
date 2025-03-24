@@ -150,8 +150,9 @@ const Home = () => {
           design. I seek imaginative, functional solutions that tell a story.
           <br />
           <span className="cursor-info">You can pick a color for your cursor.</span>
+          <ColorPicker onColorSelect={handleColorSelect} />
         </div>
-        <ColorPicker onColorSelect={handleColorSelect} />
+
       </section>
 
       {/* Recent Works Section */}
@@ -188,10 +189,14 @@ const Home = () => {
                 linkTo="/logo"
               />
 
+              <Card isPlaceholder={true} />
+              <Link to="/projects"></Link>
+              
+
               {/* VIEW ALL Card */}
-              <div className="view-all-card clickable">
+              {/* <div className="view-all-card clickable">
                 <Link to="/projects">VIEW <br /> ALL</Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

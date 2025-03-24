@@ -53,7 +53,7 @@
   color: var(--white);
   font-size: 1.5rem;
   text-decoration: underline;
-  text-underline-offset: 6px;
+  text-underline-offset: 7px;
   display: inline-block;
   transform-origin: center;
   transition: transform 0.3s ease;
@@ -229,3 +229,39 @@ transition: all 0.3s ease-in-out;
   pointer-events: none;
 }
 
+
+/* -----------RESPONSIVENESS----------- */
+
+
+/* ----very wide monitors---- */
+@media (min-width: 2300px) {
+  .footer-title {
+    font-size: 7rem;
+  }
+
+  .footer-link {
+    font-size: 2rem;
+  }
+
+  .footer-social a {
+    font-size: 1.5rem;
+  }
+
+  .footer-bottom {
+    font-size: 20px;
+  }
+
+  .color-dot {
+    width: 50px;
+    height: 50px;
+  }
+
+  .color-dot.active::after {
+    width: 60px;
+    height: 60px;
+  }
+
+  .toolbar-button {
+    font-size: 1.2rem;
+  }
+}

@@ -10,7 +10,7 @@ import { followCursor } from 'tippy.js';
 
 
 
-import RGL, { WidthProvider } from "react-grid-layout";
+import RGL, { WidthProvider, Responsive } from "react-grid-layout";
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import "./About.css";
@@ -74,6 +74,9 @@ const imageGroupMeTooltips = {
     [photo10]: "❤️",
     [photo11]: "100% '90s kid."
 };
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
+
 
 function ImageSlideshow({ images = { imageGroupMe }, delay = 5000, transitionDuration = 2, tooltips = { imageGroupMeTooltips } }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -230,81 +233,42 @@ function ImageSlideshow({ images = { imageGroupMe }, delay = 5000, transitionDur
 
 
 const ReactGridLayout = WidthProvider(RGL);
-const layout = [
-    {
-        i: "1",  // Images
-        x: 0,    // Starts in column 0 (far left)
-        y: 0,    // Starts in row 0 (top row)
-        w: 2,    // Spans 2 out of 6 columns
-        h: 4    // 3 rows tall → 3 × 100px = 300px height
-    },
-    {
-        i: "2",  // Experience section
-        x: 2,    // column 
-        y: 0,    // row
-        w: 2,    // columns wide
-        h: 6,   // rows tall → 1 = 100px
-    },
-    {
-        i: "3",  // Education section
-        x: 6,    // column 
-        y: 0,    // row
-        w: 2,    // columns wide
-        h: 4.5     // rows tall → 1 = 100px
-    },
-    {
-        i: "5",  // tool stack
-        x: 0,    // column 
-        y: 2,    // row
-        w: 2,    // columns wide
-        h: 2     // rows tall → 1 = 100px
-    },
-
-    {
-        i: "7",  // martin
-        x: 4,    // column 
-        y: 2,    // row
-        w: 2,    // columns wide
-        h: 4     // rows tall → 1 = 100px
-    },
-
-    {
-        i: "8",  // illus
-        x: 0,    // column 
-        y: 3,    // row
-        w: 4,    // columns wide
-        h: 5     // rows tall → 1 = 100px
-    },
-
-    {
-        i: "4",  // contact
-        x: 5,    // column 
-        y: 4,    // row
-        w: 2,    // columns wide
-        h: 2.5     // rows tall → 1 = 100px
-    },
-
-
-    {
-        i: "10",  // tldr
-        x: 0,    // column 
-        y: 5,    // row
-        w: 2,    // columns wide
-        h: 5     // rows tall → 1 = 100px
-    },
-
-    {
-        i: "9",  // video
-        x: 2,    // column 
-        y: 5,    // row
-        w: 4,    // columns wide
-        h: 5     // rows tall → 1 = 100px
-    },
-
-
-
-];
-
+const layouts = {
+    lg: [
+      { i: "1", x: 0, y: 0, w: 2, h: 4 },   // Images
+      { i: "2", x: 2, y: 0, w: 2, h: 6 },  // Experience
+      { i: "3", x: 6, y: 0, w: 2, h: 4.5 },  // Education
+      { i: "5", x: 0, y: 2, w: 2, h: 2 },  // tools
+      { i: "7", x: 4, y: 2, w: 2, h: 4 },  // martin
+      { i: "8", x: 0, y: 3, w: 4, h: 5 }, // illus
+      { i: "4", x: 4, y: 4, w: 2, h: 2.5 }, // contact
+      { i: "10", x: 0, y: 5, w: 2, h: 5.2 }, // tldr
+      { i: "9", x: 2, y: 5, w: 4, h: 5.2 }, // video
+    ],
+    md: [
+      { i: "1", x: 0, y: 0, w: 3, h: 4 },
+      { i: "2", x: 3, y: 0, w: 3, h: 6 },
+      { i: "3", x: 0, y: 4, w: 3, h: 5 },
+      { i: "5", x: 3, y: 6, w: 3, h: 2 },
+      { i: "7", x: 0, y: 9, w: 3, h: 4 },
+      { i: "8", x: 3, y: 9, w: 3, h: 5 },
+      { i: "4", x: 0, y: 14, w: 3, h: 3 },
+      { i: "10", x: 3, y: 14, w: 3, h: 5 },
+      { i: "9", x: 0, y: 19, w: 6, h: 5 },
+    ],
+    sm: [
+      { i: "1", x: 0, y: 0, w: 1, h: 4 },
+      { i: "2", x: 0, y: 4, w: 1, h: 6 },
+      { i: "3", x: 0, y: 10, w: 1, h: 5 },
+      { i: "5", x: 0, y: 15, w: 1, h: 2 },
+      { i: "7", x: 0, y: 17, w: 1, h: 4 },
+      { i: "8", x: 0, y: 21, w: 1, h: 5 },
+      { i: "4", x: 0, y: 26, w: 1, h: 3 },
+      { i: "10", x: 0, y: 29, w: 1, h: 5 },
+      { i: "9", x: 0, y: 34, w: 1, h: 5 },
+    ],
+  };
+  
 
 
 const About = () => {
@@ -337,12 +301,12 @@ const About = () => {
             </section>
 
             <section className="about-masonry-wrapper">
-                <ReactGridLayout
+                <ResponsiveGridLayout
                     className="layout"
-                    layout={layout}
-                    cols={6}
+                    layouts={layouts}
+                    breakpoints={{ lg: 1200, md: 996, sm: 768 }}
+                    cols={{ lg: 6, md: 6, sm: 1 }}
                     rowHeight={100}
-                    width={1200}
                     isDraggable={true}
                     isResizable={true}
                     draggableCancel=".no-drag"
@@ -463,7 +427,7 @@ const About = () => {
                             </ul>
                         </div>
                     </div>
-                </ReactGridLayout>
+                </ResponsiveGridLayout>
             </section>
         </>
     );

@@ -168,3 +168,13 @@ main.no-padding {
 .about-bg {
   background-color: var(--red);
 }
+
+/* -----------RESPONSIVENESS----------- */
+
+
+/* ----very wide monitors---- */
+@media (min-width: 2300px) {
+  .tippy-box[data-theme~='my-theme'] {
+    font-size: 1.1rem;
+  }
+}

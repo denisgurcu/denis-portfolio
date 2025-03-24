@@ -222,7 +222,7 @@
 .recent-works-title {
   font-family: var(--afacad);
   font-size: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: var(--black);
 }
 
@@ -258,8 +258,8 @@
 
 /* View All Card */
 .view-all-card {
-  width: 550px; /* Match the card width */
-  height: 600px; /* Match the card height */
+  width: 550px; 
+  height: 600px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,7 +270,6 @@
   color: var(--black);
   background-color: lightgray;
   border-radius: 0.19rem;
-  /* border: 2px solid var(--black); */
   transition: background 0.3s ease, transform 0.3s ease;
   text-decoration: none;
   text-align: center;
@@ -292,6 +291,38 @@
   color: var(--white);
 }
 
+/* -----------RESPONSIVENESS----------- */
+
+
+/* ----very wide monitors---- */
+@media (min-width: 2300px) {
+  .hero-text {
+    font-size: 30rem;
+    line-height: 1 /* tighten vertical space */
+
+  }
+
+  .box {
+    width: 675px;
+    height: 480px;
+  }
+
+  .label {
+    width: 100%;
+    max-width: 685px;
+    font-size: 3rem;
+  }
+
+  .scroll-text {
+    font-size: 4.5rem;
+  }
+
+  .recent-works-title {
+    font-family: var(--afacad);
+    font-size: 5rem;
+  }
+
+}
 
 
 @media screen and (max-width: 1440px) {
@@ -326,7 +357,9 @@
 
   .recent-works h2 {
     font-size: 2rem;
+    
   }
+  
 
   .view-all-card {
     width: 450px; /* Match the card width */

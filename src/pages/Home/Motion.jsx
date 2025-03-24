@@ -10,121 +10,116 @@ const Motion = () => {
   useEffect(() => {
     const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
 
-    // Initialize Matter.js engine
     const engine = Engine.create();
-    engine.world.gravity.y = 0.2; // Add slight gravity
-    engine.positionIterations = 20; // Increase precision for better stability
-    engine.velocityIterations = 20; // Increase velocity for smoother motion
+    engine.world.gravity.y = 0.2;
+    engine.positionIterations = 20;
+    engine.velocityIterations = 20;
 
     const container = containerRef.current;
-    const width = container.offsetWidth;
-    const height = container.offsetHeight;
+    let width = container.offsetWidth;
+    let height = container.offsetHeight;
 
-    // Create a Matter.js render instance
     const render = Render.create({
-      element: motionRef.current, // Target the DOM element
+      element: motionRef.current,
       engine: engine,
       options: {
-        width: width, // Match container width
-        height: height, // Match container height
-        background: "transparent", // Transparent background
-        wireframes: false, // Disable wireframe for a clean look
+        width: width,
+        height: height,
+        background: "transparent",
+        wireframes: false,
       },
     });
 
-    
+    const wallThickness = 50; // ✅ Still used here
 
-// ✅ ADD THE WALLS HERE (BEFORE ADDING THE CIRCLES)
-const wallThickness = 50; // Thick enough to prevent escape
+    const createWalls = () => [
+      Bodies.rectangle(width / 2, height + wallThickness / 2, width * 2, wallThickness, { isStatic: true }),
+      Bodies.rectangle(width / 2, -wallThickness / 2, width * 2, wallThickness, { isStatic: true }),
+      Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
+      Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
+    ];
 
-const ground = Bodies.rectangle(width / 2, height + wallThickness / 2, width * 2, wallThickness, { 
-  isStatic: true 
-});
+    let walls = createWalls();
+    Composite.add(engine.world, walls);
 
-const roof = Bodies.rectangle(width / 2, -wallThickness / 2, width * 2, wallThickness, { 
-  isStatic: true 
-});
-
-const wallLeft = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { 
-  isStatic: true 
-});
-
-const wallRight = Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { 
-  isStatic: true 
-});
-
-Composite.add(engine.world, [ground, roof, wallLeft, wallRight]); // ✅ Add walls to the engine
-
-    // Helper function to create circles without overlap
     const createNonOverlappingCircle = (existingBodies) => {
       let attempts = 0;
       const maxAttempts = 10;
 
+      // 🔥 Scaled size based on container width
+      const minRadius = width * 0.02;
+      const maxRadius = width * 0.07;
+
       while (attempts < maxAttempts) {
-        const radius = Math.random() * 30 + 10; // Circle size (10 to 40px)
-        const x = Math.random() * (width - 2 * radius) + radius; // Horizontal placement
-        const y = Math.random() * (height - 2 * radius) + radius; // Vertical placement
+        const radius = Math.random() * (maxRadius - minRadius) + minRadius;
+        const x = Math.random() * (width - 2 * radius) + radius;
+        const y = Math.random() * (height - 2 * radius) + radius;
 
         const newBody = Bodies.circle(x, y, radius, {
-          restitution: 0.9, // High bounce effect
-          friction: 0.3, // Add friction
+          restitution: 0.9,
+          friction: 0.3,
           render: {
-            fillStyle: "rgba(38, 38, 38, 0.9)" // Closer to #262525 but slightly lighter
+            fillStyle: "rgba(38, 38, 38, 0.9)",
             // sprite: {
-            //   texture: pencilTexture, // Use custom texture for circle
-            //   xScale: (radius * 2) / 412, // Scale texture to match circle 
-            //   yScale: (radius * 2) / 412, // Scale texture to match circle 
+            //   texture: pencilTexture,
+            //   xScale: (radius * 2) / 412,
+            //   yScale: (radius * 2) / 412,
             // },
           },
         });
 
-        // Check for overlap with existing circles
         const overlaps = existingBodies.some((body) =>
           Matter.Bounds.overlaps(body.bounds, newBody.bounds)
         );
 
-        if (!overlaps) {
-          return newBody;
-        }
+        if (!overlaps) return newBody;
         attempts++;
       }
-      return null; // Return null if max attempts are reached
+      return null;
     };
 
-    // Create and add circles to the world
     const circles = [];
     for (let i = 0; i < 15; i++) {
       const circle = createNonOverlappingCircle(circles);
-      if (circle) circles.push(circle); // Add circle only if it doesn't overlap
+      if (circle) circles.push(circle);
     }
     Composite.add(engine.world, circles);
 
-    // Add mouse interaction for dragging objects
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
       constraint: {
-        stiffness: 0.2, // Elasticity of drag
-        render: {
-          visible: false, // Hide visual drag constraint
-        },
+        stiffness: 0.2,
+        render: { visible: false },
       },
     });
     Composite.add(engine.world, mouseConstraint);
 
-    // Remove scroll-blocking event listeners added by Matter.js otherpage page won't scroll
     mouseConstraint.mouse.element.removeEventListener("wheel", mouseConstraint.mouse.mousewheel);
-    mouseConstraint.mouse.element.removeEventListener(
-      "DOMMouseScroll",
-      mouseConstraint.mouse.mousewheel
-    );
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
     Render.run(render);
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // Cleanup 
+    // ✅ Handle resizing
+    const handleResize = () => {
+      width = container.offsetWidth;
+      height = container.offsetHeight;
+
+      render.canvas.width = width;
+      render.canvas.height = height;
+
+      // Remove old walls and add new ones
+      Composite.remove(engine.world, walls);
+      walls = createWalls();
+      Composite.add(engine.world, walls);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       Render.stop(render);
       Composite.clear(engine.world);
       Engine.clear(engine);
