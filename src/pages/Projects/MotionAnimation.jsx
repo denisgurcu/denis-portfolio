@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, } from "react";
 import Matter from "matter-js";
 import { svgPathProperties } from "svg-path-properties";
 import decomp from "poly-decomp";
 import "./Projects.css";
-import gradientTexture from "../../assets/images/circle3.png";
+// import gradientTexture from "../../assets/images/circle3.png";
 
 // Attach poly-decomp for SVG conversion
 window.decomp = decomp;
@@ -13,37 +13,49 @@ const MotionAnimation = () => {
   const motionRef = useRef(null);
   const containerRef = useRef(null);
 
-  const calculateScaleFactor = () => {
-    const baseWidth = 1920; // Base screen width for your design
-    const currentWidth = window.innerWidth; // Get current screen width
-    return currentWidth / baseWidth; // Scale based on screen size
-  };
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   useEffect(() => {
-    const { Engine, Render, Runner, Bodies, Composite } = Matter;
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+  useEffect(() => {
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
 
     const engine = Engine.create();
-    engine.constraintIterations = 12; // Improves object stability
-    engine.positionIterations = 12; // Reduces sinking effect
-    engine.velocityIterations = 10; // Fixes object placement on letters
-    
+    engine.constraintIterations = 12;
+    engine.positionIterations = 12;
+    engine.velocityIterations = 10;
     engine.world.gravity.y = 0.5;
 
     const container = containerRef.current;
-    let width = container.offsetWidth;
-    let height = container.offsetHeight;
-    let scaleFactor = calculateScaleFactor(); // Calculate scale
+    const width = container?.offsetWidth || dimensions.width;
+    const height = container?.offsetHeight || dimensions.height;
+    const baseWidth = 1920;
+    const baseHeight = 1080;
+    const scaleFactor = width / baseWidth;
+    const scaleY = height / baseHeight;
 
     const render = Render.create({
       element: motionRef.current,
       engine: engine,
       options: {
         width: width,
-        height: window.innerHeight * 3.5, // Extend beyond viewport,
+        height: dimensions.height * 3.5,
         background: "transparent",
         wireframes: false,
-        showInternalEdges: true, //  This helps debug hidden overlapping issues
-
+        showInternalEdges: true,
       },
     });
 
@@ -89,14 +101,14 @@ const MotionAnimation = () => {
 
     // ✅ Letter Offsets (Now Scaled Dynamically)
     const letterOffsets = {
-      P: { x: 0, y: -10 * scaleFactor },
-      R: { x: 0, y: 3 * scaleFactor },
+      P: { x: 0, y: -5 * scaleFactor },
+      R: { x: 0, y: 15 * scaleFactor },
       O: { x: 0, y: 20 * scaleFactor },
-      J: { x: 0, y: 38 * scaleFactor },
-      E: { x: 0, y: 8 * scaleFactor },
+      J: { x: 0, y: 35 * scaleFactor },
+      E: { x: 0, y: 12 * scaleFactor },
       C: { x: 0, y: 20 * scaleFactor },
-      T: { x: 0, y: -15 * scaleFactor },
-      S: { x: 0, y: 26 * scaleFactor },
+      T: { x: 0, y: -14 * scaleFactor },
+      S: { x: 0, y: 20 * scaleFactor },
     };
 
     const letterBodies = paths.map((path, index) => {
@@ -109,21 +121,11 @@ const MotionAnimation = () => {
       const letter = path.getAttribute("data-letter");
       const offset = letterOffsets[letter] || { x: 0, y: 0 };
 
-      const brandColors = [
-        "#262525", // Black
-        "#E6E6E6", // White
-        "#CCCCCC", // Grey
-        "#FFD24D", // Yellow
-        "#6FA2D5", // Blue
-        "#114059", // Dark Blue
-        "#DA4D3B", // Red
-        "#8F263E", // Dark Red
-        "#E3C3D8"  // Pink
-      ];
+
 
       return Bodies.fromVertices(
-        (bbox.x + bbox.width / 2 + 20) * scaleFactor + offset.x,
-        (window.innerHeight - bbox.height + 87) * scaleFactor + offset.y,
+        (bbox.x + bbox.width / 2 + 30) * scaleFactor + offset.x,
+        height - (bbox.height / 2) * scaleFactor + offset.y - 20, // nudge upward by 50 pixels
         vertices,
         {
           isStatic: true,
@@ -139,28 +141,24 @@ const MotionAnimation = () => {
 
     // ✅ Add Falling Circles (Now Scaled)
     const createCircle = () => {
-      // ✅ Increase variation in size for better visual effect
       const radius = (Math.random() * (80 - 30) + 15) * scaleFactor;
-
-
-      
       return Bodies.circle(
         Math.random() * width,
         -Math.random() * 400,
         radius,
         {
-          restitution: Math.random() * 0.5 + 0.5, // ✅ Controls bounce effect
-          friction: Math.random() * 0.2, // ✅ Controls sliding on letters
-          density: Math.random() * 0.03 + 0.01, // ✅ Adds slight weight variation
-          slop: 0, // ✅ Prevents sinking effect (forces better collision)
+          restitution: Math.random() * 0.5 + 0.5,
+          friction: Math.random() * 0.2,
+          density: Math.random() * 0.03 + 0.01,
+          slop: 0,
           collisionFilter: {
             group: 0,
             category: 0x0001,
-            mask: 0x0001, // ✅ Ensures precise collision behavior
+            mask: 0x0001,
           },
           render: {
-            fillStyle: "#262525", 
-            
+            fillStyle: "#262525",
+
             // sprite: {
             //   texture: gradientTexture,
             //   xScale: (radius * 2) / 400,
@@ -175,7 +173,7 @@ const MotionAnimation = () => {
     const circles = Array.from({ length: 25 }, createCircle);
     Composite.add(engine.world, circles);
 
-    
+
 
     // ✅ Add Mouse Interaction
     const mouse = Matter.Mouse.create(render.canvas);
@@ -196,48 +194,30 @@ const MotionAnimation = () => {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // ✅ Handle Window Resize
-    const handleResize = () => {
-      scaleFactor = calculateScaleFactor();
-      Matter.Engine.clear(engine);
-      Matter.Render.stop(render);
-      Matter.Composite.clear(engine.world);
-      Matter.Runner.stop(runner);
-
-      // Restart animation with new scale
-      setTimeout(() => {
-        MotionAnimation();
-      }, 100);
-    };
-
-    window.addEventListener("resize", handleResize);
-
     return () => {
-      window.removeEventListener("resize", handleResize);
       Render.stop(render);
       Composite.clear(engine.world);
       Engine.clear(engine);
       render.canvas.remove();
       render.textures = {};
     };
-  }, []);
-
+  }, [dimensions]); // ✅ Trigger re-setup on resize
 
 
   return (
     <div className="motion-animation-container" ref={containerRef}>
       <svg
         id="projectSVG"
-        width="1920"
-        height="249"
         viewBox="0 0 1920 249"
-        fill="none"
+        preserveAspectRatio="xMidYMid meet"
         xmlns="http://www.w3.org/2000/svg"
         style={{
           position: "absolute",
-          bottom: "0",
+          bottom: 0,
           width: "100%",
-          opacity: 0,
+          height: "auto",
+          maxWidth: "100%",
+          opacity: 1,
           pointerEvents: "none",
         }}
       >

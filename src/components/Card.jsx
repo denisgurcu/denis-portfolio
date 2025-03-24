@@ -22,7 +22,7 @@ const Card = ({ title, imageUrl, hoverImageUrl, tags, linkTo, isPlaceholder }) =
       <div className={`card clickable ${isPlaceholder ? "placeholder-card" : ""}`}>
         {isPlaceholder ? (
           <div className="coming-soon-card">
-            <span>Coming <br></br>Soon</span>
+            <span>View <br></br>All</span>
           </div>
         ) : linkTo ? (
           <Link to={linkTo} className="card-link">

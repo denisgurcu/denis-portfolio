@@ -95,15 +95,13 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Tags Container */
-.tags {
+/* .tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
   gap: 10px;
 }
 
-/* Tag Styling */
 .tag {
   font-family: var(--afacad);
   color: var(--black);
@@ -113,11 +111,10 @@
   transition: background-color 0.3s ease;
 }
 
-/* Ensure the spacing around "/" is even */
 .tag-separator {
   margin: 0 5px;
   color: var(--black);
-}
+} */
 
 /* Coming Soon Placeholder */
 .coming-soon-card {
@@ -130,27 +127,47 @@
   font-size: 3.5rem;
   font-family: var(--afacad);
   font-weight: var(--afacad-semibold);
+  color: var(--black);
   border-radius: 0.19rem;
   background-color: lightgray;
   text-transform: uppercase;
   text-align: center;
 }
 
-/* Prevent hover effects on placeholders */
-.placeholder-card:hover {
-  transform: none;
+.coming-soon-card:hover {
+  background-color: var(--black);
+  color: var(--white); 
 }
 
-@media (max-width: 1440px) {
+/* -----------RESPONSIVENESS----------- */
+
+
+/* ----very wide monitors---- */
+@media (min-width: 2300px) {
+  .card {
+    width: 688px;
+    height: 750px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+}
+
+
+
+
+/* @media (max-width: 1440px) {
   .card {
     width: 450px;
     height: 450px;
   }
-}
+} */
 
 
 /* Mobile Styles */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .card {
     width: 300px;
     height: 300px;
@@ -164,4 +181,4 @@
     font-size: 0.9rem;
     padding: 5px 10px;
   }
-}
+} */

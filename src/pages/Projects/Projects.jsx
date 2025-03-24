@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom"; // make sure this is at the top!
 import Isotope from "isotope-layout";
 import imagesLoaded from 'imagesloaded';
 import { IoGridOutline, IoListOutline } from "react-icons/io5";
@@ -64,39 +65,41 @@ const projectData = [
   },
 ];
 
+
+
 const Projects = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [view, setView] = useState("grid"); // View state (grid/list)
   const isotopeRef = useRef(null);
 
-// Initialize Isotope and Apply the Filter After Changing the View
-useEffect(() => {
-  if (isotopeRef.current) {
-    isotopeRef.current.destroy();
-  }
-
-  isotopeRef.current = new Isotope(view === "grid" ? ".projects-gallery" : ".work-list-wrapper", {
-    itemSelector: view === "grid" ? ".projects-item" : ".work-list-item",
-    layoutMode: view === "grid" ? "masonry" : "fitRows",
-    transitionDuration: "0.6s",
-    masonry: {
-      gutter: view === "grid" ? 25 : 0,
-    },
-    fitRows: {
-      gutter: 10, 
-    },
-  });
-
-  // ✅ Apply the selected filter again after view change
-  const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
-  isotopeRef.current.arrange({ filter: filterValue });
-
-  return () => {
+  // Initialize Isotope and Apply the Filter After Changing the View
+  useEffect(() => {
     if (isotopeRef.current) {
       isotopeRef.current.destroy();
     }
-  };
-}, [view, selectedFilter]); // ✅ Added `selectedFilter` as a dependency
+
+    isotopeRef.current = new Isotope(view === "grid" ? ".projects-gallery" : ".work-list-wrapper", {
+      itemSelector: view === "grid" ? ".projects-item" : ".work-list-item",
+      layoutMode: view === "grid" ? "masonry" : "fitRows",
+      transitionDuration: "0.6s",
+      masonry: {
+        gutter: view === "grid" ? 25 : 0,
+      },
+      fitRows: {
+        gutter: 10,
+      },
+    });
+
+    // ✅ Apply the selected filter again after view change
+    const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
+    isotopeRef.current.arrange({ filter: filterValue });
+
+    return () => {
+      if (isotopeRef.current) {
+        isotopeRef.current.destroy();
+      }
+    };
+  }, [view, selectedFilter]); // ✅ Added `selectedFilter` as a dependency
 
 
   // Apply Filtering for Both Views
@@ -104,16 +107,16 @@ useEffect(() => {
     if (isotopeRef.current) {
       const containerSelector = view === "grid" ? ".projects-gallery" : ".work-list-wrapper";
       const containerEl = document.querySelector(containerSelector);
-  
+
       if (!containerEl) return;
-  
+
       const filterValue = selectedFilter === "all" ? "*" : `.${selectedFilter.replace(/\s+/g, "-")}`;
-  
+
       // Proper usage of imagesLoaded
       imagesLoaded(containerEl, () => {
         requestAnimationFrame(() => {
           isotopeRef.current.arrange({ filter: filterValue });
-  
+
           // Force layout again in case there's a visual jump
           setTimeout(() => {
             isotopeRef.current.layout();
@@ -122,8 +125,8 @@ useEffect(() => {
       });
     }
   }, [selectedFilter, view]);
-  
-  
+
+
 
   const [animationState, setAnimationState] = useState({
     showGraph: true,
@@ -198,14 +201,14 @@ useEffect(() => {
                 className={`grid-view-button ${view === "grid" ? "active" : ""}`}
                 onClick={() => setView("grid")}
               >
-                <IoGridOutline size={24} />
+                <IoGridOutline />
               </button>
 
               <button
                 className={`list-view-button ${view === "list" ? "active" : ""}`}
                 onClick={() => setView("list")}
               >
-                <IoListOutline size={24} />
+                <IoListOutline />
               </button>
             </div>
           </div>
@@ -233,8 +236,11 @@ useEffect(() => {
           {view === "list" && (
             <div className="work-list-wrapper">
               {projectData.map((project, index) => (
-                <div key={index} className={`work-list-item ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")}`}>
-                  <div className="clickable-inner clickable">
+                <Link
+                  key={index}
+                  to={project.linkTo}
+                  className={`work-list-item ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")} clickable-inner clickable`}
+                >
                   <div className="work-list-image">
                     <img src={project.imageUrl} alt={project.title} />
                   </div>
@@ -244,13 +250,13 @@ useEffect(() => {
                     <div className="work-list-tags">
                       {project.tags.map((tag, index) => (
                         <span key={index} className="tag">
-                          {tag} {index !== project.tags.length - 1 && <span className="divider"> / </span>}
+                          {tag}
+                          {index !== project.tags.length - 1 && <span className="divider"> / </span>}
                         </span>
                       ))}
                     </div>
                   </div>
-                  </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
