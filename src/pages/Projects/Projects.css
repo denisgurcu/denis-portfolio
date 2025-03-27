@@ -219,8 +219,8 @@
   /* border: 2px solid red; */
 }
 .clickable-inner {
-  transition: transform 0.3s ease;
-  will-change: transform;
+  /* transition:  0.3s ease;
+  will-change: transform; */
   width: 100%;
   display: flex;
   align-items: flex-start; /* ✅ Align content to the top */
@@ -229,6 +229,7 @@
 }
 
 .clickable-inner:hover {
+  transition:  0.3s ease;
   transform: scale(0.97);
 }
 
