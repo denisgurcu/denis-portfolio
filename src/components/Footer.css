@@ -43,6 +43,7 @@
 
 .footer-title {
   font-family: var(--graphyne);
+  font-weight: 200;
   font-size: 5rem;
   opacity: 0.9;
 }
