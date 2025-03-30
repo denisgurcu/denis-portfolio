@@ -7,7 +7,7 @@
   position: relative;
   gap: 30px;
   justify-content: center; 
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .color-circle {
@@ -38,12 +38,23 @@
     width: 70px;
     height: 70px;
   }
-
-
 }
 
-@media (max-width: 768px) {
+/* ----very wide monitors---- */
+@media (min-width: 1921px) {
+  .color-circle {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/*  Large desktops (MacBook Pro 16", iMac) */
+@media (max-width: 1600px) {
   .color-picker {
-    display: none;
+    gap: 20px;
+  }
+  .color-circle {
+    width: 40px;
+    height: 40px;
   }
 }
