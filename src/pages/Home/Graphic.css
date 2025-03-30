@@ -1,45 +1,19 @@
 .wave-container {
   position: relative;
   width: 100%;
-  height: 100%; 
-  background-color: var(--blue); 
-  overflow: hidden; 
-}
-
-.waves {
-  position: relative;
-  width: 100%;
   height: 100%;
-}
-
-svg {
+  background-color: var(--blue);
   overflow: hidden;
-  display: block;
-  width: 100%; 
-  height: 100%; 
+}
+.wave-wrapper {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: 4800px 100%;
+  background-position-x: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 4800 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q30 50 60 100 T120 100 T180 100 T240 100 T300 100 T360 100 T420 100 T480 100 T540 100 T600 100 T660 100 T720 100 T780 100 T840 100 T900 100 T960 100 T1020 100 T1080 100 T1140 100 T1200 100 T1260 100 T1320 100 T1380 100 T1440 100 T1500 100 T1560 100 T1620 100 T1680 100 T1740 100 T1800 100 T1860 100 T1920 100 T1980 100 T2040 100 T2100 100 T2160 100 T2220 100 T2280 100 T2340 100 T2400 100 T2460 100 T2520 100 T2580 100 T2640 100 T2700 100 T2760 100 T2820 100 T2880 100 T2940 100 T3000 100 T3060 100 T3120 100 T3180 100 T3240 100 T3300 100 T3360 100 T3420 100 T3480 100 T3540 100 T3600 100 T3660 100 T3720 100 T3780 100 T3840 100 T3900 100 T3960 100 T4020 100 T4080 100 T4140 100 T4200 100 T4260 100 T4320 100 T4380 100 T4440 100 T4500 100 T4560 100 T4620 100 T4680 100 T4740 100 T4800 100' stroke='%23262626' stroke-width='9' fill='none' stroke-linecap='round' /%3E%3C/svg%3E");
 }
 
-path {
-  stroke-dasharray: 6 0 600 0;
-  stroke-dashoffset: 0; /* Dash starts at the very beginning */
-  animation: none; /* Start with no animation */
-}
 
-@keyframes moveTheWave {
-  0% {
-    stroke-dashoffset: 0;
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    stroke-dashoffset: -200;
-    transform: translate3d(-180px, 0, 0);
-  }
-}
-
-.waves path {
-  animation: none; /* Default state: no animation */
-}
-
-.waves path:hover {
-  animation: moveTheWave 6s linear infinite; /* Apply hover animation */
-}

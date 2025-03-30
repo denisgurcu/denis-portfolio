@@ -169,9 +169,12 @@
   padding: 5px 18px;
   border-radius: 50px;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--white);
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .view-switch button:hover {
@@ -206,7 +209,7 @@
 .work-list-item {
   display: flex;
   text-decoration: none;
-  align-items: flex-start; /* ✅ Align content to the top */
+  align-items: flex-start; 
   gap: 20px;
   padding: 20px;
   border-radius: 0.19rem;
@@ -214,24 +217,35 @@
   /* transition: 0.3s ease;  */
   box-sizing: border-box;
   width: 100%;
-  
+  transition: none; /* prevent Isotope layout conflict */
+  will-change: auto;
+}
 
   /* border: 2px solid red; */
-}
-.clickable-inner {
-  /* transition:  0.3s ease;
-  will-change: transform; */
+
+  .hover-inner {
+    transition: transform 0.3s ease;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .hover-inner:hover {
+    transform: scale(0.97);
+  }
+  
+/* .clickable-inner {
+  transition:  0.3s ease;
   width: 100%;
   display: flex;
-  align-items: flex-start; /* ✅ Align content to the top */
+  align-items: flex-start;
   gap: 20px;
   padding: 20px;
 }
 
 .clickable-inner:hover {
-  transition:  0.3s ease;
   transform: scale(0.97);
-}
+} */
 
 
 .work-list-image {

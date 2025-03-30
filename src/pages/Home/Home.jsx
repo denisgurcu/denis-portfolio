@@ -166,6 +166,7 @@ const Home = () => {
                 imageUrl={CardImage1}
                 hoverImageUrl={CardImage2}
                 tags={null}
+                linkTo="/coming-soon"
               />
               <Card
                 title="Poster Designs"

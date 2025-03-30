@@ -7,33 +7,31 @@ import "tippy.js/animations/perspective.css";
 const Footer = () => {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0, down: false });
-  const brushColorRef = useRef("#E6E6E6"); // Store brush color in a ref
+  const brushColorRef = useRef("#E6E6E6");
 
   const [isDrawing, setIsDrawing] = useState(false);
-  const [brushColor, setBrushColor] = useState("#E6E6E6"); // Default white
+  const [brushColor, setBrushColor] = useState("#E6E6E6");
   const [showButtons, setShowButtons] = useState(false);
 
   let width, height, prevX, prevY;
 
-  const brandColors = ["#E6E6E6", "#FFD24D", "#6FA2D5", "#DA4D3B", "#E3C3D8"]; // Brand colors
+  const brandColors = ["#E6E6E6", "#FFD24D", "#6FA2D5", "#DA4D3B", "#E3C3D8"];
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
     const resizeListener = () => {
-      const prevImage = canvas.toDataURL(); // Save current drawing
+      const prevImage = canvas.toDataURL();
       width = canvas.width = canvas.offsetWidth;
       height = canvas.height = canvas.offsetHeight;
-      ctx.fillStyle = "#262525"; // Black background
+      ctx.fillStyle = "#262525";
       ctx.fillRect(0, 0, width, height);
 
-      // Restore the previous drawing
       const img = new Image();
       img.src = prevImage;
       img.onload = () => ctx.drawImage(img, 0, 0);
 
-      // Show placeholder text only if no drawing
       if (!isDrawing) {
         ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
         ctx.font = "16px Afacad, sans-serif";
@@ -42,80 +40,101 @@ const Footer = () => {
       }
     };
 
-    const mouseMoveListener = (event) => {
-      if (!mouseRef.current.down) return;
-
-      const rect = canvas.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      ctx.strokeStyle = brushColorRef.current; // ✅ Always use the latest color
+    const drawLine = (x, y) => {
+      ctx.strokeStyle = brushColorRef.current;
       ctx.lineWidth = 30;
       ctx.lineCap = "round";
-
       ctx.beginPath();
       ctx.moveTo(prevX, prevY);
       ctx.lineTo(x, y);
       ctx.stroke();
-
       prevX = x;
       prevY = y;
     };
 
-    const mouseDownListener = (event) => {
-      if (event.button !== 0 || event.target !== canvas) return; // ✅ Only allow left-click on canvas
+    const mouseMoveListener = (e) => {
+      if (!mouseRef.current.down) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      drawLine(x, y);
+    };
 
+    const mouseDownListener = (e) => {
+      if (e.button !== 0 || e.target !== canvas) return;
       mouseRef.current.down = true;
       setIsDrawing(true);
       setShowButtons(true);
 
       const rect = canvas.getBoundingClientRect();
-      prevX = event.clientX - rect.left;
-      prevY = event.clientY - rect.top;
+      prevX = e.clientX - rect.left;
+      prevY = e.clientY - rect.top;
 
-      // ✅ Only redraw if needed (avoid unnecessary clearing)
-      if (!isDrawing) {
-        requestAnimationFrame(resizeListener);
-      }
+      if (!isDrawing) requestAnimationFrame(resizeListener);
     };
 
     const mouseUpListener = () => (mouseRef.current.down = false);
 
-    // Attach resize listener separately
+    // ✨ TOUCH SUPPORT
+    const touchStartListener = (e) => {
+      if (e.target !== canvas) return;
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      prevX = touch.clientX - rect.left;
+      prevY = touch.clientY - rect.top;
+      mouseRef.current.down = true;
+      setIsDrawing(true);
+      setShowButtons(true);
+    };
+
+    const touchMoveListener = (e) => {
+      if (!mouseRef.current.down) return;
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      drawLine(x, y);
+    };
+
+    const touchEndListener = () => (mouseRef.current.down = false);
+
     window.addEventListener("resize", resizeListener);
     window.addEventListener("mousemove", mouseMoveListener);
     window.addEventListener("mousedown", mouseDownListener);
     window.addEventListener("mouseup", mouseUpListener);
 
-    resizeListener(); // Initial resize
+    canvas.addEventListener("touchstart", touchStartListener);
+    canvas.addEventListener("touchmove", touchMoveListener);
+    canvas.addEventListener("touchend", touchEndListener);
+
+    resizeListener();
 
     return () => {
       window.removeEventListener("resize", resizeListener);
       window.removeEventListener("mousemove", mouseMoveListener);
       window.removeEventListener("mousedown", mouseDownListener);
       window.removeEventListener("mouseup", mouseUpListener);
-    };
-  }, [isDrawing]); // ✅ Removed brushColor from dependency array
 
-  // ✅ Keep brushColor updated in a ref
+      canvas.removeEventListener("touchstart", touchStartListener);
+      canvas.removeEventListener("touchmove", touchMoveListener);
+      canvas.removeEventListener("touchend", touchEndListener);
+    };
+  }, [isDrawing]);
+
   useEffect(() => {
     brushColorRef.current = brushColor;
   }, [brushColor]);
 
-  const [sendStatus, setSendStatus] = useState("SEND"); // Button text state
-  const [isSending, setIsSending] = useState(false); // Loading state
-  const [confirmationMessage, setConfirmationMessage] = useState(""); // On-screen message
+  const [sendStatus, setSendStatus] = useState("SEND");
+  const [isSending, setIsSending] = useState(false);
 
   const handleSend = async () => {
-    if (sendStatus === "Drawing Sent!") return; // Prevent multiple clicks
-
-    setIsSending(true); // ✅ Show loading indicator
-    setSendStatus(""); // ✅ Hide button text
+    if (sendStatus === "Drawing Sent!") return;
+    setIsSending(true);
+    setSendStatus("");
 
     const canvas = canvasRef.current;
     const imageData = canvas.toDataURL("image/png");
-
-    // Convert Base64 to Blob
     const blob = await fetch(imageData).then((res) => res.blob());
     const formData = new FormData();
     formData.append("drawing", blob, "drawing.png");
@@ -131,24 +150,19 @@ const Footer = () => {
       });
 
       if (response.ok) {
-        setSendStatus("Drawing Sent!"); // ✅ Update button text
-        setIsSending(false); // ✅ Hide loading
-
+        setSendStatus("Drawing Sent!");
       } else {
-        setSendStatus("Try Again!"); // ✅ Show error
-        setIsSending(false); // ✅ Hide loading
+        setSendStatus("Try Again!");
         setTimeout(() => setSendStatus("SEND"), 3000);
       }
-    } catch (error) {
-      console.error("Error:", error);
+    } catch (err) {
+      console.error("Error:", err);
       setSendStatus("Try Again!");
-      setIsSending(false);
       setTimeout(() => setSendStatus("SEND"), 3000);
+    } finally {
+      setIsSending(false);
     }
   };
-
-
-
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
@@ -164,16 +178,13 @@ const Footer = () => {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#262525";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Show "Click and Draw" again
     ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
     ctx.font = "16px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("Click and draw", canvas.width / 2, canvas.height / 2);
-
     setIsDrawing(false);
     setShowButtons(false);
-    setSendStatus("SEND"); //
+    setSendStatus("SEND");
   };
 
   useEffect(() => {
@@ -184,10 +195,10 @@ const Footer = () => {
         animation: "perspective",
         arrow: false,
         delay: [100, 200],
-        allowHTML: true, // Ensures tooltips update correctly
+        allowHTML: true,
       });
     }
-  }, [showButtons]); // ✅ Reinitialize tooltips when `showButtons` updates
+  }, [showButtons]);
 
   return (
     <footer className="footer">
