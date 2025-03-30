@@ -1,0 +1,95 @@
+/* ComingSoon.css */
+
+.coming-soon-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .coming-soon-content {
+    text-align: center;
+  }
+  
+  .coming-soon-title {
+    font-family: var(--graphyne); /* Match your brand font */
+    font-size: 8rem;
+    font-weight: 200;
+
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    max-width: 1200px;
+  }
+  
+  .coming-soon-subtext {
+    font-family: var(--afacad);
+    font-size: 1.5rem;
+    color: var(--black);
+  }
+  
+  .down-arrow {
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: 900; /* Try values like 600–900 */
+    animation: bounce 1.5s infinite;
+    color: var(--black);
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+    .coming-soon-title {
+      font-size: 6rem;
+      max-width: 900px;
+    }
+  
+    .coming-soon-subtext {
+      font-size: 1.3rem;
+    }
+  
+    .down-arrow {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* Mobile (≤768px) */
+  @media (max-width: 768px) {
+    .coming-soon-title {
+      font-size: 4rem;
+      max-width: 90%;
+    }
+  
+    .coming-soon-subtext {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+  
+    .down-arrow {
+      font-size: 1.6rem;
+    }
+  }
+  
+  /* Small mobile (≤480px) */
+  @media (max-width: 480px) {
+    .coming-soon-title {
+      font-size: 2.8rem;
+    }
+  
+    .coming-soon-subtext {
+      font-size: 1rem;
+    }
+  
+    .down-arrow {
+      font-size: 1.4rem;
+    }
+  }
+  
+  

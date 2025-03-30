@@ -237,26 +237,29 @@ const Projects = () => {
             <div className="work-list-wrapper">
               {projectData.map((project, index) => (
                 <Link
-                  key={index}
-                  to={project.linkTo}
-                  className={`work-list-item ${project.tags.map((tag) => tag.replace(/\s+/g, "-")).join(" ")} clickable-inner clickable`}
-                >
-                  <div className="work-list-image">
-                    <img src={project.imageUrl} alt={project.title} />
-                  </div>
-                  <div className="work-list-content">
-                    <h3 className="work-list-title">{project.title}</h3>
-                    <p className="work-list-description">{project.projectDetails}</p>
-                    <div className="work-list-tags">
-                      {project.tags.map((tag, index) => (
-                        <span key={index} className="tag">
-                          {tag}
-                          {index !== project.tags.length - 1 && <span className="divider"> / </span>}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Link>
+  key={index}
+  to={project.linkTo}
+  className={`work-list-item ${project.tags.map(tag => tag.replace(/\s+/g, "-")).join(" ")}`}
+>
+  <div className="hover-inner clickable"> {/* this is where we'll apply scale */}
+    <div className="work-list-image">
+      <img src={project.imageUrl} alt={project.title} />
+    </div>
+    <div className="work-list-content">
+      <h3 className="work-list-title">{project.title}</h3>
+      <p className="work-list-description">{project.projectDetails}</p>
+      <div className="work-list-tags">
+        {project.tags.map((tag, index) => (
+          <span key={index} className="tag">
+            {tag}
+            {index !== project.tags.length - 1 && <span className="divider"> / </span>}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</Link>
+
               ))}
             </div>
           )}

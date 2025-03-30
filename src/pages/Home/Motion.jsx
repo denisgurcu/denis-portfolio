@@ -4,11 +4,11 @@ import './Motion.css';
 import pencilTexture from '../../assets/images/circle2.png';
 
 const Motion = () => {
-  const motionRef = useRef(null); // Reference for Matter.js render container
-  const containerRef = useRef(null); // Reference for parent container dimensions
+  const motionRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
+    const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Events, Body, Bounds } = Matter;
 
     const engine = Engine.create();
     engine.world.gravity.y = 0.2;
@@ -30,13 +30,12 @@ const Motion = () => {
       },
     });
 
-    const wallThickness = 50; // ✅ Still used here
-
     const createWalls = () => [
-      Bodies.rectangle(width / 2, height + wallThickness / 2, width * 2, wallThickness, { isStatic: true }),
-      Bodies.rectangle(width / 2, -wallThickness / 2, width * 2, wallThickness, { isStatic: true }),
-      Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
-      Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
+      // Make walls extra large and far out
+      Bodies.rectangle(width / 2, height + 100, width * 2, 200, { isStatic: true }),
+      Bodies.rectangle(width / 2, -100, width * 2, 200, { isStatic: true }),
+      Bodies.rectangle(-100, height / 2, 200, height * 2, { isStatic: true }),
+      Bodies.rectangle(width + 100, height / 2, 200, height * 2, { isStatic: true }),
     ];
 
     let walls = createWalls();
@@ -45,8 +44,6 @@ const Motion = () => {
     const createNonOverlappingCircle = (existingBodies) => {
       let attempts = 0;
       const maxAttempts = 10;
-
-      // 🔥 Scaled size based on container width
       const minRadius = width * 0.02;
       const maxRadius = width * 0.07;
 
@@ -58,6 +55,9 @@ const Motion = () => {
         const newBody = Bodies.circle(x, y, radius, {
           restitution: 0.9,
           friction: 0.3,
+          density: 0.002,
+          sleepThreshold: 60,
+          slop: 0.01,
           render: {
             fillStyle: "rgba(38, 38, 38, 0.9)",
             // sprite: {
@@ -69,7 +69,7 @@ const Motion = () => {
         });
 
         const overlaps = existingBodies.some((body) =>
-          Matter.Bounds.overlaps(body.bounds, newBody.bounds)
+          Bounds.overlaps(body.bounds, newBody.bounds)
         );
 
         if (!overlaps) return newBody;
@@ -102,7 +102,28 @@ const Motion = () => {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // ✅ Handle resizing
+    // 🔁 Prevent escape & clamp velocity
+    Events.on(engine, "beforeUpdate", () => {
+      const maxVelocity = 10;
+
+      circles.forEach((circle) => {
+        // Clamp
+        circle.velocity.x = Math.max(-maxVelocity, Math.min(circle.velocity.x, maxVelocity));
+        circle.velocity.y = Math.max(-maxVelocity, Math.min(circle.velocity.y, maxVelocity));
+
+        // Rescue if offscreen
+        if (
+          circle.position.x < -150 ||
+          circle.position.x > width + 150 ||
+          circle.position.y < -150 ||
+          circle.position.y > height + 150
+        ) {
+          Body.setPosition(circle, { x: width / 2, y: height / 2 });
+          Body.setVelocity(circle, { x: 0, y: 0 });
+        }
+      });
+    });
+
     const handleResize = () => {
       width = container.offsetWidth;
       height = container.offsetHeight;
@@ -110,7 +131,6 @@ const Motion = () => {
       render.canvas.width = width;
       render.canvas.height = height;
 
-      // Remove old walls and add new ones
       Composite.remove(engine.world, walls);
       walls = createWalls();
       Composite.add(engine.world, walls);

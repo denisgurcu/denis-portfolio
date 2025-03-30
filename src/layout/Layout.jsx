@@ -29,6 +29,8 @@ const Layout = () => {
       document.body.classList.add("about-bg"); // Add "about-bg" for the about page
     } else if (location.pathname === "/alter-ego") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
+    } else if (location.pathname === "/coming-soon") {
+      document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
     } else if (location.pathname === "/posters") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Posters
     } else if (location.pathname === "/logo") {

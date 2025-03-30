@@ -1,95 +1,69 @@
 import React, { useEffect, useRef } from "react";
-import './Graphic.css';
+import gsap from "gsap";
+import "./Graphic.css";
 
 const Graphic = () => {
-  const waveRefs = useRef([]); // Store references to wave paths
+  const waveRefs = useRef([]);
+  const hoverAnims = useRef([]); // Store active animations
 
   useEffect(() => {
-    console.log("Graphic component mounted!");
-    const m = 0.512286623256592433; // Control point multiplier for wave curves
-
-    // Function to generate wave path data
-    function buildWave(w, h, yOffset = 0) {
-      const a = h / 4; // Amplitude of the wave
-      const y = h / 2 + yOffset; // Vertical center of the wave
-      let pathData = `M 0 ${y + a / 2}`; // Start the wave path
-      for (let i = 0; i < w; i += 50) { // Loop to create wave segments
-        pathData += ` c ${a * m} 0 ${-(1 - a) * m} -${a} ${a} -${a}`; // Cubic curve for the wave crest
-        pathData += ` s ${-(1 - a) * m} ${a} ${a} ${a}`; // Smooth curve for the wave trough
-      }
-      return pathData;
-    }
-
-    const waveWidth = 1500; // Total width of the wave
-    const waveHeight = 200; // Height of the wave
-    const yOffsetStep = 60; // Spacing between waves
-
-    // Generate path data for each wave
-    waveRefs.current.forEach((path, index) => {
-      const yOffset = index * yOffsetStep; // Vertical offset for each wave
-      path.setAttribute("d", buildWave(waveWidth, waveHeight, yOffset)); // Set wave path
+    const loopAnims = [];
+  
+    // Step 1: Initial animation
+    waveRefs.current.forEach((ref, i) => {
+      // Initial nudge animation (feel free to adjust this)
+      gsap.fromTo(
+        ref,
+        { backgroundPositionX: "0px" },
+        {
+          backgroundPositionX: "-=100px",
+          duration: 3,
+          ease: "linear",
+          onComplete: () => {
+            // Step 2: Set up an infinite, very slow loop
+            loopAnims[i] = gsap.to(ref, {
+              backgroundPositionX: "-=100000px", // very large scroll
+              duration: 2000, // slow and smooth
+              ease: "linear",
+              repeat: -1,
+              paused: true,
+            });
+          },
+        }
+      );
     });
-
-    // Animation on page load
-    const waveContainer = document.querySelector(".waves");
-
-    const playInitialAnimation = () => {
-      waveRefs.current.forEach((path) => {
-        path.style.animation = "moveTheWave 3s linear infinite"; // Apply initial wave animation
-      });
-
-      setTimeout(() => {
-        waveRefs.current.forEach((path) => {
-          path.style.animation = "none"; // Stop animation after 3 seconds
-        });
-      }, 3000);
+  
+    const container = document.querySelector(".wave-container");
+  
+    const startHoverLoop = () => {
+      loopAnims.forEach((anim) => anim?.resume());
     };
-
-    // Hover effect: Reapply wave animation
-    const addAnimation = () => {
-      waveRefs.current.forEach((path) => {
-        path.style.animation = "moveTheWave 4s linear infinite";
-      });
+  
+    const stopHoverLoop = () => {
+      loopAnims.forEach((anim) => anim?.pause());
     };
-
-    // Hover effect: Remove wave animation
-    const removeAnimation = () => {
-      waveRefs.current.forEach((path) => {
-        path.style.animation = "none";
-      });
-    };
-
-    // Start initial animation
-    playInitialAnimation();
-
-    // Add event listeners for hover effects
-    waveContainer.addEventListener("mouseenter", addAnimation);
-    waveContainer.addEventListener("mouseleave", removeAnimation);
-
-    // Clean up event listeners
+  
+    container.addEventListener("mouseenter", startHoverLoop);
+    container.addEventListener("mouseleave", stopHoverLoop);
+  
     return () => {
-      console.log("Cleaning up event listeners...");
-      waveContainer.removeEventListener("mouseenter", addAnimation);
-      waveContainer.removeEventListener("mouseleave", removeAnimation);
+      container.removeEventListener("mouseenter", startHoverLoop);
+      container.removeEventListener("mouseleave", stopHoverLoop);
     };
   }, []);
+  
+  
 
   return (
     <div className="wave-container">
-      <div className="waves">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 500 200">
-          {[...Array(3)].map((_, i) => (
-            <path
-              key={i}
-              ref={(el) => (waveRefs.current[i] = el)} // Assign references to paths
-              fill="none"
-              stroke="#262626"
-              strokeWidth="9"
-              strokeLinecap="round"
-            />
-          ))}
-        </svg>
-      </div>
+      {[...Array(3)].map((_, index) => (
+        <div
+          key={index}
+          className="wave-wrapper"
+          ref={(el) => (waveRefs.current[index] = el)}
+          style={{ top: `${index * 45}px` }}
+        />
+      ))}
     </div>
   );
 };
