@@ -32,12 +32,12 @@ const Footer = () => {
       img.src = prevImage;
       img.onload = () => ctx.drawImage(img, 0, 0);
 
-      if (!isDrawing) {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-        ctx.font = "16px Afacad, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("Click and draw", width / 2, height / 2);
-      }
+      // if (!isDrawing) {
+      //   ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+      //   ctx.font = "16px Afacad, sans-serif";
+      //   ctx.textAlign = "center";
+      //   ctx.fillText("Click and draw", width / 2, height / 2);
+      // }
     };
 
     const drawLine = (x, y) => {
@@ -75,37 +75,56 @@ const Footer = () => {
 
     const mouseUpListener = () => (mouseRef.current.down = false);
 
-    // ✨ TOUCH SUPPORT
-    const touchStartListener = (e) => {
-      if (e.target !== canvas) return;
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      prevX = touch.clientX - rect.left;
-      prevY = touch.clientY - rect.top;
-      mouseRef.current.down = true;
-      setIsDrawing(true);
-      setShowButtons(true);
-    };
+    // TOUCH SUPPORT
 
-    const touchMoveListener = (e) => {
-      if (!mouseRef.current.down) return;
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-      drawLine(x, y);
-    };
+    const touchDrawingRef = { current: false };
 
-    const touchEndListener = () => (mouseRef.current.down = false);
+    canvas.addEventListener("touchstart", (e) => {
+      if (e.target === canvas) {
+        e.preventDefault();
+        touchDrawingRef.current = true;
+        setIsDrawing(true);
+        setShowButtons(true);
+
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        prevX = touch.clientX - rect.left;
+        prevY = touch.clientY - rect.top;
+      }
+    }, { passive: false });
+
+    canvas.addEventListener("touchmove", (e) => {
+      if (e.target === canvas && touchDrawingRef.current) {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        ctx.strokeStyle = brushColorRef.current;
+        ctx.lineWidth = 30;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        prevX = x;
+        prevY = y;
+      }
+    }, { passive: false });
+
+    canvas.addEventListener("touchend", (e) => {
+      if (e.target === canvas) {
+        e.preventDefault();
+        touchDrawingRef.current = false;
+      }
+    }, { passive: false });
 
     window.addEventListener("resize", resizeListener);
     window.addEventListener("mousemove", mouseMoveListener);
     window.addEventListener("mousedown", mouseDownListener);
     window.addEventListener("mouseup", mouseUpListener);
-
-    canvas.addEventListener("touchstart", touchStartListener);
-    canvas.addEventListener("touchmove", touchMoveListener);
-    canvas.addEventListener("touchend", touchEndListener);
 
     resizeListener();
 
@@ -114,13 +133,8 @@ const Footer = () => {
       window.removeEventListener("mousemove", mouseMoveListener);
       window.removeEventListener("mousedown", mouseDownListener);
       window.removeEventListener("mouseup", mouseUpListener);
-
-      canvas.removeEventListener("touchstart", touchStartListener);
-      canvas.removeEventListener("touchmove", touchMoveListener);
-      canvas.removeEventListener("touchend", touchEndListener);
     };
   }, [isDrawing]);
-
   useEffect(() => {
     brushColorRef.current = brushColor;
   }, [brushColor]);
@@ -178,11 +192,11 @@ const Footer = () => {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#262525";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-    ctx.font = "16px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("Click and draw", canvas.width / 2, canvas.height / 2);
-    setIsDrawing(false);
+    // ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+    // ctx.font = "16px sans-serif";
+    // ctx.textAlign = "center";
+    // ctx.fillText("Click and draw", canvas.width / 2, canvas.height / 2);
+    setIsDrawing(false); // This triggers the placeholder to show
     setShowButtons(false);
     setSendStatus("SEND");
   };
@@ -202,6 +216,9 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      {!isDrawing && (
+  <div className="draw-placeholder">Click and draw</div>
+)}
       <canvas ref={canvasRef} className="footer-canvas"></canvas>
 
       {/* Left: Contact Info */}
@@ -225,7 +242,7 @@ const Footer = () => {
         {brandColors.map((color) => (
           <div
             key={color}
-            className={`color-dot clickable ${brushColor === color ? "active" : ""}`} // ✅ Add "active" if selected
+            className={`color-dot clickable ${brushColor === color ? "active" : ""}`} // Add "active" if selected
             style={{ backgroundColor: color }}
             onClick={() => setBrushColor(color)}
           ></div>
@@ -241,7 +258,7 @@ const Footer = () => {
             data-tippy-content="Send this drawing to my email"
             onClick={handleSend}
           >
-            {isSending ? <div className="loading-spinner"></div> : sendStatus} {/* ✅ Show spinner while sending */}
+            {isSending ? <div className="loading-spinner"></div> : sendStatus} {/* Show spinner while sending */}
           </div>
           <div
             className="toolbar-button clickable"
