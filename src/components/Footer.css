@@ -20,6 +20,19 @@
   cursor: crosshair;
   z-index: 0;
 }
+.draw-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--afacad);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  user-select: none;
+  z-index: 2; /* Show above canvas */
+  transition: opacity 0.3s ease;
+}
 
 /* Left Side: Contact Info */
 .footer-left {
