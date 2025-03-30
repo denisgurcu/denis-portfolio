@@ -49,7 +49,7 @@ const Home = () => {
   //  Horizontal Scroll Animation
   useEffect(() => {
     const horizontalSection = horizontalRef.current;
-    
+
     if (horizontalSection) {
       gsap.to(horizontalSection, {
         x: () => -(horizontalSection.scrollWidth - window.innerWidth),
@@ -68,7 +68,7 @@ const Home = () => {
     return () => {
       ScrollTrigger.getById("horizontalScroll")?.kill();
     };
-  }, []); 
+  }, []);
 
   // ✅ Fix: Ensure Scroll Animations Restart on Refresh
   useEffect(() => {
@@ -136,7 +136,7 @@ const Home = () => {
               <div className="box motion">
                 <Motion />
               </div>
-              <div className="label motion-label">MOTION DESIGN</div>
+              <div className="label motion-label">MOTION GRAPHICS</div>
             </div>
           </div>
           <h1 className="hero-text">DENIS</h1>
@@ -149,8 +149,9 @@ const Home = () => {
           I'm a multimedia designer specializing in branding, graphic, and motion
           design. I seek imaginative, functional solutions that tell a story.
           <br />
-          <span className="cursor-info">You can pick a color for your cursor.</span>
-          <ColorPicker onColorSelect={handleColorSelect} />
+          <div className="cursor-info-wrapper">
+            <span className="cursor-info">You can pick a color for your cursor.</span>
+          </div>          <ColorPicker onColorSelect={handleColorSelect} />
         </div>
 
       </section>
@@ -192,7 +193,7 @@ const Home = () => {
 
               <Card isPlaceholder={true} />
               <Link to="/projects"></Link>
-              
+
 
               {/* VIEW ALL Card */}
               {/* <div className="view-all-card clickable">

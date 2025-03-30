@@ -1,5 +1,5 @@
 .eye {
-  /* margin-left: 50px; */
+  margin-left: 5px;
   width: 70px;
   height: 70px;
   display: inline-block;
@@ -83,6 +83,20 @@
 .eye.clicked .eyelid span {
   height: 100%;
   opacity: 0;
+}
+
+/* Large desktops (MacBook Pro 16", iMac) */
+@media (max-width: 1600px) {
+  .eye {
+    width: 50px;
+    height: 50px;
+  }
+
+  .eyeball {
+    width: 17px;
+    height: 17px;
+    border: 8px solid var(--blue);
+  }
 }
 
 @media (max-width: 768px) {

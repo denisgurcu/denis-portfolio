@@ -217,8 +217,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       {!isDrawing && (
-  <div className="draw-placeholder">Click and draw</div>
-)}
+        <div className="draw-placeholder-wrapper">
+          <div className="draw-placeholder">Click and draw</div>
+        </div>
+      )}
       <canvas ref={canvasRef} className="footer-canvas"></canvas>
 
       {/* Left: Contact Info */}

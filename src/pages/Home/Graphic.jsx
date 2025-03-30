@@ -1,10 +1,41 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./Graphic.css";
 
 const Graphic = () => {
   const waveRefs = useRef([]);
   const hoverAnims = useRef([]); // Store active animations
+  const [offset, setOffset] = useState(45); // default
+  // Set offset based on screen size like CSS media queries
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width >= 2300) {
+        setOffset(55); // Ultra-wide monitors (4K, etc.)
+      } else if (width >= 1921) {
+        setOffset(55); // Large desktops
+      } else if (width <= 1600) {
+        setOffset(35); // MacBook Pro 16", iMac
+      } else if (width <= 1280) {
+        setOffset(40); // MacBook Air / Pro 13-14"
+      } else if (width <= 1024) {
+        setOffset(35); // Tablets landscape
+      } else if (width <= 768) {
+        setOffset(30); // Tablets portrait, large phones
+      } else if (width <= 480) {
+        setOffset(25); // Regular phones
+      } else if (width <= 375) {
+        setOffset(20); // Small phones (SE, 13 mini)
+      } else {
+        setOffset(45); // Fallback for mid-sized screens
+      }
+    };
+
+    handleResize(); // Initial run
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const loopAnims = [];
@@ -31,6 +62,7 @@ const Graphic = () => {
           },
         }
       );
+      
     });
   
     const container = document.querySelector(".wave-container");
@@ -61,7 +93,7 @@ const Graphic = () => {
           key={index}
           className="wave-wrapper"
           ref={(el) => (waveRefs.current[index] = el)}
-          style={{ top: `${index * 45}px` }}
+          style={{ top: `${index * offset}px` }}
         />
       ))}
     </div>
