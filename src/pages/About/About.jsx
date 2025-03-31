@@ -344,7 +344,7 @@ const About = () => {
                         <div className="box-content">
                             <h2>EDUCATION</h2>
                             <p>
-                                I hold a Bachelor's in Business., providing me with a strong foundation in strategy, analysis, and marketing. <br></br> <br></br> Currently, I’m pursuing a diploma in <a href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/" className="hover-link clickable no-drag" target="_blank" rel="noopener noreferrer">New Media Design & Web Development</a> at British Columbia Institute of Technology  to expand my technical and creative skillset.
+                                I hold a Bachelor's in Business, providing me with a strong foundation in strategy, analysis, and marketing. <br></br> <br></br> Currently, I’m pursuing a diploma in <a href="https://www.bcit.ca/programs/new-media-design-and-web-development-diploma-full-time-6515dipma/" className="hover-link clickable no-drag" target="_blank" rel="noopener noreferrer">New Media Design & Web Development</a> at British Columbia Institute of Technology  to expand my technical and creative skillset.
                             </p>
                         </div>
                     </div>
