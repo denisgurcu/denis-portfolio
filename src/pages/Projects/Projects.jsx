@@ -32,7 +32,7 @@ const projectData = [
     isGif: false,
     projectDetails: "A bold, rebellious identity for a design agency that thrives on breaking conventions. Playful typography, surrealist imagery, and dynamic layouts bring the brand’s avant-garde spirit to life across digital and print.",
     tags: ["Branding", "Graphic Design", "Motion Graphics"],
-    linkTo: "/dada-collective",
+    linkTo: "/coming-soon",
   },
   {
     title: "POSTER DESIGNS",
