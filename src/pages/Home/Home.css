@@ -294,6 +294,11 @@
   color: var(--white);
 }
 
+.view-all-link {
+  text-decoration: none;
+
+} 
+
 /* -----------RESPONSIVENESS----------- */
 
 

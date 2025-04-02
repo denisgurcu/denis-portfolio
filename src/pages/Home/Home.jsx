@@ -191,8 +191,9 @@ const Home = () => {
                 linkTo="/logo"
               />
 
-              <Card isPlaceholder={true} />
-              <Link to="/projects"></Link>
+<Link to="/projects" className="view-all-link">
+  <Card isPlaceholder={true} />
+</Link>
 
 
               {/* VIEW ALL Card */}
