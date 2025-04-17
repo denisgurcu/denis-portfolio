@@ -1,4 +1,45 @@
 .alter-ego-intro-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .alter-ego-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex; /* Ensure it's aligned at the bottom */
+    justify-content: center;
+  }
+  
+  .alter-ego-header {
+    /* border: 5px solid red;   */
+   max-width: 1300px; 
+    height: 800px; 
+    object-fit: cover;
+  }
+  
+  /* Removed old marquee style */
+  
+  .alter-ego-title {
+    position: absolute;
+    bottom: 1vh;
+    font-family: var(--graphyne);
+    font-size: 18rem;
+    color: var(--black);
+    text-align: center;
+    margin: 0;
+  }
+
+
+/* .alter-ego-intro-wrapper {
     position: relative; 
     top: 0;
     left: 0;
@@ -11,8 +52,8 @@
     text-align: center;
     margin: 0;
     padding: 0;
-    z-index: -1; /* Ensures content is behind the header */
-    /* border: 1px solid red; */
+    z-index: -1; 
+
 }
 
 .alter-ego-animation-container {
@@ -28,10 +69,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 
 /* Marquee Wrapper */
-.alter-ego-marquee-wrapper {
+/* .alter-ego-marquee-wrapper {
     position: absolute;
     bottom: 15%;
     width: 100%;
@@ -54,20 +95,20 @@
     color: var(--black);
     margin-right: 80px;
 
-}
+} */
 
 /* Keyframes for marquee animation */
-@keyframes marquee {
+/* @keyframes marquee {
     from {
         transform: translateX(0);
     }
     to {
         transform: translateX(-100%);
     }
-}
+} */
 
 .alter-ego-content {
-        margin: 0;
+    margin: 0;
     min-height: 100vh;
     background-color: var(--black);
     color: var(--white);
@@ -77,30 +118,31 @@
     align-items: center;
 }
 
-.content-wrapper {
+.alter-ego-content-wrapper {
     padding: 130px;
     display: flex;
     flex-direction: column;
     max-width: 80%;
+    width: 100%;  /* Ensures the wrapper takes full width */
 }
 
-.content-details {
+.alter-ego-content-details {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
+    gap: 20px; /* Added gap between the fields for better spacing */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
-.content-details > div {
+.alter-ego-content-details > div {
     flex: 1;
-    margin-right: 20px;
+    min-width: 250px; /* Ensures they take up equal width but wrap if needed */
 }
 
-.content-details > div:last-child {
-    margin-right: 0;
-}
-
-.content-details h3 {
+.alter-ego-content-field h3,
+.alter-ego-content-role h3,
+.alter-ego-content-timeframe h3,
+.alter-ego-main-focus h3  {
     font-size: 2rem;
     font-weight: 700;
     color: var(--white);
@@ -108,20 +150,55 @@
     margin-bottom: 10px;
 }
 
-.content-details p {
+.alter-ego-content-details p {
     font-size: 1.5rem;
     font-weight: 200;
     margin: 0;
 }
 
-.content-description {
+.alter-ego-content-description {
     font-size: 2.5rem;
     line-height: 1.8;
+    margin-top: 50px; 
+    opacity: 0.8;
 }
 
-.content-description p {
+.alter-ego-content-description p {
     margin: 0;
+    font-weight: 300;
 }
+
+.bold {
+    font-weight: 500; /* or any value to make it bold */
+}
+
+/* Main Focus Section */
+.alter-ego-main-focus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  
+  .alter-ego-work-list-tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: var(--afacad);
+    font-weight: var(--afacad-light);
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 200;
+    gap: 10px;
+  }
+  
+  .alter-ego-work-list-tags .tag {
+    display: inline-block;
+  }
+  
+  .alter-ego-work-list-tags .divider {
+    color: var(--white);
+  }
 
 .logo-concept-section {
     padding: 80px 20px;
@@ -221,7 +298,6 @@
 
 
 
-
 /* Outer container to center the layout on the page */
 .split-grid-container {
     padding: 40px 20px;
@@ -235,13 +311,12 @@
 .split-grid-section {
     display: flex;
     flex-wrap: wrap; /* Ensures layout works well on smaller screens */
-    max-width: 800px; /* Smaller max width to scale everything down */
-    gap: 10px; /* Space between left and right columns */
+    max-width: 1200px; /* Increased max width for a slightly larger layout */
+    gap: 50px; /* Space between left and right columns */
     box-sizing: border-box;
     aspect-ratio: 2/1; /* Keeps the ratio of width to height */
-    border-radius: 15px; /* Smooth edges */
     padding: 20px; /* Padding inside the section */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    /* Removed border and shadow */
 }
 
 /* Left section - single image */
@@ -257,7 +332,6 @@
     width: 100%;
     height: auto;
     object-fit: cover; /* Ensures proportional scaling */
-    border-radius: 10px; /* Optional rounded corners */
 }
 
 /* Right section - two rows */
@@ -278,9 +352,8 @@
 
 .split-grid-right-top img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover; /* Proportional scaling */
-    border-radius: 10px; /* Optional rounded corners */
 }
 
 .split-grid-right-bottom {
@@ -288,20 +361,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px; /* Optional rounded corners */
     padding: 15px; /* Add spacing around the text */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    /* Removed border and shadow */
     text-align: left;
 }
 
 /* Text styling */
 .split-grid-right-bottom p {
     margin: 0;
-    font-size: 2rem; /* Reduced font size */
+    font-size: 1.8rem; /* Increased font size for better readability */
     font-family: var(--afacad);
     color: var(--black);
     line-height: 1.5;
 }
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
@@ -344,19 +417,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 100vh;
-    padding: 40px 20px;
+    padding: 0; /* Remove extra padding */
+    margin: 0;
 }
 
 .text-wrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center; /* centers horizontally */
+    justify-content: center; /* optional if it has a set height */
+
+  
+
 }
 
 .animated-text {
-    font-size: 5rem;
+    font-size: 8rem;
     font-family: var(--afacad);
     font-weight: bold;
     color: var(--black);
@@ -401,19 +479,19 @@
   }
 
   .group-3 .animated-text {
-    margin: 0; /* Removes top and bottom margins */
+    margin: 0; 
 }
 
 .animated-text.flipped-text {
     display: inline-block; /* Ensure transform applies properly */
+    transform-origin: 50% 50%; /* Change from bottom to center */
     transform: rotate(180deg);
     transform: scaleY(-1);
+    line-height: 1 
 
 }
 
-.text-group.group-3 .animated-text:first-child {
-    margin-bottom: -130px; /* Adjust as needed */
-}
+
 
 
 /* Two-Column Section */

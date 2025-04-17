@@ -29,7 +29,7 @@ const Home = () => {
   const horizontalRef = useRef(null);
 
   useEffect(() => {
-    // ✅ Load saved cursor color from localStorage
+    // Load saved cursor color from localStorage
     const savedColor = localStorage.getItem("cursorColor");
     if (savedColor) setCursorColorState(savedColor);
   }, []);
@@ -40,9 +40,9 @@ const Home = () => {
     localStorage.setItem("cursorColor", color);
   };
 
-  // ✅ Fix: Ensure ScrollTrigger Refreshes on Every Page Load
+  // Fix: Ensure ScrollTrigger Refreshes on Every Page Load
   useEffect(() => {
-    console.log("🔄 Refreshing ScrollTrigger on component mount...");
+    console.log("Refreshing ScrollTrigger on component mount...");
     ScrollTrigger.refresh();
   }, []);
 
@@ -70,7 +70,7 @@ const Home = () => {
     };
   }, []);
 
-  // ✅ Fix: Ensure Scroll Animations Restart on Refresh
+  // Fix: Ensure Scroll Animations Restart on Refresh
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero text animation
@@ -167,7 +167,7 @@ const Home = () => {
                 imageUrl={CardImage1}
                 hoverImageUrl={CardImage2}
                 tags={null}
-                linkTo="/coming-soon"
+                linkTo="/dada-collective"
               />
               <Card
                 title="Poster Designs"
@@ -191,9 +191,9 @@ const Home = () => {
                 linkTo="/logo"
               />
 
-<Link to="/projects" className="view-all-link">
-  <Card isPlaceholder={true} />
-</Link>
+              <Link to="/projects" className="view-all-link">
+                <Card isPlaceholder={true} />
+              </Link>
 
 
               {/* VIEW ALL Card */}
