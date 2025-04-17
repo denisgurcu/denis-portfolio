@@ -29,6 +29,8 @@ const Layout = () => {
       document.body.classList.add("about-bg"); // Add "about-bg" for the about page
     } else if (location.pathname === "/alter-ego") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
+    } else if (location.pathname === "/dada-collective") {
+      document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
     } else if (location.pathname === "/coming-soon") {
       document.body.classList.add("home-bg"); // Reuse "home-bg" for Alter Ego
     } else if (location.pathname === "/posters") {
@@ -41,13 +43,13 @@ const Layout = () => {
 
   return (
     <div>
-    <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
-    <Header />
-    <main className={location.pathname === "/projects" ? "no-padding" : ""}>
-      <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
-    </main>
-    <Footer />
-  </div>
+      <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
+      <Header />
+      <main className={location.pathname === "/projects" ? "no-padding" : ""}>
+        <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
+      </main>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,0 +1,61 @@
+.dada-collective-intro-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;  /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Ensure content starts from top */
+  align-items: center;
+  text-align: center;
+}
+
+.dada-animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dada-video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dada-text {
+  position: absolute;
+  bottom: 40px;  /* Distance from the bottom, adjust as needed */
+  font-family: var(--graphyne);  /* On-brand font */
+  font-size: 15em;  /* Adjust size as needed */
+  color: var(--black);  /* On-brand text color */
+  margin: 0;
+}
+.dada-content {
+  background-color: var(--black);  /* On-brand background color */
+  color: var(--white);  /* On-brand text color */
+  padding: 50px 20px;
+  font-family: var(--afacad);  /* On-brand font */
+}
+
+.content-wrapper {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.content-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-field, .content-role, .content-timeframe {
+  flex: 1;
+}
+
+.content-description {
+  font-size: 2rem;  /* Adjust font size for better readability */
+  margin-top: 20px;
+  line-height: 1.6;
+}

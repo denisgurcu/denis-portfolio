@@ -7,7 +7,7 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 
-import staticAnimation from "../../assets/images/alterego_header.jpg";
+import AlterHeader from "../../assets/images/alterego_header2.png";
 import CoffeeDripper from "../../assets/images/alterego_dripper.png";
 import AlterEgoFace from "../../assets/images/alterego_faces.png";
 import AlterEgoLogo from "../../assets/images/alterego_logo.png";
@@ -210,39 +210,58 @@ const AlterEgo = () => {
         <>
             {/* Hero Section */}
             <section className="alter-ego-intro-wrapper">
-                <div className="alter-ego-animation-container">
-                    <img src={staticAnimation} alt="Static Animation" className="static-animation" />
+                <div className="alter-ego-header-container">
+                    <img src={AlterHeader} alt="Alter Ego Header" className="alter-ego-header" />
                 </div>
-                <div className="alter-ego-marquee-wrapper">
-                    <h1 className="alter-ego-text">ALTER EGO</h1>
-                    <h1 className="alter-ego-text">ALTER EGO</h1>
-                    <h1 className="alter-ego-text">ALTER EGO</h1>
-                </div>
+
+                {/* Removed marquee – now using single title */}
+                {/* <div className="alter-ego-marquee-wrapper">
+    <h1 className="alter-ego-text">ALTER EGO</h1>
+    <h1 className="alter-ego-text">ALTER EGO</h1>
+    <h1 className="alter-ego-text">ALTER EGO</h1>
+  </div> */}
+
+                <h1 className="alter-ego-title">ALTER EGO</h1>
             </section>
 
             <section className="alter-ego-content">
-                <div className="content-wrapper">
-                    <div className="content-details">
-                        <div className="content-field">
+                <div className="alter-ego-content-wrapper">
+                    <div className="alter-ego-content-details">
+                        <div className="alter-ego-content-field">
                             <h3>FIELD</h3>
                             <p>BRANDING</p>
                         </div>
-                        <div className="content-role">
+                        <div className="alter-ego-content-role">
                             <h3>ROLE</h3>
                             <p>DESIGNER</p>
                         </div>
-                        <div className="content-timeframe">
+                        <div className="alter-ego-content-timeframe">
                             <h3>TIMEFRAME</h3>
-                            <p>Mar 21, 2024 - Apr 11, 2024 &nbsp; • &nbsp; 27 HOURS</p>
+                            <p>2024 &nbsp; • &nbsp; 27 HOURS</p>
+                        </div>
+                        {/* Main Focus Tags */}
+                        <div className="alter-ego-main-focus">
+                            <h3>Main Focus</h3>
+                            <div className="alter-ego-work-list-tags">
+                                <span className="tag">Branding</span>
+                                <span className="divider">/</span>
+                                <span className="tag">Packaging</span>
+                                <span className="divider">/</span>
+                                <span className="tag">Graphic Design</span>
+                            </div>
                         </div>
                     </div>
-                    <div className="content-description">
+                    <div className="alter-ego-content-description">
                         <p>
-                            Alter Ego is a fictional coffee shop set to open in Vancouver. The goal of this project was to craft a distinctive visual identity that embodies an effortless and sophisticated ambiance. This project went beyond logo design and color choices; it was about developing a visual language that reflects the brand's desire for modernity and creativity, offering a refined experience that embodies self-expression.
+                            Alter Ego is a fictional coffee shop concept set to open in Vancouver, designed during my studies at BCIT for the <span class="bold">Graphic Design</span> course. This was one of my <span class="bold">first explorations</span> of color theory, logo concepts, and creating cohesiveness within a brand identity. The goal was to blend creativity with sophistication, crafting a unique visual identity that reflects <span class="bold">modernity</span> and <span class="bold">elegance</span>. This project went beyond just logo design and color choices — it was about building a comprehensive visual language that reflects creativity, individuality, and a refined coffee experience.
                         </p>
+
+
                     </div>
                 </div>
             </section>
+
+
 
             <section className="logo-concept-section">
                 <div className="logo-concept-wrapper">
@@ -315,14 +334,21 @@ const AlterEgo = () => {
                         </div>
                         <div className="split-grid-right-bottom">
                             <p>
-                                The logo is inspired by the <span
-                                    className="tooltip underline-on-hover"
-                                    data-tooltip-image={GestaltImage}
-                                    data-tooltip-text="Do you see a vase, or do you see 2 people facing each other?"
-                                >
-                                    Gestalt principle of Multistability
-                                </span>.
+                                The logo came together when I was reading about Alter Ego. Most pages were using the same image of people facing each other as a representation of self and alter ego.
+                                <br />
+                                <span style={{ display: "inline-block", marginTop: "1rem" }}>
+                                    I had the "aha" moment when I realized this visual concept closely resembles the{' '}
+                                    <span
+                                        className="tooltip underline-on-hover"
+                                        data-tooltip-image={GestaltImage}
+                                        data-tooltip-text="Do you see a vase, or do you see 2 people facing each other?"
+                                    >
+                                        Gestalt principle of Multistability
+                                    </span>{' '}
+                                    where the mind interprets the same image in multiple ways depending on the viewer’s perspective.
+                                </span>
                             </p>
+
                         </div>
                     </div>
                 </div>
