@@ -8,6 +8,9 @@ const Layout = () => {
   const location = useLocation(); // Get current route location
   const [cursorColor, setCursorColor] = useState("var(--white)"); // State to manage cursor color
 
+  const isDadaCollectivePage = location.pathname === '/dada-collective';
+  const isProjectsPage = location.pathname === '/projects';
+
   useEffect(() => {
     // Load saved cursor color from localStorage when location changes
     const savedColor = localStorage.getItem("cursorColor");
@@ -45,7 +48,10 @@ const Layout = () => {
     <div>
       <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
       <Header />
-      <main className={location.pathname === "/projects" ? "no-padding" : ""}>
+      <main
+      className={isProjectsPage ? "no-padding" : ""}
+      style={{ paddingTop: isDadaCollectivePage ? '0' : '80px' }}
+    >
         <Outlet context={{ setCursorColor }} /> {/* Pass setCursorColor to child components */}
       </main>
       <Footer />

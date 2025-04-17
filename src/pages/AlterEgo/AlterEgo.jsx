@@ -6,7 +6,6 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
-
 import AlterHeader from "../../assets/images/alterego_header2.png";
 import CoffeeDripper from "../../assets/images/alterego_dripper.png";
 import AlterEgoFace from "../../assets/images/alterego_faces.png";
@@ -22,9 +21,6 @@ import AlterEgoBC from "../../assets/images/alterego_bc.jpg";
 import AlterPack from "../../assets/images/alterego_packaging.jpg";
 import AlterBusinessCard from "../../assets/images/alteregonewbustransparent.png";
 import AlterBillboard from "../../assets/images/alteregopinemockup.jpg";
-
-
-
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -209,7 +205,7 @@ const AlterEgo = () => {
     useEffect(() => {
         const map = (val, minA, maxA, minB, maxB) =>
             minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
-    
+
         const Card3D = (card, ev) => {
             const img = card.querySelector("img");
             const imgRect = card.getBoundingClientRect();
@@ -220,21 +216,21 @@ const AlterEgo = () => {
             const rotateY = map(mouseX, 0, width, -25, 25);
             const rotateX = map(mouseY, 0, height, 25, -25);
             const brightness = map(mouseY, 0, height, 1.5, 0.5);
-    
+
             // Add transition effect for smoothness
             img.style.transition = 'transform 0.3s ease, filter 0.3s ease';
-    
+
             img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             img.style.filter = `brightness(${brightness})`;
         };
-    
+
         const cards = document.querySelectorAll(".card3d");
         cards.forEach((card) => {
             card.addEventListener("mousemove", (ev) => Card3D(card, ev));
-    
+
             card.addEventListener("mouseleave", () => {
                 const img = card.querySelector("img");
-    
+
                 // On mouse leave, reset the transform and brightness with smooth transition
                 img.style.transition = 'transform 0.3s ease, filter 0.3s ease';  // Ensure transition on reset
                 img.style.transform = "rotateX(0deg) rotateY(0deg)";
@@ -242,8 +238,6 @@ const AlterEgo = () => {
             });
         });
     }, []);
-    
-
 
     return (
         <>
@@ -416,33 +410,33 @@ const AlterEgo = () => {
                 </div>
             </section>
 
-{/* Business card */}
-{/* Business card section */}
-<section className="alter-ego-card-float">
-  <div className="alter-ego-card-wrapper">
-    <div className="card3d">
-      <img
-        src={AlterBusinessCard}
-        alt="Alter Ego Business Card"
-        className="alter-ego-card-image"
-      />
-    </div>
-    <div className="card3d">
-      <img
-        src={AlterBusinessCard}
-        alt="Alter Ego Business Card"
-        className="alter-ego-card-image"
-      />
-    </div>
-    <div className="card3d">
-      <img
-        src={AlterBusinessCard}
-        alt="Alter Ego Business Card"
-        className="alter-ego-card-image"
-      />
-    </div>
-  </div>
-</section>
+            {/* Business card */}
+            {/* Business card section */}
+            <section className="alter-ego-card-float">
+                <div className="alter-ego-card-wrapper">
+                    <div className="card3d">
+                        <img
+                            src={AlterBusinessCard}
+                            alt="Alter Ego Business Card"
+                            className="alter-ego-card-image"
+                        />
+                    </div>
+                    <div className="card3d">
+                        <img
+                            src={AlterBusinessCard}
+                            alt="Alter Ego Business Card"
+                            className="alter-ego-card-image"
+                        />
+                    </div>
+                    <div className="card3d">
+                        <img
+                            src={AlterBusinessCard}
+                            alt="Alter Ego Business Card"
+                            className="alter-ego-card-image"
+                        />
+                    </div>
+                </div>
+            </section>
 
             <section className="two-column-section">
                 <div className="column right">
