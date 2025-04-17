@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useOutletContext, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import Branding from "./Branding";
 import Graphic from "./Graphic";
 import Motion from "./Motion";
@@ -27,6 +29,8 @@ const Home = () => {
   const [cursorColor, setCursorColorState] = useState("transparent");
   const { setCursorColor } = useOutletContext();
   const horizontalRef = useRef(null);
+
+  
 
   useEffect(() => {
     // Load saved cursor color from localStorage
@@ -155,6 +159,9 @@ const Home = () => {
         </div>
 
       </section>
+
+
+      
 
       {/* Recent Works Section */}
       <section className="recent-works-container">

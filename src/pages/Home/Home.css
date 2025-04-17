@@ -245,6 +245,37 @@
   text-decoration: none;
 }
 
+.cursor-picker-reveal {
+  min-height: 100vh;
+  background: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  padding: 4rem 2rem;
+}
+
+.cursor-picker-inner {
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  color: var(--black);
+}
+
+.cursor-picker-inner h2 {
+  font-family: var(--graphyne);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cursor-picker-inner p {
+  font-size: 1.2rem;
+  font-family: var(--afacad);
+  margin-bottom: 2rem;
+}
+
+
 /* .view-more {
   font-family: var(--breamcather);
   font-size: 2rem;

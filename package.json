@@ -16,7 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@popperjs/core": "^2.11.8",
     "dat.gui": "^0.7.9",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.7.4",
     "gsap": "^3.12.5",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
