@@ -21,6 +21,9 @@ import DadaFace from "../../assets/images/dadaface.png";
 import DadaLogo from "../../assets/images/dadalogosketch2.png";
 import DadaAnim from "../../assets/videos/dadabg.webm";
 import DadaWeb from "../../assets/images/dadaweb.png"
+import DadaLogoAnim from "../../assets/videos/dadalogoanim.webm"
+import DadaTov from "../../assets/videos/dadatov.webm";
+import DadaPosters from "../../assets/images/dadaposters.jpg";
 
 const DadaCollective = () => {
 
@@ -169,7 +172,7 @@ const DadaCollective = () => {
         </div>
         <div className="dada-logo-video-col">
           <video
-            src="/src/assets/videos/dadalogoanim.webm"
+            src={DadaLogoAnim}
             autoPlay
             loop
             muted
@@ -413,7 +416,7 @@ const DadaCollective = () => {
   <div className="tov-grid">
     <div className="tov-media">
       <video
-        src="/src/assets/videos/dadatov.webm"
+        src={DadaTov}
         className="tov-video"
         autoPlay
         loop
@@ -424,7 +427,7 @@ const DadaCollective = () => {
 
     <div className="tov-media">
       <img
-        src="/src/assets/images/dadaposters.jpg"
+        src={DadaPosters}
         alt="Dada Posters"
         className="tov-image"
       />

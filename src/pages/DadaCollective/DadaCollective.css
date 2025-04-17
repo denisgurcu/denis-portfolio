@@ -165,7 +165,7 @@
   
   font-family: var(--afacad);
   font-weight: bold;
-  font-size: 8rem;
+  font-size: 6rem;
   /* background-color: #a0668d; */
   /* color: #E0E0E0; */
   color: #1a1a1a;
@@ -255,7 +255,7 @@
 .dada-logo-title {
   font-family: var(--afacad);
   font-weight: bold;
-  font-size: 8rem;
+  font-size: 6rem;
   /* background-color: #bb3528; */
   color: #1a1a1a;
   /* color: #E0E0E0; */
@@ -361,7 +361,7 @@
 }
 
 .dada-color-system-title {
-  font-size: 8rem;
+  font-size: 6rem;
   font-family: var(--afacad);
   font-weight: bold ;
   margin-bottom: 4rem;
@@ -369,7 +369,7 @@
 }
 
 .color-spec-box {
-  flex: 1 1 calc(20% - 1rem); /* ensures 4 fit per row with gap */
+  flex: 1 1 calc(15%); /* ensures 4 fit per row with gap */
   max-width: calc(25% - 1rem);
   padding: 1.2rem;
   font-family: var(--afacad);
@@ -391,6 +391,8 @@
   gap: 0.5rem;
   min-width: 70px;
 }
+
+
 
 .color-column h4 {
   font-size: 1.2rem;
@@ -445,12 +447,12 @@
 
 .accessibility-text h3 {
   font-family: var(--afacad);
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .accessibility-text p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -495,7 +497,7 @@
 }
 
 .dada-type-section-title {
-  font-size: 8rem;
+  font-size: 6rem;
   font-family: var(--afacad);
   font-weight: bold ;
   margin-bottom: 4rem;
@@ -558,7 +560,7 @@
 .tov-subtitle {
   font-family: var(--afacad);
   color: var(--black);
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -643,14 +645,14 @@
 .dada-website-title {
   color: var(--black);
   font-family: var(--afacad);
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
   margin-bottom: 2rem;
 }
 
 .dada-website-desc {
   font-family: var(--afacad);
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.6;
   color: var(--black);
   margin-bottom: 2rem;
