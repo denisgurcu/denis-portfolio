@@ -6,37 +6,38 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-  }
-  
-  .alter-ego-header-container {
+}
+
+.alter-ego-header-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    display: flex; /* Ensure it's aligned at the bottom */
+    display: flex;
+    /* Ensure it's aligned at the bottom */
     justify-content: center;
-  }
-  
-  .alter-ego-header {
+}
+
+.alter-ego-header {
     /* border: 5px solid red;   */
-   max-width: 1300px; 
-    height: 800px; 
+    max-width: 1300px;
+    height: 650px;
     object-fit: cover;
-  }
-  
-  /* Removed old marquee style */
-  
-  .alter-ego-title {
+}
+
+/* Removed old marquee style */
+
+.alter-ego-title {
     position: absolute;
     bottom: 1vh;
     font-family: var(--graphyne);
-    font-size: 18rem;
+    font-size: 15rem;
     color: var(--black);
     text-align: center;
     margin: 0;
-  }
+}
 
 
 /* .alter-ego-intro-wrapper {
@@ -123,26 +124,30 @@
     display: flex;
     flex-direction: column;
     max-width: 80%;
-    width: 100%;  /* Ensures the wrapper takes full width */
+    width: 100%;
+    /* Ensures the wrapper takes full width */
 }
 
 .alter-ego-content-details {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    gap: 20px; /* Added gap between the fields for better spacing */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 20px;
+    /* Added gap between the fields for better spacing */
+    flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
 }
 
-.alter-ego-content-details > div {
+.alter-ego-content-details>div {
     flex: 1;
-    min-width: 250px; /* Ensures they take up equal width but wrap if needed */
+    min-width: 250px;
+    /* Ensures they take up equal width but wrap if needed */
 }
 
 .alter-ego-content-field h3,
 .alter-ego-content-role h3,
 .alter-ego-content-timeframe h3,
-.alter-ego-main-focus h3  {
+.alter-ego-main-focus h3 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--white);
@@ -151,15 +156,15 @@
 }
 
 .alter-ego-content-details p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 200;
     margin: 0;
 }
 
 .alter-ego-content-description {
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 1.8;
-    margin-top: 50px; 
+    margin-top: 50px;
     opacity: 0.8;
 }
 
@@ -169,7 +174,8 @@
 }
 
 .bold {
-    font-weight: 500; /* or any value to make it bold */
+    font-weight: 500;
+    /* or any value to make it bold */
 }
 
 /* Main Focus Section */
@@ -178,27 +184,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-  }
-  
-  
-  .alter-ego-work-list-tags {
+}
+
+
+.alter-ego-work-list-tags {
     display: flex;
     flex-wrap: wrap;
     font-family: var(--afacad);
     font-weight: var(--afacad-light);
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 200;
     gap: 10px;
-  }
-  
-  .alter-ego-work-list-tags .tag {
+}
+
+.alter-ego-work-list-tags .tag {
     display: inline-block;
-  }
-  
-  .alter-ego-work-list-tags .divider {
+}
+
+.alter-ego-work-list-tags .divider {
     color: var(--white);
-  }
+}
 
 .logo-concept-section {
     margin-top: 10rem;
@@ -251,35 +257,47 @@
     text-align: center;
     max-width: 1400px;
     margin: 0 auto;
-    margin-top: 10rem;
     margin-bottom: 15rem;
     flex-wrap: wrap;
-    gap: 40px; /* Add this line to introduce spacing between elements */
+    gap: 40px;
+    /* Add this line to introduce spacing between elements */
 
 }
 
 .coffee-you-section .concept-item p,
 .coffee-you-section .concept-symbol p {
-    font-size: 10rem; 
+    font-size: 10rem;
     font-family: var(--afacad);
     color: var(--black);
 }
 
 /* Blinking question mark */
 .blinking-question {
-    animation: blink 2s infinite; 
+    animation: blink 2s infinite;
 }
 
 @keyframes blink {
-    0%, 25% { opacity: 1; } /* Visible for the first 25% of the animation */
-    50% { opacity: 0; } /* Start blinking after 25% */
-    100% { opacity: 1; }
+
+    0%,
+    25% {
+        opacity: 1;
+    }
+
+    /* Visible for the first 25% of the animation */
+    50% {
+        opacity: 0;
+    }
+
+    /* Start blinking after 25% */
+    100% {
+        opacity: 1;
+    }
 }
 
 /* GIF Section */
 .alter-ego-gifs-section {
     margin-top: 10rem;
-    margin-bottom: 15rem;
+    margin-bottom: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -303,22 +321,29 @@
 
 /* Outer container to center the layout on the page */
 .split-grid-container {
-    height: 80vh; /* Full viewport height */
+    height: 80vh;
+    /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw; /* Full viewport width */
+    width: 100vw;
+    /* Full viewport width */
 }
 
 /* Main grid section */
 .split-grid-section {
     display: flex;
-    flex-wrap: wrap; /* Ensures layout works well on smaller screens */
-    max-width: 1200px; /* Increased max width for a slightly larger layout */
-    gap: 50px; /* Space between left and right columns */
+    flex-wrap: wrap;
+    /* Ensures layout works well on smaller screens */
+    max-width: 1200px;
+    /* Increased max width for a slightly larger layout */
+    gap: 50px;
+    /* Space between left and right columns */
     box-sizing: border-box;
-    aspect-ratio: 2/1; /* Keeps the ratio of width to height */
-    padding: 20px; /* Padding inside the section */
+    aspect-ratio: 2/1;
+    /* Keeps the ratio of width to height */
+    padding: 20px;
+    /* Padding inside the section */
     /* Removed border and shadow */
 }
 
@@ -334,7 +359,9 @@
 .split-grid-left img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Ensures proportional scaling */
+    object-fit: cover;
+    border-radius: 0.19rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Right section - two rows */
@@ -342,7 +369,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between the top image and bottom text */
+    gap: 10px;
+    /* Space between the top image and bottom text */
 }
 
 .split-grid-right-top {
@@ -356,7 +384,9 @@
 .split-grid-right-top img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Proportional scaling */
+    object-fit: cover;
+    border-radius: 0.19rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .split-grid-right-bottom {
@@ -364,7 +394,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px; /* Add spacing around the text */
+    padding: 15px;
+    /* Add spacing around the text */
     /* Removed border and shadow */
     text-align: left;
 }
@@ -372,7 +403,8 @@
 /* Text styling */
 .split-grid-right-bottom p {
     margin: 0;
-    font-size: 1.8rem; /* Increased font size for better readability */
+    font-size: 1.8rem;
+    /* Increased font size for better readability */
     font-family: var(--afacad);
     color: var(--black);
     line-height: 1.5;
@@ -382,24 +414,27 @@
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .split-grid-section {
-        max-width: 90%; /* Allow more space on smaller screens */
+        max-width: 90%;
+        /* Allow more space on smaller screens */
     }
 }
 
 .tooltip-image {
-    width: 100%; /* Adjust as needed */
+    width: 100%;
+    /* Adjust as needed */
     max-width: 200px;
     height: auto;
-    filter: brightness(80%); /* Dims the image */
+    filter: brightness(80%);
+    /* Dims the image */
 
 }
 
 .tippy-box[data-theme~='gestalt-theme'] {
     background-color: var(--black);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Tooltip text */
+}
+
+/* Tooltip text */
 .tooltip-text {
     font-size: 1.2rem;
     color: var(--white);
@@ -416,158 +451,177 @@
 
 .text-animation-section {
     display: flex;
-    justify-content: center; /* Bring items closer together */
+    justify-content: center;
     align-items: center;
     height: 100vh;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .text-wrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
-    align-items: center; /* centers horizontally */
-    justify-content: center; /* optional if it has a set height */
-    width: 50%; /* Take up half of the width */
+    align-items: center;
+    /* centers horizontally */
+    justify-content: center;
+    /* optional if it has a set height */
+    width: 50%;
+    /* Take up half of the width */
 }
 
 .animated-text {
-    font-size: 6rem;
+    font-size: 5rem;
     font-family: var(--afacad);
     font-weight: bold;
     color: var(--black);
-    transform-origin: center top; /* Flip animation origin */
+    transform-origin: center top;
+    /* Flip animation origin */
 }
 
 /* Group 1: Closer Texts */
 .text-group.group-1 {
     display: flex;
     flex-direction: column;
-    gap: 0px; /* No gap between texts */
-    align-items: center; /* Optional: Center align texts horizontally */
+    gap: 0px;
+    /* No gap between texts */
+    align-items: center;
+    /* Optional: Center align texts horizontally */
 }
 
 .text-group.group-1 .animated-text {
-    margin: 0; /* Remove default h1 margins */
-    padding: 0; /* Remove default h1 padding, if any */
+    margin: 0;
+    /* Remove default h1 margins */
+    padding: 0;
+    /* Remove default h1 padding, if any */
 }
 
 .text-group.group-1 .animated-text:first-child {
-    margin-bottom: -30px; /* Adjust as needed */
+    margin-bottom: -30px;
+    /* Adjust as needed */
 }
 
 .group-2 {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
 .group-2 .animated-text {
-    margin-left: 0.5em; 
+    margin-left: 0.5em;
 }
 
 .group-2 h1 {
-    letter-spacing: 0.5em; 
+    letter-spacing: 0.5em;
     font-weight: 900;
 }
 
 .group-3 {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align texts */
+    align-items: center;
+    /* Center align texts */
 }
 
 .group-3 .animated-text {
-    margin: 0; 
+    margin: 0;
 }
 
 .animated-text.flipped-text {
-    display: inline-block; /* Ensure transform applies properly */
-    transform-origin: 50% 50%; 
+    display: inline-block;
+    /* Ensure transform applies properly */
+    transform-origin: 50% 50%;
     transform: rotate(180deg) scaleY(-1);
     line-height: 1;
 }
 
 /* Billboard Mockup */
 .billboard-wrapper {
-    width: 50%; /* Take up the other half of the space */
+    width: 50%;
+    /* Take up the other half of the space */
     display: flex;
-    justify-content: center; /* Center the image */
-    align-items: center; /* Center the image vertically */
+    justify-content: center;
+    /* Center the image */
+    align-items: center;
+
+    /* Center the image vertically */
 }
 
 .billboard-mockup {
-    width: 80%; /* Adjust width as necessary */
+    width: 80%;
+    /* Adjust width as necessary */
     height: auto;
-    object-fit: contain; /* Maintain aspect ratio */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow for 3D effect */
+    object-fit: contain;
+    /* Maintain aspect ratio */
+    border-radius: 0.19rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    /* Optional: subtle shadow for 3D effect */
 }
-  
+
 /* Business card float container */
 .alter-ego-card-float {
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Align the title and cards vertically */
+    flex-direction: column;
+    margin: 0 auto;
     text-align: center;
-  }
-  
-  /* Title for the section */
-  .business-card-title {
-    font-size: 5rem;
-    font-weight: bold;
-    color: var(--black);
-    margin-bottom: 5rem; /* Space between title and cards */
-    font-family: var(--afacad);
-  }
-  
-  /* Card wrapper - align 3 cards side by side */
-  .alter-ego-card-wrapper {
+}
+
+.alter-ego-card-wrapper {
     display: flex;
-    justify-content: space-between; /* Spread cards evenly */
+    justify-content: space-between;
+    /* Spread cards evenly */
     align-items: center;
-    width: 100%; /* Adjust the width as needed */
-    max-width: 1500px; /* Set a max width for large screens */
-  }
-  
-  /* Individual card container */
-  .card3d {
-    perspective: 1000px; /* Enable 3D perspective for each card */
-    width: 30%; /* Adjust width for 3 cards */
+    width: 100%;
+    /* Adjust the width as needed */
+    max-width: 1500px;
+    /* Set a max width for large screens */
+}
+
+/* Individual card container */
+.card3d {
+    perspective: 1000px;
+    /* Enable 3D perspective for each card */
+    width: 30%;
+    /* Adjust width for 3 cards */
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  /* Card image styling */
-  .alter-ego-card-image {
-    width:1200px;
+}
+
+/* Card image styling */
+.alter-ego-card-image {
+    width: 1000px;
     height: auto;
     transition: transform 0.2s ease-out, filter 0.2s ease-out;
     /* transform: rotate(-3deg); */
-    filter: drop-shadow(10px 10px 30px rgba(0, 0, 0, 0.25)); /* Soft shadow for 3D effect */
+    filter: drop-shadow(10px 10px 30px rgba(0, 0, 0, 0.25));
+    /* Soft shadow for 3D effect */
     transform-style: preserve-3d;
     will-change: transform;
-  }
-  
-  
+}
+
+
 
 
 /* Two-Column Section */
 .two-column-section {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
+    /* Align items to the top */
     max-width: 1500px;
     margin: 0 auto;
     margin-bottom: 100px;
-    padding: 40px 20px;
+    padding:10rem 2rem;
     gap: 15rem;
-    box-shadow: none; /* Removed box shadow */
+    box-shadow: none;
+    /* Removed box shadow */
 }
 
 /* Columns */
@@ -575,7 +629,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
+    align-items: flex-start;
+    /* Align items to the left */
 }
 
 /* Section Titles */
@@ -584,13 +639,16 @@
     color: var(--black);
     margin-bottom: 20px;
     font-size: 4rem;
-    text-align: left; /* Left-align text */
-    max-width: 100%; /* Span full width */
+    text-align: left;
+    /* Left-align text */
+    max-width: 100%;
+    /* Span full width */
 }
 
 /* Images within Columns */
 .section-image {
-    width: 90%; /* Responsive width */
+    width: 90%;
+    /* Responsive width */
     height: auto;
     object-fit: cover;
 }
@@ -603,48 +661,70 @@
 }
 
 .color-box {
-    display: flex; /* Use Flexbox for centering */
-    align-items: center; /* Center vertically */
-    width: 600px; /* Width of the box */
-    height: 50px; /* Height of the box */
-    border: 3px solid var(--black); /* Border styling */
+    display: flex;
+    /* Use Flexbox for centering */
+    align-items: center;
+    /* Center vertically */
+    width: 600px;
+    /* Width of the box */
+    height: 50px;
+    /* Height of the box */
+    border: 3px solid var(--black);
+    /* Border styling */
     font-family: var(--afacad);
     font-size: 1.2rem;
     font-weight: 500;
-    box-sizing: border-box; /* Include padding and border in width */
-    text-align: left; /* Center-align text */
-    padding: 10px; /* Remove any padding */
+    box-sizing: border-box;
+    /* Include padding and border in width */
+    text-align: left;
+    /* Center-align text */
+    padding: 10px;
+    /* Remove any padding */
 }
 
 
 /* Image Grid Section */
 .mockup-grid-section {
     display: flex;
-    justify-content: center; /* Center the grid horizontally */
-    align-items: center; /* Center the grid vertically */
-    width: 100%; /* Full viewport width */
+    justify-content: center;
+    /* Center the grid horizontally */
+    align-items: center;
+    /* Center the grid vertically */
+    width: 100%;
+    /* Full viewport width */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    margin-bottom: 100px; /* Add gap below the section */
+    margin-bottom: 100px;
+    /* Add gap below the section */
     padding: 40px 20px;
-    
+
 }
 
 .mockup-grid-wrapper {
-    display: grid; /* Use CSS Grid layout */
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    grid-template-rows: repeat(2, 1fr); /* 2 rows */
-    gap: 3rem; /* No gap between images */
-    width: auto; /* Adjust width based on content */
-    height: auto; /* Adjust height based on content */
-    padding: 20px; /* Padding inside the box */
+    display: grid;
+    /* Use CSS Grid layout */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 rows */
+    gap: 3rem;
+    /* No gap between images */
+    width: auto;
+    /* Adjust width based on content */
+    height: auto;
+    /* Adjust height based on content */
+    padding: 20px;
+    /* Padding inside the box */
 }
 
 .mockup-image {
-    width: 650px; /* Fixed width */
-    height: 450px; /* Fixed height */
-    object-fit: cover; /* Cover the grid cell without distortion */
-    display: block; /* Ensure images don’t exceed their cells */
+    width: 650px;
+    /* Fixed width */
+    height: 450px;
+    /* Fixed height */
+    object-fit: cover;
+    /* Cover the grid cell without distortion */
+    display: block;
+    /* Ensure images don’t exceed their cells */
 }
-
