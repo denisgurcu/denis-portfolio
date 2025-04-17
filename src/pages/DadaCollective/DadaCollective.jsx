@@ -19,7 +19,7 @@ import DadaPins from "../../assets/images/dadapins.jpg";
 import DadaWebsiteVideo from "../../assets/videos/dadawebsite.webm";
 import DadaFace from "../../assets/images/dadaface.png";
 import DadaLogo from "../../assets/images/dadalogosketch2.png";
-import DadaAnim from "../../assets/videos/dadabg.webm";
+import DadaAnimBg from "../../assets/videos/dadaanimlarge.webm";
 import DadaWeb from "../../assets/images/dadaweb.png"
 import DadaLogoAnim from "../../assets/videos/dadalogoanim.webm"
 import DadaTov from "../../assets/videos/dadatov.webm";
@@ -488,7 +488,7 @@ const DadaCollective = () => {
         <img src={DadaFace} alt="Logo" className="dada-end-image-face" />
         <span className="dada-arrow">→</span>
         <video
-          src={DadaAnim}
+          src={DadaAnimBg}
           className="dada-end-video"
           autoPlay
           loop
