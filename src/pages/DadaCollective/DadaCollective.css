@@ -11,7 +11,6 @@
 
 }
 
-
 .dada-collective-header-container {
   position: absolute;
   top: 0;
@@ -26,19 +25,19 @@
 
 .dada-collective-header {
   position: absolute;
-  bottom: 25vh; 
-  width: 60%; /* Ensures the video takes the full width of the container */
-  height: 60%; /* Ensures the video fills the entire container */
+  bottom: 15vh; 
+  width: 1000px; /* Ensures the video takes the full width of the container */
+  height: 700px; /* Ensures the video fills the entire container */
   object-fit: cover; /* Ensures the video covers the entire space without distortion */
   border-radius:0.19rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
 }
 
 .dada-collective-title {
   position: absolute;
   bottom: -5vh; /* Adjust this to place the title further or closer to the bottom */
   font-family: var(--graphyne);
-  font-size: 15rem;
+  font-size: 12rem;
   color: var(--black);
   text-align: center;
   margin: 0;
@@ -207,7 +206,7 @@
   max-width: 600px;
   height: auto;
   border-radius:0.19rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); */
 }
 
 .dada-logo-section {
@@ -695,9 +694,10 @@
 }
 
 .dada-end-to-end {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   text-align: center;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .dada-end-title {
@@ -726,7 +726,7 @@
 
 .dada-end-image {
 
-  max-width: 300px;
+  max-width: 200px;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -735,7 +735,7 @@
 }
 
 .dada-end-image-face {
-  max-width: 300px;
+  max-width: 200px;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -743,7 +743,7 @@
 }
 
 .dada-end-image-website {
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   height: auto;
   object-fit: cover;
