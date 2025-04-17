@@ -390,7 +390,6 @@
     width: 100%; /* Adjust as needed */
     max-width: 200px;
     height: auto;
-    border-radius: 10px;
     filter: brightness(80%); /* Dims the image */
 
 }
@@ -402,7 +401,7 @@
   
   /* Tooltip text */
 .tooltip-text {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: var(--white);
     margin: 0;
     font-family: var(--afacad);
@@ -410,8 +409,8 @@
 
 /* Underline for the span */
 .underline-on-hover {
-    text-decoration: underline solid; 
-    cursor: pointer; /* Pointer cursor to indicate interactivity */
+    text-decoration: underline;
+    text-underline-offset: 7px;
     transition: color 0.3s ease;
 }
 
