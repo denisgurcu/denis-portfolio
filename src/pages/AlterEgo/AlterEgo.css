@@ -201,7 +201,8 @@
   }
 
 .logo-concept-section {
-    padding: 80px 20px;
+    margin-top: 10rem;
+    margin-bottom: 15rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -244,13 +245,14 @@
 
 /* Coffee + You = ? Section */
 .coffee-you-section {
-    padding: 40px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     max-width: 1400px;
     margin: 0 auto;
+    margin-top: 10rem;
+    margin-bottom: 15rem;
     flex-wrap: wrap;
     gap: 40px; /* Add this line to introduce spacing between elements */
 
@@ -276,6 +278,8 @@
 
 /* GIF Section */
 .alter-ego-gifs-section {
+    margin-top: 10rem;
+    margin-bottom: 15rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -287,11 +291,10 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 40px 20px;
 }
 
 .alter-ego-gifs-section .gifs-wrapper img {
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
     display: block;
 }
@@ -300,7 +303,7 @@
 
 /* Outer container to center the layout on the page */
 .split-grid-container {
-    padding: 40px 20px;
+    height: 80vh; /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -407,18 +410,17 @@
 
 /* Underline for the span */
 .underline-on-hover {
-    text-decoration: underline solid; /* Dotted underline for emphasis */
+    text-decoration: underline solid; 
     cursor: pointer; /* Pointer cursor to indicate interactivity */
     transition: color 0.3s ease;
 }
 
-
 .text-animation-section {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Bring items closer together */
     align-items: center;
     height: 100vh;
-    padding: 0; /* Remove extra padding */
+    padding: 0;
     margin: 0;
 }
 
@@ -428,18 +430,17 @@
     text-align: center;
     align-items: center; /* centers horizontally */
     justify-content: center; /* optional if it has a set height */
-
-  
-
+    width: 50%; /* Take up half of the width */
 }
 
 .animated-text {
-    font-size: 8rem;
+    font-size: 6rem;
     font-family: var(--afacad);
     font-weight: bold;
     color: var(--black);
     transform-origin: center top; /* Flip animation origin */
 }
+
 /* Group 1: Closer Texts */
 .text-group.group-1 {
     display: flex;
@@ -451,47 +452,110 @@
 .text-group.group-1 .animated-text {
     margin: 0; /* Remove default h1 margins */
     padding: 0; /* Remove default h1 padding, if any */
-
 }
 
 .text-group.group-1 .animated-text:first-child {
     margin-bottom: -30px; /* Adjust as needed */
 }
-  .group-2 {
+
+.group-2 {
     display: flex;
     flex-direction: column;
     align-items: center; 
-  }
+}
 
-  .group-2 .animated-text {
+.group-2 .animated-text {
     margin-left: 0.5em; 
 }
 
-  .group-2 h1 {
+.group-2 h1 {
     letter-spacing: 0.5em; 
     font-weight: 900;
-  }
-  
-  .group-3 {
+}
+
+.group-3 {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center align texts */
-  }
+}
 
-  .group-3 .animated-text {
+.group-3 .animated-text {
     margin: 0; 
 }
 
 .animated-text.flipped-text {
     display: inline-block; /* Ensure transform applies properly */
-    transform-origin: 50% 50%; /* Change from bottom to center */
-    transform: rotate(180deg);
-    transform: scaleY(-1);
-    line-height: 1 
-
+    transform-origin: 50% 50%; 
+    transform: rotate(180deg) scaleY(-1);
+    line-height: 1;
 }
 
+/* Billboard Mockup */
+.billboard-wrapper {
+    width: 50%; /* Take up the other half of the space */
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image vertically */
+}
 
+.billboard-mockup {
+    width: 80%; /* Adjust width as necessary */
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow for 3D effect */
+}
+  
+/* Business card float container */
+.alter-ego-card-float {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Align the title and cards vertically */
+    text-align: center;
+  }
+  
+  /* Title for the section */
+  .business-card-title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--black);
+    margin-bottom: 5rem; /* Space between title and cards */
+    font-family: var(--afacad);
+  }
+  
+  /* Card wrapper - align 3 cards side by side */
+  .alter-ego-card-wrapper {
+    display: flex;
+    justify-content: space-between; /* Spread cards evenly */
+    align-items: center;
+    width: 100%; /* Adjust the width as needed */
+    max-width: 1500px; /* Set a max width for large screens */
+  }
+  
+  /* Individual card container */
+  .card3d {
+    perspective: 1000px; /* Enable 3D perspective for each card */
+    width: 30%; /* Adjust width for 3 cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Card image styling */
+  .alter-ego-card-image {
+    width:1200px;
+    height: auto;
+    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+    /* transform: rotate(-3deg); */
+    filter: drop-shadow(10px 10px 30px rgba(0, 0, 0, 0.25)); /* Soft shadow for 3D effect */
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  
+  
 
 
 /* Two-Column Section */
@@ -499,13 +563,12 @@
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Align items to the top */
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
-    margin-bottom: 100px; /* Add gap below the section */
+    margin-bottom: 100px;
     padding: 40px 20px;
-    gap: 60px;
-    border-radius: 15px; /* Optional rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    gap: 15rem;
+    box-shadow: none; /* Removed box shadow */
 }
 
 /* Columns */
@@ -517,20 +580,20 @@
 }
 
 /* Section Titles */
-.section-title {
+.alter-ego-branding-section-title {
     font-family: var(--afacad);
-    font-size: 2rem;
+    color: var(--black);
     margin-bottom: 20px;
+    font-size: 4rem;
     text-align: left; /* Left-align text */
-    width: 100%; /* Span full width */
+    max-width: 100%; /* Span full width */
 }
 
 /* Images within Columns */
 .section-image {
-    width: 80%; /* Responsive width */
+    width: 90%; /* Responsive width */
     height: auto;
     object-fit: cover;
-    
 }
 
 /* Boxes Wrapper */
@@ -538,27 +601,22 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: flex-start; /* Align boxes to the left */
-    text-align: center;
-
 }
 
 .color-box {
     display: flex; /* Use Flexbox for centering */
-    justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    width: 500px; /* Width of the box */
-    max-width: 500px; /* Optional: maximum width */
+    width: 600px; /* Width of the box */
     height: 50px; /* Height of the box */
     border: 3px solid var(--black); /* Border styling */
     font-family: var(--afacad);
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--black);
+    font-size: 1.2rem;
+    font-weight: 500;
     box-sizing: border-box; /* Include padding and border in width */
-    text-align: center; /* Center-align text when wrapping */
-    padding: 0; /* Remove any padding */
+    text-align: left; /* Center-align text */
+    padding: 10px; /* Remove any padding */
 }
+
 
 /* Image Grid Section */
 .mockup-grid-section {
@@ -578,18 +636,15 @@
     display: grid; /* Use CSS Grid layout */
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
     grid-template-rows: repeat(2, 1fr); /* 2 rows */
-    gap: 0; /* No gap between images */
+    gap: 3rem; /* No gap between images */
     width: auto; /* Adjust width based on content */
     height: auto; /* Adjust height based on content */
     padding: 20px; /* Padding inside the box */
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-
 }
 
 .mockup-image {
-    width: 450px; /* Fixed width */
-    height: 300px; /* Fixed height */
+    width: 650px; /* Fixed width */
+    height: 450px; /* Fixed height */
     object-fit: cover; /* Cover the grid cell without distortion */
     display: block; /* Ensure images don’t exceed their cells */
 }
