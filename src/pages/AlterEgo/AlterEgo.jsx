@@ -20,6 +20,8 @@ import AlterEgoBanner from "../../assets/images/alterego_banner.jpg";
 import AlterToteBag from "../../assets/images/alterego_totebag.jpg";
 import AlterEgoBC from "../../assets/images/alterego_bc.jpg";
 import AlterPack from "../../assets/images/alterego_packaging.jpg";
+import AlterBusinessCard from "../../assets/images/alteregonewbustransparent.png";
+import AlterBillboard from "../../assets/images/alteregopinemockup.jpg";
 
 
 
@@ -173,7 +175,7 @@ const AlterEgo = () => {
                 ease: "power2.out"
             }
         );
-        "+=5" // Start 0.3 seconds before the previous animation ends
+        "+=4" // Start 0.3 seconds before the previous animation ends
 
 
         // Text 4: Pop appear 
@@ -187,8 +189,8 @@ const AlterEgo = () => {
         if (texts[4]) {
             tl.fromTo(
                 texts[4],
-                { rotateX: -90, opacity: 0, transformOrigin: "bottom center" },
-                { rotateX: 0, opacity: 1, duration: 1, ease: "bounce.out" }
+                { rotateX: -90, opacity: 0, transformOrigin: "top center" },
+                { rotateX: 0, opacity: 1, duration: 0.8, ease: "bounce.out" }
             ).to(
                 texts[4],
                 {
@@ -198,12 +200,49 @@ const AlterEgo = () => {
                     yoyo: true,
                     repeat: 1,
                 },
-
+                "+=0.3" // Start 0.3 seconds before the previous animation ends
             );
-        };
-        "+=0.3" // Start 0.3 seconds before the previous animation ends
+        }
 
     }, []);
+
+    useEffect(() => {
+        const map = (val, minA, maxA, minB, maxB) =>
+            minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
+    
+        const Card3D = (card, ev) => {
+            const img = card.querySelector("img");
+            const imgRect = card.getBoundingClientRect();
+            const width = imgRect.width;
+            const height = imgRect.height;
+            const mouseX = ev.offsetX;
+            const mouseY = ev.offsetY;
+            const rotateY = map(mouseX, 0, width, -25, 25);
+            const rotateX = map(mouseY, 0, height, 25, -25);
+            const brightness = map(mouseY, 0, height, 1.5, 0.5);
+    
+            // Add transition effect for smoothness
+            img.style.transition = 'transform 0.3s ease, filter 0.3s ease';
+    
+            img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            img.style.filter = `brightness(${brightness})`;
+        };
+    
+        const cards = document.querySelectorAll(".card3d");
+        cards.forEach((card) => {
+            card.addEventListener("mousemove", (ev) => Card3D(card, ev));
+    
+            card.addEventListener("mouseleave", () => {
+                const img = card.querySelector("img");
+    
+                // On mouse leave, reset the transform and brightness with smooth transition
+                img.style.transition = 'transform 0.3s ease, filter 0.3s ease';  // Ensure transition on reset
+                img.style.transform = "rotateX(0deg) rotateY(0deg)";
+                img.style.filter = "brightness(1)";
+            });
+        });
+    }, []);
+    
 
 
     return (
@@ -260,8 +299,6 @@ const AlterEgo = () => {
                     </div>
                 </div>
             </section>
-
-
 
             <section className="logo-concept-section">
                 <div className="logo-concept-wrapper">
@@ -369,28 +406,57 @@ const AlterEgo = () => {
                             ))}
                         </h1>
                     </div>
-
-
                     <div className="text-group group-3">
                         <h1 className="animated-text">REFLECTION</h1>
                         <h1 className="animated-text flipped-text">REFLECTION</h1>
                     </div>
                 </div>
+                <div className="billboard-wrapper">
+                    <img src={AlterBillboard} alt="Alter Ego Billboard" className="billboard-mockup" />
+                </div>
             </section>
+
+{/* Business card */}
+{/* Business card section */}
+<section className="alter-ego-card-float">
+  <div className="alter-ego-card-wrapper">
+    <div className="card3d">
+      <img
+        src={AlterBusinessCard}
+        alt="Alter Ego Business Card"
+        className="alter-ego-card-image"
+      />
+    </div>
+    <div className="card3d">
+      <img
+        src={AlterBusinessCard}
+        alt="Alter Ego Business Card"
+        className="alter-ego-card-image"
+      />
+    </div>
+    <div className="card3d">
+      <img
+        src={AlterBusinessCard}
+        alt="Alter Ego Business Card"
+        className="alter-ego-card-image"
+      />
+    </div>
+  </div>
+</section>
 
             <section className="two-column-section">
                 <div className="column right">
-                    <h2 className="section-title">TYPOGRAPHY</h2>
+                    <h2 className="alter-ego-branding-section-title">TYPOGRAPHY</h2>
                     <img src={AlterEgoType} alt="Right Side Image" className="section-image" />
                 </div>
                 <div className="column left">
-                    <h2 className="section-title">COLORS</h2>
+                    <h2 className="alter-ego-branding-section-title">COLORS</h2>
                     <div className="boxes-wrapper">
-                        <div className="color-box" style={{ backgroundColor: "#CF804F" }}>INVITING</div>
-                        <div className="color-box" style={{ backgroundColor: "#CFA651" }}>RICH</div>
-                        <div className="color-box" style={{ backgroundColor: "#8D8C88" }}>INTRIGUING</div>
-                        <div className="color-box" style={{ backgroundColor: "#313131" }}>DARK</div>
-                        <div className="color-box" style={{ backgroundColor: "#E1D5C5" }}>BALANCING</div>
+                        <div className="color-box" style={{ backgroundColor: "#CF804F", color: "#E6E6E6;" }}>#CF804F</div>
+                        <div className="color-box" style={{ backgroundColor: "#CFA651", color: "#262525" }}>#CFA651</div>
+                        <div className="color-box" style={{ backgroundColor: "#8D8C88", color: "#E6E6E6" }}>#8D8C88</div>
+                        <div className="color-box" style={{ backgroundColor: "#313131", color: "#E6E6E6" }}>#313131</div>
+                        <div className="color-box" style={{ backgroundColor: "#E1D5C5", color: "#262525" }}>#E1D5C5</div>
                     </div>
                 </div>
             </section>
