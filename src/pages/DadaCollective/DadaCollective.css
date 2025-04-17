@@ -90,13 +90,13 @@
 }
 
 .dada-collective-content-details p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 200;
   margin: 0;
 }
 
 .dada-collective-content-description {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.8;
   margin-top: 50px;
   opacity: 0.8;
@@ -124,7 +124,7 @@
   font-family: var(--afacad);
   font-weight: var(--afacad-light);
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   gap: 10px;
 }
 
@@ -165,7 +165,7 @@
   
   font-family: var(--afacad);
   font-weight: bold;
-  font-size: 6rem;
+  font-size: 8rem;
   /* background-color: #a0668d; */
   /* color: #E0E0E0; */
   color: #1a1a1a;
@@ -255,7 +255,7 @@
 .dada-logo-title {
   font-family: var(--afacad);
   font-weight: bold;
-  font-size: 6rem;
+  font-size: 8rem;
   /* background-color: #bb3528; */
   color: #1a1a1a;
   /* color: #E0E0E0; */
@@ -363,13 +363,14 @@
 .dada-color-system-title {
   font-size: 6rem;
   font-family: var(--afacad);
+  color: var(--black);
   font-weight: bold ;
   margin-bottom: 4rem;
   text-align: center;
 }
 
 .color-spec-box {
-  flex: 1 1 calc(15%); /* ensures 4 fit per row with gap */
+  flex: 1 1 calc(20% - 1rem); /* ensures 4 fit per row with gap */
   max-width: calc(25% - 1rem);
   padding: 1.2rem;
   font-family: var(--afacad);
@@ -389,10 +390,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-width: 70px;
+  min-width: 60px;
 }
-
-
 
 .color-column h4 {
   font-size: 1.2rem;
@@ -446,13 +445,14 @@
 }
 
 .accessibility-text h3 {
+  color: var(--black);
   font-family: var(--afacad);
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .accessibility-text p {
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -498,6 +498,7 @@
 
 .dada-type-section-title {
   font-size: 6rem;
+  color: var(--black);
   font-family: var(--afacad);
   font-weight: bold ;
   margin-bottom: 4rem;
@@ -507,6 +508,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 4rem;
+  color: var(--black);
 }
 
 .type-card {
@@ -635,6 +637,8 @@
   gap: 4rem;
   padding: 8rem 2rem;
   flex-wrap: wrap;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .dada-website-left {
@@ -652,7 +656,7 @@
 
 .dada-website-desc {
   font-family: var(--afacad);
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.6;
   color: var(--black);
   margin-bottom: 2rem;
@@ -698,7 +702,7 @@
 
 .dada-end-title {
   font-family: var(--afacad);
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
   color: var(--black);
 }
