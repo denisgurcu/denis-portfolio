@@ -15,7 +15,7 @@ import AlterEgoCup from "../../assets/images/alterego_cup.jpg";
 import AlterEgoCups from "../../assets/images/alterego_cups.png";
 import GestaltImage from "../../assets/images/gestalt_example.png"; // Tooltip image
 import AlterEgoType from "../../assets/images/alterego_typography.png"; // Tooltip image
-import AlterEgoBanner from "../../assets/images/alterego_banner.jpg";
+import AlterEgoBanner from "../../assets/images/alterglassmock.jpg";
 import AlterToteBag from "../../assets/images/alterego_totebag.jpg";
 import AlterEgoBC from "../../assets/images/alterego_bc.jpg";
 import AlterPack from "../../assets/images/alterego_packaging.jpg";
