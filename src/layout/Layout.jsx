@@ -11,6 +11,10 @@ const Layout = () => {
   const isDadaCollectivePage = location.pathname === '/dada-collective';
   const isProjectsPage = location.pathname === '/projects';
 
+
+  // ✅ Hide nav links + hamburger on Coming Soon pages, keep EyeLogo
+  const hideNav = location.pathname === "/" || location.pathname === "/coming-soon";
+
   useEffect(() => {
     // Load saved cursor color from localStorage when location changes
     const savedColor = localStorage.getItem("cursorColor");
@@ -47,7 +51,7 @@ const Layout = () => {
   return (
     <div>
       <CustomCursor cursorColor={cursorColor} /> {/* Render custom cursor */}
-      <Header />
+      <Header hideNav={hideNav} />
       <main
       className={isProjectsPage ? "no-padding" : ""}
       style={{ paddingTop: isDadaCollectivePage ? '0' : '80px' }}

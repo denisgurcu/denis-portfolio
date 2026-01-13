@@ -18,7 +18,8 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+  {/* LANDING PAGE = REDESIGN NOTICE */}
+  <Route index element={<ComingSoon />} />
           <Route path="projects" element={<Projects />} />
           <Route path="about" element={<About />} />
           <Route path="/dada-collective" element={<DadaCollective />} /> 
