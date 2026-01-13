@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import EyeLogo from "./EyeLogo"; // Component for the logo
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ hideNav = false }) => {
   const [linkColor, setLinkColor] = useState("var(--black)"); // Dynamic link color
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Track mobile menu state
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Check if mobile
@@ -19,6 +19,14 @@ const Header = () => {
     setIsMenuOpen(false);
     document.body.style.overflow = "auto"; // Re-enable scrolling
   };
+
+  // ✅ If nav is hidden, make sure menu is closed + scrolling is normal
+  useEffect(() => {
+    if (hideNav) {
+      setIsMenuOpen(false);
+      document.body.style.overflow = "auto";
+    }
+  }, [hideNav]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,10 +47,16 @@ const Header = () => {
 
       const backgroundColor = overlappingElements
         .map((el) => getComputedStyle(el).backgroundColor)
-        .find((color) => color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent");
+        .find(
+          (color) =>
+            color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent"
+        );
 
       if (backgroundColor) {
-        const [r, g, b] = backgroundColor.replace(/[^\d,]/g, "").split(",").map(Number);
+        const [r, g, b] = backgroundColor
+          .replace(/[^\d,]/g, "")
+          .split(",")
+          .map(Number);
         const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
         setLinkColor(luminance < 50 ? "var(--white)" : "var(--black)");
       } else {
@@ -74,44 +88,49 @@ const Header = () => {
         <EyeLogo />
       </div>
 
-      {/* Mobile menu toggle button */}
-      <button
-        className={`hamburger ${isMenuOpen ? "open" : ""}`}
-        onClick={toggleMenu}
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      {/* ✅ Hide hamburger + nav links ONLY when hideNav is true */}
+      {!hideNav && (
+        <>
+          {/* Mobile menu toggle button */}
+          <button
+            className={`hamburger ${isMenuOpen ? "open" : ""}`}
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-      {/* Navigation links with active page indicator */}
-      <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
-        <NavLink 
-          to="/" 
-          className="clickable" 
-          onClick={closeMenu} 
-          style={isMobile ? {} : { color: linkColor }}
-        >
-          Home
-        </NavLink>
-        <NavLink 
-          to="/projects" 
-          className="clickable" 
-          onClick={closeMenu} 
-          style={isMobile ? {} : { color: linkColor }}
-        >
-          Projects
-        </NavLink>
-        <NavLink 
-          to="/about" 
-          className="clickable" 
-          onClick={closeMenu} 
-          style={isMobile ? {} : { color: linkColor }}
-        >
-          About
-        </NavLink>
-      </nav>
+          {/* Navigation links with active page indicator */}
+          <nav className={`nav-links ${isMenuOpen ? "mobile-menu open" : ""}`}>
+            <NavLink
+              to="/"
+              className="clickable"
+              onClick={closeMenu}
+              style={isMobile ? {} : { color: linkColor }}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/projects"
+              className="clickable"
+              onClick={closeMenu}
+              style={isMobile ? {} : { color: linkColor }}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="clickable"
+              onClick={closeMenu}
+              style={isMobile ? {} : { color: linkColor }}
+            >
+              About
+            </NavLink>
+          </nav>
+        </>
+      )}
     </header>
   );
 };

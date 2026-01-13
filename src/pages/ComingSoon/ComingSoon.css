@@ -1,95 +1,93 @@
 /* ComingSoon.css */
 
 .coming-soon-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-  
-  .coming-soon-content {
-    text-align: center;
-  }
-  
+  height: 100vh; 
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: var(--grey);
+  color: var(--black);
+ 
+}
+
+.coming-soon-content {
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+/* NAME */
+.coming-soon-title {
+  font-size: 12vw;
+  line-height: 0.85;          /* tighter line box */
+  letter-spacing: -0.04em;
+  margin: 0;                  /* kill bottom margin */
+  font-weight: 100;
+  font-family: var(--graphyne);
+}
+
+/* ROLE */
+.coming-soon-subtitle {
+  font-size: 3.5vw;
+  font-family: var(--afacad);
+  font-weight: 500;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+/* BODY TEXT */
+.coming-soon-subtext {
+   font-family: var(--afacad);
+  max-width: 60ch;
+  margin: 0 auto 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  opacity: 0.72;
+}
+
+/* INLINE LINKS */
+.coming-soon-inline {
+  max-width: 80ch;
+}
+
+.coming-soon-inline a {
+  display: inline-block; /* REQUIRED for transform */
+  transition: transform 0.2s ease;
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 0, 0, 0.35);
+}
+
+.coming-soon-inline a:hover {
+  transform: scale(0.9);
+
+}
+
+
+/* PLAYFUL LINE */
+.playful {
+  margin-top: 18px;
+  opacity: 0.6;
+}
+
+/* ARROW */
+.down-arrow {
+  margin-top: 6px;
+  font-size: 22px;
+  opacity: 0.45;
+  animation: bob 1.4s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* MOBILE */
+@media (max-width: 420px) {
   .coming-soon-title {
-    font-family: var(--graphyne); /* Match your brand font */
-    font-size: 8rem;
-    font-weight: 200;
-
-    color: var(--black);
-    margin-bottom: 1.5rem;
-    max-width: 1200px;
+    font-size: 14vw;
   }
-  
-  .coming-soon-subtext {
-    font-family: var(--afacad);
-    font-size: 1.5rem;
-    color: var(--black);
-  }
-  
-  .down-arrow {
-    font-size: 2rem;
-    margin-top: 2rem;
-    font-weight: 900; /* Try values like 600–900 */
-    animation: bounce 1.5s infinite;
-    color: var(--black);
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-  }
-
-/* Tablet (≤1024px) */
-@media (max-width: 1024px) {
-    .coming-soon-title {
-      font-size: 6rem;
-      max-width: 900px;
-    }
-  
-    .coming-soon-subtext {
-      font-size: 1.3rem;
-    }
-  
-    .down-arrow {
-      font-size: 1.8rem;
-    }
-  }
-  
-  /* Mobile (≤768px) */
-  @media (max-width: 768px) {
-    .coming-soon-title {
-      font-size: 4rem;
-      max-width: 90%;
-    }
-  
-    .coming-soon-subtext {
-      font-size: 1.1rem;
-      padding: 0 1rem;
-    }
-  
-    .down-arrow {
-      font-size: 1.6rem;
-    }
-  }
-  
-  /* Small mobile (≤480px) */
-  @media (max-width: 480px) {
-    .coming-soon-title {
-      font-size: 2.8rem;
-    }
-  
-    .coming-soon-subtext {
-      font-size: 1rem;
-    }
-  
-    .down-arrow {
-      font-size: 1.4rem;
-    }
-  }
-  
-  
+}
