@@ -14,35 +14,68 @@ const ComingSoon = () => {
 
 <p className="coming-soon-subtext coming-soon-inline">
   I’m currently refreshing the site. Everything you need is right here:{" "}
-  <a className="clickable" href="/Denis_Gurcu_Resume.pdf" target="_blank" rel="noreferrer">
+  <a
+    className="clickable"
+    href="/Denis_Gurcu_Resume.pdf"
+    target="_blank"
+    rel="noreferrer"
+  >
     my resume
   </a>
   ,{" "}
-  <a className="clickable" href="https://linkedin.com/in/denisgurcu" target="_blank" rel="noreferrer">
+  <a
+    className="clickable"
+    href="https://linkedin.com/in/denisgurcu"
+    target="_blank"
+    rel="noreferrer"
+  >
     LinkedIn
   </a>
   ,{" "}
-  <a className="clickable" href="https://github.com/denisgurcu" target="_blank" rel="noreferrer">
-    GitHub.</a> <br></br>
+  <a
+    className="clickable"
+    href="https://github.com/denisgurcu"
+    target="_blank"
+    rel="noreferrer"
+  >
+    GitHub
+  </a>
+  . <br />
   Check out my recent work:{" "}
-  <Link className="clickable" to="https://elevatemusicproject.com">
+  <a
+    className="clickable"
+    href="https://elevatemusicproject.com"
+    target="_blank"
+    rel="noreferrer"
+  >
     Elevate Music Project
-  </Link>
+  </a>
   ,{" "}
-  <Link className="clickable" to="https://www.partybarcrawls.com/">
+  <a
+    className="clickable"
+    href="https://www.partybarcrawls.com/"
+    target="_blank"
+    rel="noreferrer"
+  >
     Party Bar Crawls
-  </Link>
+  </a>
   , and{" "}
-  <Link className="clickable" to="https://slatevancouver.com">
+  <a
+    className="clickable"
+    href="https://slatevancouver.com"
+    target="_blank"
+    rel="noreferrer"
+  >
     Slate Vancouver
-  </Link>
+  </a>
   .
 </p>
 
 
 
+
         <p className="coming-soon-subtext playful">
-          You can also have some fun below ↓
+          You can also have some fun below
         </p>
 
         <div className="down-arrow">↓</div>
